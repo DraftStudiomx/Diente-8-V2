@@ -24,6 +24,10 @@
   @keyframes d8-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes d8-veil { from { opacity: 1; } to { opacity: 0; } }
   @keyframes d8-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  /* Photo frames: older iOS Safari derives an aspect-ratio flex item's width from its height and
+     overflows the card. Pin the frame to the card width and clip, so the ratio only drives height. */
+  article > div[style*="aspect-ratio"], div[style*="aspect-ratio"]:has(> image-slot) { width: 100%; max-width: 100%; min-width: 0; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  image-slot { max-width: 100%; }
   /* ---------- Site nav: inline links on desktop, hamburger (CSS-only <details>) below 900px ---------- */
   .d8-nav { position: sticky; top: 0; z-index: 50; background: #07215A; border-bottom: 1px solid rgba(201,162,76,0.22); font-family: Inter, system-ui, sans-serif; }
   .d8-nav-inner { position: relative; max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 32px; }
