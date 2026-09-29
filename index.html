@@ -10,70 +10,78 @@
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diente8 · Clínica dental en León, Guanajuato</title>
+<meta name="description" content="Diente8: clínica dental en León, Guanajuato con 11 especialidades bajo un mismo techo y 2 sucursales (Panorama y La Martinica). Odontología general, ortodoncia, implantología, endodoncia, odontopediatría y más.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Dentist","name":"Diente8 – Panorama","image":"https://diente8-landing.vercel.app/assets/content/panorama-fachada.jpg","telephone":"","address":{"@type":"PostalAddress","streetAddress":"","addressLocality":"León","addressRegion":"Guanajuato","addressCountry":"MX"},"medicalSpecialty":["Dentistry"]},
+{"@type":"Dentist","name":"Diente8 – La Martinica","image":"https://diente8-landing.vercel.app/assets/content/martinica-fachada.jpg","telephone":"","address":{"@type":"PostalAddress","streetAddress":"San Sebastián 322","addressLocality":"León","addressRegion":"Guanajuato","addressCountry":"MX"},"medicalSpecialty":["Dentistry"]}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <script src="./image-slot.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&amp;family=Inter:wght@300..600&amp;display=swap" rel="stylesheet">
 <style>
-  body { margin: 0; background: #FAF7F1; color: #16232A; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #FAF7F1; color: #16232A; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
   * { box-sizing: border-box; }
-  a { color: #125570; text-decoration: none; }
-  a:hover { color: #C9AE6C; }
+  a { color: #07215A; text-decoration: none; }
+  a:hover { color: #C9A24C; }
   @keyframes d8-line { from { clip-path: inset(0 0 108% 0); transform: translateY(0.22em); } to { clip-path: inset(-25% -10% -25% -10%); transform: translateY(0); } }
   @keyframes d8-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes d8-veil { from { opacity: 1; } to { opacity: 0; } }
   @keyframes d8-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 </style>
+
 </helmet>
 
-<div style="font-family: Inter, system-ui, sans-serif; overflow-x: hidden">
+<div style="font-family: Inter, system-ui, sans-serif">
 
-  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(13,63,82,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(201,174,108,0.22)">
+  <nav style="position: sticky; top: 0; z-index: 50; background: #07215A; border-bottom: 1px solid rgba(201,162,76,0.22)">
     <div style="max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 32px">
-      <a href="#top" style="display: block; flex-shrink: 0"><img src="assets/logo-diente8-h.png" alt="Diente8 Clínica Dental" style="height: 38px; width: auto; display: block"></a>
+      <a href="index.html" style="display: block; flex-shrink: 0"><img src="assets/logo-diente8-h.png" alt="Diente8 Clínica Dental" style="height: 38px; width: auto; display: block"></a>
       <div style="flex: 1; display: flex; gap: 28px; justify-content: flex-end; align-items: center; flex-wrap: wrap">
-        <a href="#especialidades" style="font-size: 14px; color: rgba(250,247,241,0.78); letter-spacing: 0.01em" style-hover="color: #C9AE6C">Especialidades</a>
-        <a href="#nosotros" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9AE6C">Nosotros</a>
-        <a href="#pacientes" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9AE6C">Pacientes</a>
-        <a href="#contacto" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9AE6C">Contacto</a>
-        <a href="#valoracion" style="font-size: 14px; font-weight: 500; color: #0D3F52; background: #C9AE6C; padding: 11px 20px; border-radius: 2px; letter-spacing: 0.01em" style-hover="background: #FAF7F1; color: #0D3F52">Agenda tu cita</a>
+        <a href="especialidades.html" style="font-size: 14px; color: rgba(250,247,241,0.78); letter-spacing: 0.01em" style-hover="color: #C9A24C">Especialidades</a>
+        <a href="sucursales.html" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9A24C">Sucursales</a>
+        <a href="equipo.html" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9A24C">Equipo</a>
+        <a href="contacto.html" style="font-size: 14px; color: rgba(250,247,241,0.78)" style-hover="color: #C9A24C">Contacto</a>
+        <a href="contacto.html#valoracion" style="font-size: 14px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 11px 20px; border-radius: 2px; letter-spacing: 0.01em" style-hover="background: #FAF7F1; color: #07215A">Agenda tu cita</a>
       </div>
     </div>
   </nav>
 
-  <header id="top" style="position: relative; background: #0D3F52; min-height: 88vh; display: flex; align-items: center; overflow: hidden">
+  <header id="top" style="position: relative; background: #07215A; min-height: 88vh; display: flex; align-items: center; overflow: hidden">
     <video ref="{{ videoRef }}" muted="muted" playsinline="" autoplay="autoplay" preload="auto" poster="assets/tooth-poster.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.95">
       <source src="assets/tooth-loop.mp4" type="video/mp4">
     </video>
     <canvas ref="{{ canvasRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none"></canvas>
-    <div style="position: absolute; inset: 0; background: linear-gradient(96deg, rgba(13,63,82,0.97) 0%, rgba(13,63,82,0.9) 38%, rgba(13,63,82,0.35) 66%, rgba(13,63,82,0.1) 100%)"></div>
-    <div style="position: absolute; inset: 0; background: #0D3F52; animation: d8-veil 1400ms cubic-bezier(0.22,1,0.36,1) forwards; pointer-events: none"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(96deg, rgba(7,33,90,0.97) 0%, rgba(7,33,90,0.9) 38%, rgba(7,33,90,0.35) 66%, rgba(7,33,90,0.1) 100%)"></div>
+    <div style="position: absolute; inset: 0; background: #07215A; animation: d8-veil 1400ms cubic-bezier(0.22,1,0.36,1) forwards; pointer-events: none"></div>
 
     <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 120px 24px 96px; width: 100%">
       <div style="max-width: 660px">
-        <p style="margin: 0 0 26px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9AE6C; animation: d8-up 700ms 500ms cubic-bezier(0.22,1,0.36,1) both">Clínica dental en León, Guanajuato</p>
+        <p style="margin: 0 0 26px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A24C; animation: d8-up 700ms 500ms cubic-bezier(0.22,1,0.36,1) both">Clínica dental en León, Guanajuato</p>
         <h1 style="margin: 0 0 28px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(38px, 6.2vw, 76px); line-height: 1.02; letter-spacing: -0.025em; color: #FAF7F1; text-wrap: pretty">
           <span style="display: block; animation: d8-line 1000ms 700ms cubic-bezier(0.22,1,0.36,1) both">19 años cuidando</span>
-          <span style="display: block; animation: d8-line 1000ms 840ms cubic-bezier(0.22,1,0.36,1) both">la sonrisa de <em style="font-style: italic; font-weight: 300; color: #C9AE6C">tu familia</em></span>
+          <span style="display: block; animation: d8-line 1000ms 840ms cubic-bezier(0.22,1,0.36,1) both">la sonrisa de <em style="font-style: italic; font-weight: 300; color: #C9A24C">tu familia</em></span>
         </h1>
-        <p style="margin: 0 0 38px; max-width: 560px; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.62; color: rgba(250,247,241,0.82); font-weight: 300; text-wrap: pretty; animation: d8-up 800ms 1180ms cubic-bezier(0.22,1,0.36,1) both">Todas las especialidades de la odontología bajo un mismo techo, con un trato cercano y técnicas mínimamente invasivas — para que cuidar tus dientes deje de ser algo que se posterga.</p>
+        <p style="margin: 0 0 38px; max-width: 560px; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.62; color: rgba(250,247,241,0.82); font-weight: 300; text-wrap: pretty; animation: d8-up 800ms 1180ms cubic-bezier(0.22,1,0.36,1) both">11 especialidades de la odontología bajo un mismo techo, en 2 sucursales — Panorama y La Martinica — con un trato cercano para que cuidar tus dientes deje de ser algo que se posterga.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 14px; animation: d8-up 800ms 1320ms cubic-bezier(0.22,1,0.36,1) both">
-          <a href="#valoracion" style="font-size: 15px; font-weight: 500; color: #0D3F52; background: #C9AE6C; padding: 16px 30px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
-          <a href="#especialidades" style="font-size: 15px; font-weight: 400; color: #FAF7F1; border: 1px solid rgba(250,247,241,0.35); padding: 16px 30px; border-radius: 2px" style-hover="border-color: #C9AE6C; color: #C9AE6C">Ver especialidades</a>
+          <a href="contacto.html#valoracion" style="font-size: 15px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 16px 30px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
+          <a href="especialidades.html" style="font-size: 15px; font-weight: 400; color: #FAF7F1; border: 1px solid rgba(250,247,241,0.35); padding: 16px 30px; border-radius: 2px" style-hover="border-color: #C9A24C; color: #C9A24C">Ver especialidades</a>
         </div>
         <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-top: 64px; padding-top: 30px; border-top: 1px solid rgba(201,174,108,0.28); display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; animation: d8-up 800ms 1500ms cubic-bezier(0.22,1,0.36,1) both">
+          <div style="margin-top: 64px; padding-top: 30px; border-top: 1px solid rgba(201,162,76,0.28); display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; animation: d8-up 800ms 1500ms cubic-bezier(0.22,1,0.36,1) both">
             <div>
               <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">19</div>
               <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">años de experiencia</div>
             </div>
             <div>
-              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">8+</div>
+              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">11</div>
               <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">especialidades bajo un techo</div>
             </div>
             <div>
-              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">800+</div>
-              <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">familias en León nos recomiendan</div>
+              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">2,000+</div>
+              <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">pacientes registrados desde 2025</div>
             </div>
           </div>
         </sc-if>
@@ -83,210 +91,250 @@
 
   <section id="pacientes" style="background: #FAF7F1; padding: clamp(80px, 11vw, 150px) 24px">
     <div style="max-width: 900px; margin: 0 auto">
-      <div data-reveal="rule" style="width: 72px; height: 2px; background: #C9AE6C; margin-bottom: 40px; transform-origin: left"></div>
-      <p data-reveal="ink" style="margin: 0; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(24px, 3.4vw, 40px); line-height: 1.32; letter-spacing: -0.02em; color: #16232A; text-wrap: pretty">Cambiar de dentista según el problema <span style="color: #1B6C8C; font-style: italic">—uno para los niños, otro para las encías, otro para las prótesis—</span> hace que la mayoría termine posponiendo el tratamiento completo. Y lo que se pospone, se complica.</p>
+      <div data-reveal="rule" style="width: 72px; height: 2px; background: #C9A24C; margin-bottom: 40px; transform-origin: left"></div>
+      <p data-reveal="ink" style="margin: 0; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(24px, 3.4vw, 40px); line-height: 1.32; letter-spacing: -0.02em; color: #16232A; text-wrap: pretty">Cambiar de dentista según el problema <span style="color: #C9A24C; font-style: italic">—uno para los niños, otro para las encías, otro para las prótesis—</span> hace que la mayoría termine posponiendo el tratamiento completo. Y lo que se pospone, se complica.</p>
     </div>
   </section>
 
   <section style="background: #FFFFFF; border-top: 1px solid rgba(22,35,42,0.08); border-bottom: 1px solid rgba(22,35,42,0.08); padding: clamp(64px, 8vw, 104px) 24px">
     <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: clamp(32px, 5vw, 72px)">
       <div data-reveal="ink">
-        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9AE6C; margin-bottom: 16px">01</div>
-        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #125570; text-wrap: pretty">Un equipo, un historial — no repites tu caso en cada consultorio</h3>
+        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9A24C; margin-bottom: 16px">01</div>
+        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #07215A; text-wrap: pretty">Un equipo, un historial — no repites tu caso en cada consultorio</h3>
       </div>
       <div data-reveal="ink">
-        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9AE6C; margin-bottom: 16px">02</div>
-        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #125570; text-wrap: pretty">Técnica moderna, mínimamente invasiva</h3>
+        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9A24C; margin-bottom: 16px">02</div>
+        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #07215A; text-wrap: pretty">Técnica moderna, mínimamente invasiva</h3>
       </div>
       <div data-reveal="ink">
-        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9AE6C; margin-bottom: 16px">03</div>
-        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #125570; text-wrap: pretty">Trato pensado para toda la familia, de niños a adultos mayores</h3>
+        <div style="font-family: Fraunces, serif; font-size: 15px; color: #C9A24C; margin-bottom: 16px">03</div>
+        <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -0.015em; color: #07215A; text-wrap: pretty">Trato pensado para toda la familia, de niños a adultos mayores</h3>
       </div>
     </div>
   </section>
 
   <section id="especialidades" style="background: #FAF7F1; padding: clamp(80px, 11vw, 140px) 24px">
     <div style="max-width: 1240px; margin: 0 auto">
-      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(40px, 6vw, 72px); flex-wrap: wrap">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(40px, 6vw, 64px); flex-wrap: wrap">
         <h2 data-reveal="wipe" style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #16232A">Especialidades</h2>
-        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">Ocho áreas, un mismo expediente</span>
+        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">11 áreas, un mismo expediente</span>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: clamp(20px, 2.2vw, 32px)">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: clamp(20px, 2.2vw, 32px); margin-bottom: clamp(36px, 4vw, 48px)">
         <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-01" shape="rect" fit="cover" placeholder="Foto — Odontología general y estética"></image-slot>
+          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(7,33,90,0.06)">
+            <image-slot id="esp-prev-01" shape="rect" fit="cover" src="assets/content/panorama-atencion.jpg" placeholder="Foto — Odontología general"></image-slot>
           </div>
           <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">01</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Odontología general y estética</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Revisiones, limpiezas, resinas y blanqueamiento: el cuidado del día a día y los tratamientos estéticos que respetan el diente natural en lugar de cubrirlo.</p>
+            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #07215A">Odontología general</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300">Limpiezas, revisión de rutina y la puerta de entrada al especialista correcto.</p>
           </div>
         </article>
         <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-02" shape="rect" fit="cover" placeholder="Foto — Patología bucal"></image-slot>
+          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(7,33,90,0.06)">
+            <image-slot id="esp-prev-02" shape="rect" fit="cover" src="assets/content/martinica-pantalla-rx.jpg" placeholder="Foto — Prótesis e implantología"></image-slot>
           </div>
           <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">02</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Patología bucal</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Diagnóstico de lesiones en encías, lengua o mucosa. Revisamos lo que aparece en boca para descartar a tiempo aquello que necesita atención especializada.</p>
+            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #07215A">Prótesis e implantología</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300">Implantes, coronas, puentes y prótesis fijas o removibles.</p>
           </div>
         </article>
         <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-03" shape="rect" fit="cover" placeholder="Foto — Endodoncia"></image-slot>
+          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(7,33,90,0.06)">
+            <image-slot id="esp-prev-03" shape="rect" fit="cover" src="assets/content/martinica-area-infantil.jpg" placeholder="Foto — Odontopediatría"></image-slot>
           </div>
           <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">03</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Endodoncia</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Tratamiento de conducto con técnica moderna y mínimamente invasiva, enfocado en aliviar el dolor y salvar la pieza dental siempre que sea posible.</p>
-          </div>
-        </article>
-        <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-04" shape="rect" fit="cover" placeholder="Foto — Periodoncia"></image-slot>
-          </div>
-          <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">04</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Periodoncia</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Cuidado de encías y hueso de soporte: detectamos a tiempo el sangrado o la movilidad dental antes de que se conviertan en un problema mayor.</p>
-          </div>
-        </article>
-        <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-05" shape="rect" fit="cover" placeholder="Foto — Prótesis dental"></image-slot>
-          </div>
-          <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">05</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Prótesis dental</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Devolvemos función y estética cuando se ha perdido una o varias piezas, con soluciones fijas o removibles según cada caso.</p>
-          </div>
-        </article>
-        <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-06" shape="rect" fit="cover" placeholder="Foto — Prótesis maxilofacial"></image-slot>
-          </div>
-          <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">06</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Prótesis maxilofacial</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Un servicio especializado para restaurar estructuras del rostro afectadas por accidentes o cirugías, con un enfoque interdisciplinario.</p>
-          </div>
-        </article>
-        <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-07" shape="rect" fit="cover" placeholder="Foto — Ortodoncia"></image-slot>
-          </div>
-          <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">07</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Ortodoncia</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Alineación de dientes y mordida con brackets o alineadores, planeando cada tratamiento según la edad, la mordida y la rutina del paciente.</p>
-          </div>
-        </article>
-        <article data-reveal="ink" style="display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid rgba(22,35,42,0.1)">
-          <div style="position: relative; aspect-ratio: 4 / 3; background: rgba(18,85,112,0.06)">
-            <image-slot id="esp-08" shape="rect" fit="cover" placeholder="Foto — Odontopediatría"></image-slot>
-          </div>
-          <div style="padding: clamp(20px, 2vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1">
-            <div style="font-family: Fraunces, serif; font-size: 14px; letter-spacing: 0.04em; color: #C9AE6C">08</div>
-            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #125570; text-wrap: pretty">Atención y cuidado bucal infantil</h3>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300; text-wrap: pretty">Limpiezas y revisiones pensadas para que los niños pierdan el miedo al dentista, con un trato paciente que construye buenos hábitos desde temprano.</p>
+            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.02em; color: #07215A">Odontopediatría</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300">Atención integral para bebés, niños y adolescentes.</p>
           </div>
         </article>
       </div>
+      <a href="especialidades.html" style="display: inline-block; font-size: 15px; font-weight: 500; color: #07215A; border-bottom: 1.5px solid #C9A24C; padding-bottom: 3px" style-hover="color: #C9A24C">Ver las 11 especialidades →</a>
     </div>
   </section>
 
-  <section id="nosotros" style="background: #125570; color: #FAF7F1; padding: clamp(80px, 11vw, 140px) 24px">
+  <section id="sucursales" style="background: #FFFFFF; padding: clamp(80px, 11vw, 140px) 24px; border-top: 1px solid rgba(22,35,42,0.08)">
     <div style="max-width: 1240px; margin: 0 auto">
-      <h2 data-reveal="wipe" style="margin: 0 0 clamp(48px, 6vw, 80px); max-width: 900px; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(28px, 3.9vw, 48px); line-height: 1.12; letter-spacing: -0.025em; text-wrap: pretty">Casi dos décadas construyendo <em style="font-style: italic; color: #C9AE6C">confianza</em>, no solo tratando dientes.</h2>
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(48px, 6vw, 80px); flex-wrap: wrap">
+        <h2 data-reveal="wipe" style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #16232A">Sucursales</h2>
+        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">Dos ubicaciones en León</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(28px, 4vw, 56px)">
+        <article data-reveal="ink" style="display: flex; flex-direction: column">
+          <div style="position: relative; aspect-ratio: 16 / 11; background: rgba(7,33,90,0.06)">
+            <image-slot id="suc-panorama" shape="rect" fit="cover" src="assets/content/panorama-fachada.jpg" placeholder="Foto — Diente8 Panorama"></image-slot>
+          </div>
+          <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(22px, 1.9vw, 27px); letter-spacing: -0.02em; color: #07215A">Diente8 Panorama</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300">León, Gto. — consultorio #158</p>
+            <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.6; color: rgba(22,35,42,0.6); font-weight: 300">Ortodoncia · Odontología estética · Cirugía maxilofacial, entre otras especialidades.</p>
+          </div>
+        </article>
+        <article data-reveal="ink" style="display: flex; flex-direction: column">
+          <div style="position: relative; aspect-ratio: 16 / 11; background: rgba(7,33,90,0.06)">
+            <image-slot id="suc-martinica" shape="rect" fit="cover" src="assets/content/martinica-fachada.jpg" placeholder="Foto — Diente8 La Martinica"></image-slot>
+          </div>
+          <div style="padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+            <h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(22px, 1.9vw, 27px); letter-spacing: -0.02em; color: #07215A">Diente8 La Martinica</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(22,35,42,0.72); font-weight: 300">San Sebastián 322, La Martinica, León, Gto.</p>
+            <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.6; color: rgba(22,35,42,0.6); font-weight: 300">Ortodoncia · Odontología estética · Cirugía maxilofacial, entre otras especialidades.</p>
+          </div>
+        </article>
+      </div>
+      <a href="sucursales.html" style="display: inline-block; margin-top: clamp(28px, 3vw, 40px); font-size: 15px; font-weight: 500; color: #07215A; border-bottom: 1.5px solid #C9A24C; padding-bottom: 3px" style-hover="color: #C9A24C">Ver ambas sucursales →</a>
+    </div>
+  </section>
+
+  <section id="equipo" style="background: #FAF7F1; padding: clamp(80px, 11vw, 140px) 24px">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(40px, 6vw, 56px); flex-wrap: wrap">
+        <h2 data-reveal="wipe" style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #16232A">Equipo</h2>
+        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">14 especialistas</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: clamp(20px, 2.2vw, 28px); margin-bottom: clamp(36px, 4vw, 48px)">
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">JM</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Odontología general</p>
+        </div>
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">MC</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Ortodoncia</p>
+        </div>
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">CR</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Odontopediatría</p>
+        </div>
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">AI</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Implantología</p>
+        </div>
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">EZ</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Cirugía maxilofacial</p>
+        </div>
+        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">CS</div>
+          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Anestesiología</p>
+        </div>
+      </div>
+      <a href="equipo.html" style="display: inline-block; font-size: 15px; font-weight: 500; color: #07215A; border-bottom: 1.5px solid #C9A24C; padding-bottom: 3px" style-hover="color: #C9A24C">Conoce a todo el equipo →</a>
+    </div>
+  </section>
+
+  <section id="nosotros" style="background: #07215A; color: #FAF7F1; padding: clamp(80px, 11vw, 140px) 24px">
+    <div style="max-width: 1240px; margin: 0 auto">
+      <h2 data-reveal="wipe" style="margin: 0 0 clamp(48px, 6vw, 80px); max-width: 900px; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(28px, 3.9vw, 48px); line-height: 1.12; letter-spacing: -0.025em; text-wrap: pretty">Casi dos décadas construyendo <em style="font-style: italic; color: #C9A24C">confianza</em>, no solo tratando dientes.</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(32px, 4vw, 64px)">
-        <div data-reveal="ink" style="border-top: 1px solid rgba(201,174,108,0.4); padding-top: 24px">
+        <div data-reveal="ink" style="border-top: 1px solid rgba(201,162,76,0.4); padding-top: 24px">
           <h3 style="margin: 0 0 14px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.2; letter-spacing: -0.015em; color: #FAF7F1">Todas las especialidades, un equipo</h3>
           <p style="margin: 0; font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(250,247,241,0.78); text-wrap: pretty">No coordinas entre distintas clínicas: tu historial y tu tratamiento viajan contigo dentro de Diente8.</p>
         </div>
-        <div data-reveal="ink" style="border-top: 1px solid rgba(201,174,108,0.4); padding-top: 24px">
+        <div data-reveal="ink" style="border-top: 1px solid rgba(201,162,76,0.4); padding-top: 24px">
           <h3 style="margin: 0 0 14px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.2; letter-spacing: -0.015em; color: #FAF7F1">Técnica moderna, trato humano</h3>
           <p style="margin: 0; font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(250,247,241,0.78); text-wrap: pretty">Usamos procedimientos mínimamente invasivos, pero la conversación antes de cada tratamiento sigue siendo con una persona, no un formulario.</p>
         </div>
-        <div data-reveal="ink" style="border-top: 1px solid rgba(201,174,108,0.4); padding-top: 24px">
+        <div data-reveal="ink" style="border-top: 1px solid rgba(201,162,76,0.4); padding-top: 24px">
           <h3 style="margin: 0 0 14px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.2; letter-spacing: -0.015em; color: #FAF7F1">Pensado para toda la familia</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(250,247,241,0.78); text-wrap: pretty">Desde el primer diente de leche hasta la rehabilitación de un adulto mayor, en La Martinica, León.</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(250,247,241,0.78); text-wrap: pretty">Desde el primer diente de leche hasta la rehabilitación de un adulto mayor, en Panorama y La Martinica, León.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="background: #FAF7F1; padding: clamp(80px, 10vw, 130px) 24px">
-    <div style="max-width: 1240px; margin: 0 auto">
-      <p style="margin: 0 0 clamp(36px, 5vw, 60px); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #1B6C8C">Lo que dicen nuestros pacientes</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(28px, 4vw, 56px)">
-        <figure data-reveal="ink" style="margin: 0">
-          <blockquote style="margin: 0 0 20px; font-family: Fraunces, serif; font-weight: 300; font-style: italic; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.38; letter-spacing: -0.015em; color: #16232A; text-wrap: pretty">“Llevo a mis dos hijos desde que eran pequeños. Nunca les ha dado miedo venir.”</blockquote>
-          <figcaption style="font-size: 13px; letter-spacing: 0.04em; color: rgba(22,35,42,0.55)">Mariana R., paciente desde 2019</figcaption>
-        </figure>
-        <figure data-reveal="ink" style="margin: 0">
-          <blockquote style="margin: 0 0 20px; font-family: Fraunces, serif; font-weight: 300; font-style: italic; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.38; letter-spacing: -0.015em; color: #16232A; text-wrap: pretty">“Me explicaron cada paso antes de empezar. Se sintió como una decisión mía.”</blockquote>
-          <figcaption style="font-size: 13px; letter-spacing: 0.04em; color: rgba(22,35,42,0.55)">David L., endodoncia</figcaption>
-        </figure>
-        <figure data-reveal="ink" style="margin: 0">
-          <blockquote style="margin: 0 0 20px; font-family: Fraunces, serif; font-weight: 300; font-style: italic; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.38; letter-spacing: -0.015em; color: #16232A; text-wrap: pretty">“Después de años evitando al dentista por pena, aquí no sentí ningún juicio.”</blockquote>
-          <figcaption style="font-size: 13px; letter-spacing: 0.04em; color: rgba(22,35,42,0.55)">Carla S., rehabilitación dental</figcaption>
-        </figure>
+  <section id="faq" style="background: #FAF7F1; padding: clamp(80px, 11vw, 140px) 24px; border-top: 1px solid rgba(22,35,42,0.08)">
+    <div style="max-width: 860px; margin: 0 auto">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(40px, 6vw, 64px); flex-wrap: wrap">
+        <h2 data-reveal="wipe" style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #16232A">Preguntas frecuentes</h2>
+      </div>
+      <div>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            ¿En qué se diferencia Diente8 de una clínica dental normal?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">Reunimos 11 especialidades bajo un mismo techo y un mismo expediente. Si tu tratamiento involucra a más de un especialista, no tienes que repetir tu historial en cada consultorio.</p>
+        </details>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            ¿Cuál es la diferencia entre las sucursales Panorama y La Martinica?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">Ambas ofrecen atención dental completa y comparten el mismo equipo y expediente clínico — la que elijas depende simplemente de cuál te queda más cerca. Consulta la dirección de cada una en la sección de sucursales.</p>
+        </details>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            ¿Trabajan con seguros dentales?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">Sí. Trabajamos con seguros dentales tanto para pacientes particulares como para empresas que buscan dar cobertura dental a sus colaboradores. Escríbenos para confirmar si tu póliza aplica.</p>
+        </details>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            ¿Atienden niños?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">Sí, contamos con odontopediatría dedicada, enfocada en que los niños pierdan el miedo al dentista desde la primera visita.</p>
+        </details>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            No sé qué especialidad necesito, ¿cómo empiezo?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">No hace falta que lo sepas de antemano. Agenda una valoración inicial y te canalizamos con el especialista correcto dentro de la misma clínica.</p>
+        </details>
+        <details data-reveal="ink" style="border-top: 1px solid rgba(22,35,42,0.12); padding: 22px 0">
+          <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(17px, 1.6vw, 20px); color: #07215A">
+            ¿Cómo agendo mi primera cita?
+            <span aria-hidden="true" style="flex-shrink: 0; font-size: 20px; color: #C9A24C">+</span>
+          </summary>
+          <p style="margin: 14px 0 0; max-width: 700px; font-size: 15px; line-height: 1.65; color: rgba(22,35,42,0.72); font-weight: 300">Escríbenos desde la sección de contacto y te confirmamos horario el mismo día.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <section id="valoracion" style="background: #C9AE6C; padding: clamp(72px, 9vw, 120px) 24px">
+  <section style="background: #FFFFFF; padding: clamp(80px, 11vw, 140px) 24px; border-top: 1px solid rgba(22,35,42,0.08)">
+    <div style="max-width: 1080px; margin: 0 auto">
+      <p style="margin: 0 0 clamp(36px, 5vw, 60px); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A24C">Lo que dicen nuestros pacientes</p>
+      <div style="position: relative; aspect-ratio: 16 / 9; background: #07215A; overflow: hidden">
+        <video controls="controls" preload="metadata" playsinline="" poster="assets/content/martinica-consultorio.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+          <source src="assets/videos/testimonial-paciente.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="valoracion" style="background: #C9A24C; padding: clamp(72px, 9vw, 120px) 24px">
     <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(28px, 5vw, 72px); align-items: start">
       <h2 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(28px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.025em; color: #16232A; text-wrap: balance">¿Primera vez en Diente 8?</h2>
       <div>
         <p style="margin: 0 0 28px; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: rgba(22,35,42,0.82); font-weight: 300; text-wrap: pretty">Cuéntanos qué necesitas y te ayudamos a encontrar la especialidad correcta antes de tu primera visita — sin compromiso.</p>
-        <a href="#contacto" style="display: inline-block; font-size: 15px; font-weight: 500; color: #FAF7F1; background: #0D3F52; padding: 16px 30px; border-radius: 2px" style-hover="background: #16232A">Escríbenos por WhatsApp</a>
+        <a href="contacto.html" style="display: inline-block; font-size: 15px; font-weight: 500; color: #FAF7F1; background: #07215A; padding: 16px 30px; border-radius: 2px" style-hover="background: #16232A">Escríbenos por WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <section id="contacto" style="background: #16232A; color: #FAF7F1; padding: clamp(80px, 10vw, 130px) 24px">
-    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(32px, 5vw, 64px)">
-      <div>
-        <p style="margin: 0 0 18px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9AE6C">Visítanos</p>
-        <p style="margin: 0; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; letter-spacing: -0.02em">San Sebastián 322,<br><br>La Martinica,<br><br>León, Gto.</p>
-      </div>
-      <div>
-        <p style="margin: 0 0 18px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9AE6C">Síguenos</p>
-        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
-          <a href="https://instagram.com/diente8_" style="font-size: 17px; color: #FAF7F1; border-bottom: 1px solid rgba(201,174,108,0.45); padding-bottom: 3px" style-hover="color: #C9AE6C">Instagram @diente8_</a>
-          <a href="https://facebook.com/diente8" style="font-size: 17px; color: #FAF7F1; border-bottom: 1px solid rgba(201,174,108,0.45); padding-bottom: 3px" style-hover="color: #C9AE6C">Facebook Diente8 Clínica Dental</a>
-        </div>
-      </div>
-      <div>
-        <p style="margin: 0 0 18px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9AE6C">Agenda</p>
-        <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.6; font-weight: 300; color: rgba(250,247,241,0.72)">Escríbenos y te confirmamos horario el mismo día.</p>
-        <a href="#valoracion" style="display: inline-block; font-size: 15px; font-weight: 500; color: #16232A; background: #C9AE6C; padding: 15px 28px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
-      </div>
-    </div>
-  </section>
-
-  <section style="background: #0D3F52; padding: clamp(90px, 12vw, 160px) 24px; text-align: center">
-    <div style="max-width: 860px; margin: 0 auto">
+  <footer style="background: #07215A">
+    <div style="padding: clamp(90px, 12vw, 160px) 24px; text-align: center">
+      <div style="max-width: 860px; margin: 0 auto">
       <h2 data-reveal="wipe" style="margin: 0 0 34px; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(30px, 4.6vw, 62px); line-height: 1.06; letter-spacing: -0.03em; color: #FAF7F1; text-wrap: pretty">Tu sonrisa no debería esperar otro año.</h2>
-      <a href="#valoracion" style="display: inline-block; font-size: 15px; font-weight: 500; color: #0D3F52; background: #C9AE6C; padding: 17px 34px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
+      <a href="contacto.html#valoracion" style="display: inline-block; font-size: 15px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 17px 34px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
     </div>
-  </section>
-
-  <footer style="background: #0D3F52; border-top: 1px solid rgba(201,174,108,0.22); padding: 40px 24px">
-    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
-      <a href="#top" style="display: block"><img src="assets/logo-diente8-h.png" alt="Diente8 Clínica Dental" style="height: 42px; width: auto; display: block"></a>
+    </div>
+    <div style="border-top: 1px solid rgba(201,162,76,0.22); padding: 40px 24px">
+      <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
+      <a href="index.html" style="display: block"><img src="assets/logo-diente8-h.png" alt="Diente8 Clínica Dental" style="height: 42px; width: auto; display: block"></a>
       <div style="display: flex; flex-wrap: wrap; gap: 24px">
-        <a href="#especialidades" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9AE6C">Especialidades</a>
-        <a href="#nosotros" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9AE6C">Nosotros</a>
-        <a href="#pacientes" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9AE6C">Pacientes</a>
-        <a href="#contacto" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9AE6C">Contacto</a>
+        <a href="especialidades.html" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9A24C">Especialidades</a>
+        <a href="sucursales.html" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9A24C">Sucursales</a>
+        <a href="equipo.html" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9A24C">Equipo</a>
+        <a href="contacto.html" style="font-size: 13px; color: rgba(250,247,241,0.7)" style-hover="color: #C9A24C">Contacto</a>
       </div>
       <p style="margin: 0; font-size: 12px; color: rgba(250,247,241,0.45)">© 2026 Diente8 Clínica Dental — León, Guanajuato</p>
     </div>
+    </div>
   </footer>
+
 </div>
 
 </x-dc>
