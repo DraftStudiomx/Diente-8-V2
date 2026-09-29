@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diente8 · Clínica dental en León, Guanajuato</title>
 <meta name="description" content="Diente8: clínica dental en León, Guanajuato con 11 especialidades bajo un mismo techo y 2 sucursales (Panorama y La Martinica). Odontología general, ortodoncia, implantología, endodoncia, odontopediatría y más.">
+<link rel="canonical" href="https://diente8-landing.vercel.app/">
+<meta name="theme-color" content="#07215A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Diente8 Clínica Dental">
+<meta property="og:title" content="Diente8 · Clínica dental en León, Guanajuato">
+<meta property="og:description" content="11 especialidades de la odontología bajo un mismo techo, en 2 sucursales en León: Panorama y La Martinica.">
+<meta property="og:url" content="https://diente8-landing.vercel.app/">
+<meta property="og:image" content="https://diente8-landing.vercel.app/assets/content/panorama-fachada.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/hero/tooth-full.webp" type="image/webp">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Dentist","name":"Diente8 – Panorama","image":"https://diente8-landing.vercel.app/assets/content/panorama-fachada.jpg","telephone":"","address":{"@type":"PostalAddress","streetAddress":"","addressLocality":"León","addressRegion":"Guanajuato","addressCountry":"MX"},"medicalSpecialty":["Dentistry"]},
@@ -30,6 +42,101 @@
   @keyframes d8-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes d8-veil { from { opacity: 1; } to { opacity: 0; } }
   @keyframes d8-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  /* ---------- Hero: scroll story (tooth → cutaway → specialties → monogram) ---------- */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .d8h { position: relative; height: calc(100vh - var(--d8-nav-h, 71px)); height: calc(100svh - var(--d8-nav-h, 71px)); min-height: 520px; overflow: hidden; color: #FAF7F1; container-type: size;
+    background: radial-gradient(120% 90% at 70% 45%, #123A86 0%, #07215A 42%, #041541 100%); }
+  .d8h-grain { position: absolute; inset: 0; opacity: .5; pointer-events: none;
+    background-image: radial-gradient(rgba(250,247,241,0.06) 1px, transparent 1px); background-size: 22px 22px;
+    mask-image: radial-gradient(70% 70% at 70% 50%, #000 0%, transparent 80%); -webkit-mask-image: radial-gradient(70% 70% at 70% 50%, #000 0%, transparent 80%); }
+
+  .d8h-copy { position: absolute; z-index: 3; left: max(24px, calc((100vw - 1240px) / 2 + 24px)); top: 50%; transform: translateY(-50%); max-width: min(560px, 44vw); }
+  .d8h-eyebrow { margin: 0 0 24px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A24C; animation: d8-up 700ms 300ms cubic-bezier(0.22,1,0.36,1) both; }
+  .d8h-title { margin: 0 0 26px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(38px, 5.4vw, 74px); line-height: 1.02; letter-spacing: -0.025em; color: #FAF7F1; }
+  .d8h-title span { display: block; animation: d8-line 1000ms 450ms cubic-bezier(0.22,1,0.36,1) both; }
+  .d8h-title span + span { animation-delay: 590ms; }
+  .d8h-title em { font-style: italic; font-weight: 300; color: #C9A24C; }
+  .d8h-sub { margin: 0 0 36px; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.62; color: rgba(250,247,241,0.82); font-weight: 300; text-wrap: pretty; animation: d8-up 800ms 900ms cubic-bezier(0.22,1,0.36,1) both; }
+  .d8h-ctas { display: flex; flex-wrap: wrap; gap: 14px; animation: d8-up 800ms 1050ms cubic-bezier(0.22,1,0.36,1) both; }
+  .d8h-btn { font-size: 15px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 16px 30px; border-radius: 2px; }
+  .d8h-btn-ghost { font-size: 15px; font-weight: 400; color: #FAF7F1; border: 1px solid rgba(250,247,241,0.35); padding: 16px 30px; border-radius: 2px; }
+
+  /* Tooth stage. The SVG viewBox is wider than the tooth so the leader lines fit beside it. */
+  .d8h-tooth { position: absolute; z-index: 2; left: 70%; top: 50%; height: min(92cqh, 860px); aspect-ratio: 1240 / 860; transform: translate(-50%, -50%); pointer-events: none; }
+  .d8h-svg, .d8h-svg > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .d8h-svg .t-outline { opacity: 0; }
+  .d8h-glow { position: absolute; left: 50%; top: 50%; width: 46%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,162,76,0.22) 0%, rgba(201,162,76,0) 65%); filter: blur(10px); }
+  .d8h-callout { position: absolute; width: 18%; transform: translateY(-50%); font-size: clamp(12px, 0.95vw, 14px); line-height: 1.4; color: rgba(250,247,241,0.72); opacity: 0; visibility: hidden; pointer-events: auto; }
+  .d8h-callout.is-right { left: 80.6%; }
+  .d8h-callout.is-left { right: 80.6%; text-align: right; }
+  .d8h-callout b { display: block; margin-bottom: 4px; font-family: Fraunces, serif; font-weight: 400; font-size: 1.45em; letter-spacing: -0.01em; color: #FAF7F1; }
+  .d8h-callout i { display: block; margin-bottom: 6px; font-style: normal; font-size: 0.8em; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A24C; }
+  .d8h-callout:hover b { color: #C9A24C; }
+  .d8h-mcaps { display: none; }
+
+  .d8h-finale { position: absolute; z-index: 4; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: 24px; pointer-events: none; opacity: 0; }
+  .d8h-mono { width: clamp(170px, 20vw, 280px); aspect-ratio: 1410 / 840; }
+  .d8h-word { width: clamp(140px, 16vw, 220px); aspect-ratio: 1410 / 360; margin-top: 18px; }
+  .d8h-mono svg, .d8h-word svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .d8h-line { margin: 30px 0 0; font-family: Fraunces, serif; font-weight: 300; font-size: clamp(22px, 2.6vw, 36px); line-height: 1.2; letter-spacing: -0.02em; max-width: 720px; }
+  .d8h-line em { font-style: italic; color: #C9A24C; }
+  .d8h-stats { margin-top: 36px; display: flex; gap: clamp(28px, 6vw, 80px); justify-content: center; border-top: 1px solid rgba(201,162,76,0.28); padding-top: 26px; }
+  .d8h-num { font-family: Fraunces, serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1; }
+  .d8h-label { margin-top: 8px; font-size: 12px; color: rgba(250,247,241,0.6); max-width: 160px; }
+
+  .d8h-hint { position: absolute; z-index: 3; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,247,241,0.55); opacity: 0; }
+  .d8h-hint span { width: 1px; height: 36px; background: linear-gradient(#C9A24C, transparent); animation: d8-hint 2.2s cubic-bezier(0.65,0,0.35,1) infinite; transform-origin: top; }
+  @keyframes d8-hint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+  /* Tablet portrait: stacked, tooth under the copy, callouts show titles only */
+  @media (min-width: 768px) and (max-width: 1180px) and (orientation: portrait) {
+    .d8h-copy { left: 48px; right: 48px; top: 48px; transform: none; max-width: 620px; }
+    .d8h-title { font-size: clamp(46px, 7.2vw, 66px); }
+    .d8h-sub { max-width: 520px; margin-bottom: 30px; }
+    .d8h-tooth { left: 50%; top: 70%; height: auto; width: min(100vw, 118cqh); }
+    .d8h-callout { font-size: 13px; }
+    .d8h-desc { display: none; }
+    .d8h-hint { display: none; }
+  }
+  @media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+    .d8h-copy { max-width: min(480px, 42vw); }
+    .d8h-tooth { left: 71%; height: min(86cqh, 760px); }
+  }
+
+  /* Mobile: copy on top, tooth below; specialties swap in a caption instead of leader lines */
+  @media (max-width: 767px) {
+    .d8h-copy { left: 20px; right: 20px; top: 24px; transform: none; max-width: none; }
+    .d8h-eyebrow { margin-bottom: 14px; font-size: 11px; letter-spacing: 0.14em; }
+    .d8h-title { font-size: clamp(32px, 9.4vw, 46px); margin-bottom: 20px; }
+    .d8h-sub { display: none; }
+    .d8h-ctas { gap: 10px; }
+    .d8h-btn, .d8h-btn-ghost { font-size: 14px; padding: 13px 18px; }
+    .d8h-tooth { left: 50%; top: 70%; height: auto; width: min(150vw, 92cqh); }
+    .d8h-callout, .d8h-svg .dots, .d8h-hint { display: none; }
+    .d8h-mcaps { display: block; position: absolute; z-index: 3; left: 20px; right: 20px; bottom: max(24px, 4cqh); height: 92px; }
+    .d8h-mcap { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+    .d8h-mcap i { display: block; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A24C; margin-bottom: 6px; }
+    .d8h-mcap b { display: block; font-family: Fraunces, serif; font-weight: 400; font-size: 23px; margin-bottom: 4px; }
+    .d8h-mcap p { margin: 0; font-size: 14px; line-height: 1.45; color: rgba(250,247,241,0.72); }
+    .d8h-mono { width: clamp(140px, 42vw, 190px); }
+    .d8h-word { width: clamp(120px, 36vw, 160px); margin-top: 14px; }
+    .d8h-line { margin-top: 22px; font-size: clamp(21px, 6vw, 26px); }
+    .d8h-stats { margin-top: 26px; gap: 18px; padding-top: 20px; }
+    .d8h-num { font-size: 28px; }
+    .d8h-label { font-size: 11px; }
+  }
+  @media (max-width: 767px) and (max-height: 700px) {
+    .d8h-title { font-size: clamp(30px, 8.6vw, 38px); }
+    .d8h-tooth { top: 74%; width: min(130vw, 86cqh); }
+  }
+
+  /* Without the scroll story (reduced motion / scripts blocked): a calm static hero */
+  .d8h.is-static .d8h-svg .t-cutaway, .d8h.is-static .d8h-svg .t-anatomy, .d8h.is-static .d8h-svg .scan, .d8h.is-static .d8h-svg .leaders, .d8h.is-static .d8h-svg .dots { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .d8h-eyebrow, .d8h-title span, .d8h-sub, .d8h-ctas, .d8h-hint span { animation: none !important; }
+  }
 </style>
 
 </helmet>
@@ -49,44 +156,52 @@
     </div>
   </nav>
 
-  <header id="top" style="position: relative; background: #07215A; min-height: 88vh; display: flex; align-items: center; overflow: hidden">
-    <video ref="{{ videoRef }}" muted="muted" playsinline="" autoplay="autoplay" preload="auto" poster="assets/tooth-poster.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.95">
-      <source src="assets/tooth-loop.mp4" type="video/mp4">
-    </video>
-    <canvas ref="{{ canvasRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none"></canvas>
-    <div style="position: absolute; inset: 0; background: linear-gradient(96deg, rgba(7,33,90,0.97) 0%, rgba(7,33,90,0.9) 38%, rgba(7,33,90,0.35) 66%, rgba(7,33,90,0.1) 100%)"></div>
-    <div style="position: absolute; inset: 0; background: #07215A; animation: d8-veil 1400ms cubic-bezier(0.22,1,0.36,1) forwards; pointer-events: none"></div>
+  <header id="top" class="d8h" ref="{{ heroRef }}">
+    <div class="d8h-grain" aria-hidden="true"></div>
 
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: 120px 24px 96px; width: 100%">
-      <div style="max-width: 660px">
-        <p style="margin: 0 0 26px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A24C; animation: d8-up 700ms 500ms cubic-bezier(0.22,1,0.36,1) both">Clínica dental en León, Guanajuato</p>
-        <h1 style="margin: 0 0 28px; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(38px, 6.2vw, 76px); line-height: 1.02; letter-spacing: -0.025em; color: #FAF7F1; text-wrap: pretty">
-          <span style="display: block; animation: d8-line 1000ms 700ms cubic-bezier(0.22,1,0.36,1) both">19 años cuidando</span>
-          <span style="display: block; animation: d8-line 1000ms 840ms cubic-bezier(0.22,1,0.36,1) both">la sonrisa de <em style="font-style: italic; font-weight: 300; color: #C9A24C">tu familia</em></span>
-        </h1>
-        <p style="margin: 0 0 38px; max-width: 560px; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.62; color: rgba(250,247,241,0.82); font-weight: 300; text-wrap: pretty; animation: d8-up 800ms 1180ms cubic-bezier(0.22,1,0.36,1) both">11 especialidades de la odontología bajo un mismo techo, en 2 sucursales — Panorama y La Martinica — con un trato cercano para que cuidar tus dientes deje de ser algo que se posterga.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; animation: d8-up 800ms 1320ms cubic-bezier(0.22,1,0.36,1) both">
-          <a href="contacto.html#valoracion" style="font-size: 15px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 16px 30px; border-radius: 2px" style-hover="background: #FAF7F1">Agenda tu cita</a>
-          <a href="especialidades.html" style="font-size: 15px; font-weight: 400; color: #FAF7F1; border: 1px solid rgba(250,247,241,0.35); padding: 16px 30px; border-radius: 2px" style-hover="border-color: #C9A24C; color: #C9A24C">Ver especialidades</a>
-        </div>
-        <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-top: 64px; padding-top: 30px; border-top: 1px solid rgba(201,162,76,0.28); display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; animation: d8-up 800ms 1500ms cubic-bezier(0.22,1,0.36,1) both">
-            <div>
-              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">19</div>
-              <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">años de experiencia</div>
-            </div>
-            <div>
-              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">11</div>
-              <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">especialidades bajo un techo</div>
-            </div>
-            <div>
-              <div style="font-family: Fraunces, serif; font-size: 40px; line-height: 1; color: #FAF7F1">2,000+</div>
-              <div style="margin-top: 8px; font-size: 13px; line-height: 1.4; color: rgba(250,247,241,0.6)">pacientes registrados desde 2025</div>
-            </div>
-          </div>
-        </sc-if>
+    <div class="d8h-copy">
+      <p class="d8h-eyebrow">Clínica dental en León, Guanajuato</p>
+      <h1 class="d8h-title">
+        <span>19 años cuidando</span>
+        <span>la sonrisa de <em>tu familia</em></span>
+      </h1>
+      <p class="d8h-sub">11 especialidades de la odontología bajo un mismo techo, en 2 sucursales — Panorama y La Martinica — con un trato cercano para que cuidar tus dientes deje de ser algo que se posterga.</p>
+      <div class="d8h-ctas">
+        <a href="contacto.html#valoracion" class="d8h-btn" style-hover="background: #FAF7F1; color: #07215A">Agenda tu cita</a>
+        <a href="especialidades.html" class="d8h-btn-ghost" style-hover="border-color: #C9A24C; color: #C9A24C">Ver especialidades</a>
       </div>
     </div>
+
+    <div class="d8h-tooth">
+      <div class="d8h-glow" aria-hidden="true"></div>
+      <div class="d8h-svg" ref="{{ toothRef }}"></div>
+      <a class="d8h-callout is-left" style="top: 22.8%" href="especialidades.html#esp-04"><i>01 · Esmalte</i><b>Odontología estética</b><span class="d8h-desc">Carillas, coronas, blanqueamiento y diseño de sonrisa.</span></a>
+      <a class="d8h-callout is-right" style="top: 57%" href="especialidades.html#esp-02"><i>02 · Pulpa</i><b>Endodoncia</b><span class="d8h-desc">Tratamos el nervio para conservar tu diente.</span></a>
+      <a class="d8h-callout is-left" style="top: 61.3%" href="especialidades.html#esp-01"><i>03 · Dentina</i><b>Odontología general</b><span class="d8h-desc">Resinas y restauraciones que devuelven forma y función.</span></a>
+      <a class="d8h-callout is-right" style="top: 79.8%" href="especialidades.html#esp-03"><i>04 · Raíz y encía</i><b>Periodoncia e implantes</b><span class="d8h-desc">La base de todo: encías sanas y raíces firmes.</span></a>
+    </div>
+
+    <div class="d8h-mcaps" aria-hidden="true">
+      <div class="d8h-mcap"><i>01 · Esmalte</i><b>Odontología estética</b><p>Carillas, coronas y blanqueamiento.</p></div>
+      <div class="d8h-mcap"><i>02 · Pulpa</i><b>Endodoncia</b><p>Tratamos el nervio para conservar tu diente.</p></div>
+      <div class="d8h-mcap"><i>03 · Dentina</i><b>Odontología general</b><p>Resinas y restauraciones a tu medida.</p></div>
+      <div class="d8h-mcap"><i>04 · Raíz y encía</i><b>Periodoncia e implantes</b><p>Encías sanas y raíces firmes.</p></div>
+    </div>
+
+    <div class="d8h-finale">
+      <div class="d8h-mono" ref="{{ monoRef }}" role="img" aria-label="Diente8"></div>
+      <div class="d8h-word" ref="{{ wordRef }}"></div>
+      <p class="d8h-line">Cada parte de tu diente, <em>un solo lugar</em> para cuidarla.</p>
+      <sc-if value="{{ showStats }}" hint-placeholder-val="{{ true }}">
+        <div class="d8h-stats">
+          <div><div class="d8h-num" data-count="19">19</div><div class="d8h-label">años de experiencia</div></div>
+          <div><div class="d8h-num" data-count="11">11</div><div class="d8h-label">especialidades bajo un techo</div></div>
+          <div><div class="d8h-num" data-count="2000" data-suffix="+">2,000+</div><div class="d8h-label">pacientes registrados desde 2025</div></div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div class="d8h-hint" aria-hidden="true">Desliza<span></span></div>
   </header>
 
   <section id="pacientes" style="background: #FAF7F1; padding: clamp(80px, 11vw, 150px) 24px">
@@ -338,103 +453,209 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;pingPongLoop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.video = null;
-    this.videoRef = (el) => { this.video = el; };
-    this.canvasRef = (el) => { this.canvas = el; };
-    this.dir = 1;
-    this.raf = null;
+    this.heroRef = (el) => { this.hero = el; };
+    this.toothRef = (el) => { this.toothHost = el; };
+    this.monoRef = (el) => { this.monoHost = el; };
+    this.wordRef = (el) => { this.wordHost = el; };
   }
-
   componentDidMount() {
-    this.startVideo();
+    this.setupHero();
     this.setupReveals();
   }
-
   componentWillUnmount() {
-    if (this.raf) cancelAnimationFrame(this.raf);
-    if (this.capRaf) cancelAnimationFrame(this.capRaf);
+    this.unmounted = true;
     if (this.io) this.io.disconnect();
     if (this.sweep) window.removeEventListener('scroll', this.sweep);
+    if (this.onResize) window.removeEventListener('resize', this.onResize);
+    if (this.mm) this.mm.revert();
+    if (this.intro) this.intro.revert();
+    if (this.lenis) this.lenis.destroy();
   }
 
-  startVideo() {
-    const v = this.video;
-    if (!v) return;
-    v.muted = true;
-    const pingpong = this.props.pingPongLoop ?? true;
-    this.play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
-    if (!pingpong) { v.loop = true; this.play(); return; }
-    v.loop = false;
-    this.frames = [];
-    this.fps = 12;
-    v.addEventListener('ended', () => { this.reverse(); });
-    v.addEventListener('playing', () => { this.capture(); });
-    this.play();
+  loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
   }
 
-  // The mp4 has no seekable range in this environment, so reverse playback is done
-  // from frames grabbed off the video during the first forward pass.
-  capture() {
-    const v = this.video;
-    if (this.capturing || !v) return;
-    this.capturing = true;
-    const w = 640;
-    const h = Math.round(w * (v.videoHeight || 540) / (v.videoWidth || 960));
-    const buf = document.createElement('canvas');
-    buf.width = w; buf.height = h;
-    const bx = buf.getContext('2d');
-    let nextAt = 0;
-    const grab = () => {
-      if (this.dir !== 1 || v.paused || v.ended) { this.capturing = false; return; }
-      const now = performance.now();
-      if (now >= nextAt) {
-        nextAt = now + 1000 / this.fps;
-        bx.drawImage(v, 0, 0, w, h);
-        const f = document.createElement('canvas');
-        f.width = w; f.height = h;
-        f.getContext('2d').drawImage(buf, 0, 0);
-        this.frames.push(f);
-        if (this.frames.length > 80) this.frames.shift();
+  // The hero sits under the sticky nav, so it is sized (and pinned) to the viewport minus the nav.
+  navHeight() {
+    const nav = document.querySelector('nav');
+    return nav ? Math.round(nav.getBoundingClientRect().height) : 0;
+  }
+  syncNavHeight() {
+    if (this.hero) this.hero.style.setProperty('--d8-nav-h', this.navHeight() + 'px');
+  }
+
+  async setupHero() {
+    const hero = this.hero;
+    if (!hero) return;
+    this.syncNavHeight();
+    this.onResize = () => this.syncNavHeight();
+    window.addEventListener('resize', this.onResize);
+
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const CDN = 'https://cdn.jsdelivr.net/npm/';
+    const svg = (p) => fetch(p).then((r) => (r.ok ? r.text() : ''));
+    const libs = reduce ? Promise.resolve(false) : this.loadScript(CDN + 'gsap@3.13.0/dist/gsap.min.js')
+      .then(() => Promise.all([
+        this.loadScript(CDN + 'gsap@3.13.0/dist/ScrollTrigger.min.js'),
+        this.loadScript(CDN + 'gsap@3.13.0/dist/DrawSVGPlugin.min.js'),
+        this.loadScript(CDN + 'lenis@1.3.4/dist/lenis.min.js')
+      ]))
+      .then(() => true, () => false);
+
+    const [tooth, mono, word, animated] = await Promise.all([
+      svg('assets/hero/diente8-tooth.svg'),
+      svg('assets/hero/diente8-monogram.svg'),
+      svg('assets/hero/diente8-wordmark.svg'),
+      libs
+    ]);
+    if (this.unmounted) return;
+    // Decorative artwork (aria-hidden) is injected here rather than in the template so React never re-renders it.
+    if (this.toothHost) this.toothHost.innerHTML = tooth;
+    if (this.monoHost) this.monoHost.innerHTML = mono;
+    if (this.wordHost) this.wordHost.innerHTML = word;
+
+    if (!animated || !window.gsap || !window.ScrollTrigger) {
+      hero.classList.add('is-static');
+      return;
+    }
+    this.runHero(hero);
+  }
+
+  runHero(hero) {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    gsap.registerPlugin(ScrollTrigger, window.DrawSVGPlugin);
+    ScrollTrigger.config({ ignoreMobileResize: true }); // URL-bar show/hide on phones shouldn't re-layout the pin
+
+    if (window.Lenis) {
+      this.lenis = new window.Lenis({ lerp: 0.1 });
+      this.lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((t) => this.lenis && this.lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    ScrollTrigger.addEventListener('refreshInit', () => this.syncNavHeight());
+
+    const q = (s) => Array.from(hero.querySelectorAll(s));
+    gsap.set(hero.querySelector('.d8h-tooth'), { xPercent: -50, yPercent: -50, x: 0, y: 0 });
+
+    // Intro on load (time-based): the gold outline draws, then the real tooth appears inside it
+    this.intro = gsap.context(() => {
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .fromTo('.t-outline', { opacity: 1, drawSVG: 0 }, { drawSVG: '100%', duration: 2.2, ease: 'power2.inOut' }, 0)
+        .from('.t-photo', { opacity: 0, duration: 1.4, ease: 'power2.out' }, 1.5)
+        .to('.t-outline', { opacity: 0, duration: 1.2 }, 2.4)
+        .from('.d8h-glow', { opacity: 0, scale: 0.6, duration: 1.8 }, 0.6)
+        .to('.d8h-hint', { opacity: 1, duration: 0.8 }, 1.6);
+      gsap.to('.tooth', { y: -8, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1, transformOrigin: '50% 50%' });
+    }, hero);
+
+    const countUp = () => {
+      const tl = gsap.timeline();
+      q('[data-count]').forEach((el) => {
+        const o = { v: 0 };
+        const end = +el.getAttribute('data-count');
+        const sfx = el.getAttribute('data-suffix') || '';
+        tl.to(o, { v: end, duration: 1, ease: 'none', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('es-MX') + sfx; } }, 0);
+      });
+      return tl;
+    };
+
+    // Scroll story (pinned + scrubbed), rebuilt per breakpoint
+    this.mm = gsap.matchMedia(hero);
+    this.mm.add({
+      desktop: '(min-width: 768px)',
+      tabletPortrait: '(min-width: 768px) and (max-width: 1180px) and (orientation: portrait)',
+      mobile: '(max-width: 767px)'
+    }, (ctx) => {
+      const { desktop, tabletPortrait } = ctx.conditions;
+      const sideBySide = desktop && !tabletPortrait;
+      gsap.set('.d8h-copy', { yPercent: sideBySide ? -50 : 0, y: 0 });
+      gsap.set('.leader', { drawSVG: 0 });
+      gsap.set('.dot', { scale: 0, transformOrigin: '50% 50%' });
+      gsap.set('.t-pulp-glow', { opacity: 0, scale: 0.6, transformOrigin: '50% 50%' });
+      gsap.set('.t-canals path', { drawSVG: 0 });
+      gsap.set('.d8h-finale', { opacity: 1 });
+      gsap.set(['.d8h-mono', '.d8h-word', '.d8h-line', '.d8h-stats'], { autoAlpha: 0 });
+      gsap.set('.mono-l', { xPercent: -18 });
+      gsap.set('.mono-r', { xPercent: 18 });
+
+      const tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: hero,
+          start: () => 'top ' + this.navHeight(),
+          end: '+=' + (desktop ? 380 : 320) + '%',
+          pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true
+        }
+      });
+
+      // Act 1: copy leaves, the tooth takes center stage
+      const center = tabletPortrait ? { top: '50%', scale: 1 }
+                   : desktop        ? { left: '50%', top: '52%', scale: 0.8 }
+                   :                  { top: '42%', scale: 1.22 };
+      tl.to('.d8h-hint', { autoAlpha: 0, duration: 0.3 }, 0)
+        .to('.d8h-copy', { y: -80, autoAlpha: 0, duration: 1 }, 0)
+        .to('.d8h-tooth', { ...center, duration: 1.2, ease: 'power1.inOut' }, 0);
+
+      // Act 2: a gold scan line sweeps down — above it the cutaway render, below it the whole tooth
+      const scan = { duration: 1.2, ease: 'power1.inOut' };
+      tl.to('.scan', { opacity: 1, duration: 0.15 }, 0.9)
+        .fromTo('.scan', { y: -80 }, { y: 720, ...scan }, 0.9)
+        .fromTo('.scan-top', { attr: { height: 120 } }, { attr: { height: 920 }, ...scan }, 0.9)
+        .fromTo('.scan-bot', { attr: { y: -80 } }, { attr: { y: 720 }, ...scan }, 0.9)
+        .to('.scan', { opacity: 0, duration: 0.2 }, 1.95);
+
+      // Act 3: one specialty per layer, on the real anatomy
+      const callouts = desktop ? q('.d8h-callout') : q('.d8h-mcap');
+      const leaders = q('.leader');
+      const dots = q('.dot');
+      callouts.forEach((c, i) => {
+        const at = 2.2 + i * 1.1;
+        tl.to(dots[i], { scale: 1, duration: 0.25 }, at);
+        // Pulp: light flows from the chamber down each canal
+        if (i === 1) tl.to('.t-pulp-glow', { opacity: 1, scale: 1, duration: 0.5 }, at)
+                       .to('.t-canals path', { drawSVG: '100%', duration: 0.8, stagger: 0.08 }, at + 0.2);
+        if (desktop) {
+          tl.to(leaders[i], { drawSVG: '100%', duration: 0.5 }, at)
+            .fromTo(c, { autoAlpha: 0, x: c.classList.contains('is-left') ? 20 : -20 },
+                       { autoAlpha: 1, x: 0, duration: 0.5 }, at + 0.3);
+        } else {
+          tl.fromTo(c, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4 }, at);
+          // fully out before the next caption comes in (+1.1)
+          if (i < callouts.length - 1) tl.to(c, { autoAlpha: 0, y: -16, duration: 0.35 }, at + 0.65);
+        }
+      });
+
+      // Act 4: the tooth steps back and the Diente8 monogram closes in
+      const f = 2.2 + callouts.length * 1.1 + 0.4;
+      tl.to([...callouts, ...leaders, ...dots, '.t-pulp-glow', '.t-canals path'], { autoAlpha: 0, duration: 0.5 }, f)
+        .to('.d8h-tooth', { scale: 0.55, autoAlpha: 0, duration: 1, ease: 'power2.in' }, f + 0.4)
+        .to('.d8h-mono', { autoAlpha: 1, duration: 0.4 }, f + 1)
+        .to(['.mono-l', '.mono-r'], { xPercent: 0, duration: 1, ease: 'power3.out' }, f + 1)
+        .to('.d8h-word', { autoAlpha: 1, duration: 0.6 }, f + 1.6)
+        .fromTo('.d8h-line', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6 }, f + 1.9);
+      if (q('.d8h-stats').length) {
+        tl.fromTo('.d8h-stats', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6 }, f + 2.2)
+          .add(countUp(), f + 2.3);
       }
-      this.capRaf = requestAnimationFrame(grab);
-    };
-    this.capRaf = requestAnimationFrame(grab);
-  }
+      tl.to({}, { duration: 0.8 }); // brief hold before unpinning
+    });
 
-  // Reverse phase driven manually — negative playbackRate is unreliable across browsers.
-  reverse() {
-    const v = this.video;
-    if (!v) return;
-    const frames = this.frames || [];
-    const cv = this.canvas;
-    const restart = () => {
-      this.dir = 1;
-      if (cv) cv.style.opacity = '0';
-      try { v.currentTime = 0; } catch (e) {}
-      this.play();
-    };
-    if (frames.length < 4 || !cv) { restart(); return; }
-    this.dir = -1;
-    if (this.capRaf) cancelAnimationFrame(this.capRaf);
-    this.capturing = false;
-    const f0 = frames[0];
-    if (cv.width !== f0.width) { cv.width = f0.width; cv.height = f0.height; }
-    const cx = cv.getContext('2d');
-    cx.drawImage(frames[frames.length - 1], 0, 0);
-    cv.style.opacity = '1';
-    const start = performance.now();
-    const tick = () => {
-      if (this.dir !== -1) return;
-      const idx = frames.length - 1 - Math.floor((performance.now() - start) / 1000 * this.fps);
-      if (idx <= 0) { cx.drawImage(frames[0], 0, 0); restart(); return; }
-      cx.drawImage(frames[idx], 0, 0);
-      this.raf = requestAnimationFrame(tick);
-    };
-    this.raf = requestAnimationFrame(tick);
+    // Fonts and lazy images change heights below the hero; re-measure once everything is in
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
   }
 
   setupReveals() {
@@ -488,8 +709,10 @@ class Component extends DCLogic {
 
   renderVals() {
     return {
-      videoRef: this.videoRef,
-      canvasRef: this.canvasRef,
+      heroRef: this.heroRef,
+      toothRef: this.toothRef,
+      monoRef: this.monoRef,
+      wordRef: this.wordRef,
       showStats: this.props.showStats ?? true
     };
   }
