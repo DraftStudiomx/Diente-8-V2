@@ -137,6 +137,14 @@
   @media (prefers-reduced-motion: reduce) {
     .d8h-eyebrow, .d8h-title span, .d8h-sub, .d8h-ctas, .d8h-hint span { animation: none !important; }
   }
+  /* Home · team template: full width on desktop; on phones it scrolls sideways at a readable size */
+  .d8-team-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(22,35,42,0.08); background: #FFFFFF; }
+  .d8-team-scroll img { display: block; width: 100%; height: auto; }
+  .d8-team-hint { display: none; }
+  @media (max-width: 767px) {
+    .d8-team-scroll img { width: 860px; max-width: none; }
+    .d8-team-hint { display: block; margin-top: 10px; font-size: 12px; color: rgba(22,35,42,0.5); }
+  }
   /* Photo frames: older iOS Safari derives an aspect-ratio flex item's width from its height and
      overflows the card. Pin the frame to the card width and clip, so the ratio only drives height. */
   article > div[style*="aspect-ratio"], div[style*="aspect-ratio"]:has(> image-slot) { width: 100%; max-width: 100%; min-width: 0; min-height: 0; flex-shrink: 0; overflow: hidden; }
@@ -355,34 +363,14 @@
     <div style="max-width: 1240px; margin: 0 auto">
       <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: clamp(40px, 6vw, 56px); flex-wrap: wrap">
         <h2 data-reveal="wipe" style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.025em; color: #16232A">Equipo</h2>
-        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">14 especialistas</span>
+        <span style="font-size: 13px; color: rgba(22,35,42,0.5)">15 especialistas</span>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: clamp(20px, 2.2vw, 28px); margin-bottom: clamp(36px, 4vw, 48px)">
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">JM</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Odontología general</p>
+      <figure data-reveal="ink" class="d8-team" style="margin: 0 0 clamp(36px, 4vw, 48px)">
+        <div class="d8-team-scroll">
+          <img src="assets/equipo/plantilla-especialistas-diente8.webp" alt="Equipo de especialistas de Diente8: Dra. Carla León y Dra. Ana Guevara (odontología estética), Dr. Alejandro Ito (prótesis e implantología), Dra. Mireya Ruiz (periodoncia e implantología), Dra. Jocelyn Moreno (odontología general), Dra. Paola Campos (endodoncia), Dr. Fernando Tenorio (patología bucal), Dra. Liliana Salomé (prótesis maxilofacial), Dr. David Ortiz y Dra. Mariana Carrillo (ortodoncia), Dr. Francisco Palacios y Dra. Carolina Ramírez (odontopediatría), Dr. Alberto Flores Longoria y Dr. Edgar Zavala (cirugía maxilofacial) y Dr. Christián Sepúlveda (médico anestesiólogo)." width="1600" height="908" loading="lazy" decoding="async">
         </div>
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">MC</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Ortodoncia</p>
-        </div>
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">CR</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Odontopediatría</p>
-        </div>
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">AI</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Implantología</p>
-        </div>
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">EZ</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Cirugía maxilofacial</p>
-        </div>
-        <div data-reveal="ink" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #07215A; border: 1.5px solid #C9A24C; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 17px; color: #C9A24C">CS</div>
-          <p style="margin: 0; font-size: 13px; color: rgba(22,35,42,0.7)">Anestesiología</p>
-        </div>
-      </div>
+        <figcaption class="d8-team-hint" aria-hidden="true">Desliza para ver a todo el equipo →</figcaption>
+      </figure>
       <a href="equipo.html" style="display: inline-block; font-size: 15px; font-weight: 500; color: #07215A; border-bottom: 1.5px solid #C9A24C; padding-bottom: 3px" style-hover="color: #C9A24C">Conoce a todo el equipo →</a>
     </div>
   </section>
