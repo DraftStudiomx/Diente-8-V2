@@ -137,13 +137,17 @@
   @media (prefers-reduced-motion: reduce) {
     .d8h-eyebrow, .d8h-title span, .d8h-sub, .d8h-ctas, .d8h-hint span { animation: none !important; }
   }
-  /* Home · team template: full width on desktop; on phones it scrolls sideways at a readable size */
-  .d8-team-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(22,35,42,0.08); background: #FFFFFF; }
-  .d8-team-scroll img { display: block; width: 100%; height: auto; }
-  .d8-team-hint { display: none; }
+  /* Home · team: the official template on desktop/tablet; on phones (where it would be tiny) a swipeable row of portraits */
+  .d8-team-full { display: block; width: 100%; height: auto; border: 1px solid rgba(22,35,42,0.08); background: #FFFFFF; }
+  .d8-team-strip { display: none; }
   @media (max-width: 767px) {
-    .d8-team-scroll img { width: 860px; max-width: none; }
-    .d8-team-hint { display: block; margin-top: 10px; font-size: 12px; color: rgba(22,35,42,0.5); }
+    .d8-team-full { display: none; }
+    .d8-team-strip { display: flex; gap: 14px; margin: 0 -24px; padding: 4px 24px 12px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .d8-team-strip::-webkit-scrollbar { display: none; }
+    .d8-team-strip li { flex: 0 0 132px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+    .d8-team-strip img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; border: 1.5px solid #C9A24C; margin-bottom: 8px; background: #07215A; }
+    .d8-team-strip b { font-family: Fraunces, serif; font-weight: 400; font-size: 15px; line-height: 1.2; color: #07215A; }
+    .d8-team-strip span { font-size: 12px; line-height: 1.35; color: rgba(22,35,42,0.6); }
   }
   /* Photo frames: older iOS Safari derives an aspect-ratio flex item's width from its height and
      overflows the card. Pin the frame to the card width and clip, so the ratio only drives height. */
@@ -366,10 +370,24 @@
         <span style="font-size: 13px; color: rgba(22,35,42,0.5)">15 especialistas</span>
       </div>
       <figure data-reveal="ink" class="d8-team" style="margin: 0 0 clamp(36px, 4vw, 48px)">
-        <div class="d8-team-scroll">
-          <img src="assets/equipo/plantilla-especialistas-diente8.webp" alt="Equipo de especialistas de Diente8: Dra. Carla León y Dra. Ana Guevara (odontología estética), Dr. Alejandro Ito (prótesis e implantología), Dra. Mireya Ruiz (periodoncia e implantología), Dra. Jocelyn Moreno (odontología general), Dra. Paola Campos (endodoncia), Dr. Fernando Tenorio (patología bucal), Dra. Liliana Salomé (prótesis maxilofacial), Dr. David Ortiz y Dra. Mariana Carrillo (ortodoncia), Dr. Francisco Palacios y Dra. Carolina Ramírez (odontopediatría), Dr. Alberto Flores Longoria y Dr. Edgar Zavala (cirugía maxilofacial) y Dr. Christián Sepúlveda (médico anestesiólogo)." width="1600" height="908" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="d8-team-hint" aria-hidden="true">Desliza para ver a todo el equipo →</figcaption>
+        <img class="d8-team-full" src="assets/equipo/plantilla-especialistas-diente8.webp" alt="Equipo de especialistas de Diente8: Dra. Carla León y Dra. Ana Guevara (odontología estética), Dr. Alejandro Ito (prótesis e implantología), Dra. Mireya Ruiz (periodoncia e implantología), Dra. Jocelyn Moreno (odontología general), Dra. Paola Campos (endodoncia), Dr. Fernando Tenorio (patología bucal), Dra. Liliana Salomé (prótesis maxilofacial), Dr. David Ortiz y Dra. Mariana Carrillo (ortodoncia), Dr. Francisco Palacios y Dra. Carolina Ramírez (odontopediatría), Dr. Alberto Flores Longoria y Dr. Edgar Zavala (cirugía maxilofacial) y Dr. Christián Sepúlveda (médico anestesiólogo)." width="1600" height="908" loading="lazy" decoding="async">
+        <ul class="d8-team-strip" aria-label="Especialistas de Diente8">
+          <li><img src="assets/equipo/carla-leon.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Carla León</b><span>Odontología estética</span></li>
+          <li><img src="assets/equipo/ana-guevara.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Ana Guevara</b><span>Odontología estética</span></li>
+          <li><img src="assets/equipo/alejandro-ito.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Alejandro Ito</b><span>Prótesis e implantología</span></li>
+          <li><img src="assets/equipo/mireya-ruiz.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Mireya Ruiz</b><span>Periodoncia e implantología</span></li>
+          <li><img src="assets/equipo/jocelyn-moreno.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Jocelyn Moreno</b><span>Odontología general</span></li>
+          <li><img src="assets/equipo/paola-campos.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Paola Campos</b><span>Endodoncia</span></li>
+          <li><img src="assets/equipo/fernando-tenorio.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Fernando Tenorio</b><span>Patología bucal</span></li>
+          <li><img src="assets/equipo/liliana-salome.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Liliana Salomé</b><span>Prótesis maxilofacial</span></li>
+          <li><img src="assets/equipo/david-ortiz.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. David Ortiz</b><span>Ortodoncia</span></li>
+          <li><img src="assets/equipo/mariana-carrillo.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Mariana Carrillo</b><span>Ortodoncia</span></li>
+          <li><img src="assets/equipo/francisco-palacios.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Francisco Palacios</b><span>Odontopediatría</span></li>
+          <li><img src="assets/equipo/carolina-ramirez.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dra. Carolina Ramírez</b><span>Odontopediatría</span></li>
+          <li><img src="assets/equipo/alberto-flores.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Alberto Flores Longoria</b><span>Cirugía maxilofacial</span></li>
+          <li><img src="assets/equipo/edgar-zavala.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Edgar Zavala</b><span>Cirugía maxilofacial</span></li>
+          <li><img src="assets/equipo/christian-sepulveda.webp" alt="" width="320" height="320" loading="lazy" decoding="async"><b>Dr. Christián Sepúlveda</b><span>Médico anestesiólogo</span></li>
+        </ul>
       </figure>
       <a href="equipo.html" style="display: inline-block; font-size: 15px; font-weight: 500; color: #07215A; border-bottom: 1.5px solid #C9A24C; padding-bottom: 3px" style-hover="color: #C9A24C">Conoce a todo el equipo →</a>
     </div>
