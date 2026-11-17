@@ -6,7 +6,8 @@ const photo = (file: string, alt: string): ImageRef => ({ src: `/assets/content/
 
 export const settings: SiteSettings = {
   name: 'Diente8 Clínica Dental',
-  siteUrl: 'https://diente8-landing.vercel.app',
+  // Set NEXT_PUBLIC_SITE_URL in Vercel once the final domain is connected.
+  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://diente8-landing.vercel.app').replace(/\/$/, ''),
   description:
     'Diente8: clínica dental en León, Guanajuato con 11 especialidades bajo un mismo techo y 2 sucursales (Panorama y La Martinica). Odontología general, ortodoncia, implantología, endodoncia, odontopediatría y más.',
   whatsapp: null, // pending: confirm the clinic's WhatsApp number
