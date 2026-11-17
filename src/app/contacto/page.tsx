@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CtaBand, Footer } from '@/components/Footer';
 import { ClinicJsonLd } from '@/components/sections';
+import { fill, Rich } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 const description =
@@ -16,9 +17,10 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const content = await getContent();
-  const { settings, branches, insurers, specialties } = content;
+  const { settings, branches, insurers, specialties, doctors, copy } = content;
   const wa = whatsappHref(settings);
   const ext = wa.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+  const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
 
   return (
     <>
@@ -26,10 +28,12 @@ export default async function ContactPage() {
       <section className="contact">
         <div className="wrap">
           <p className="eyebrow" style={{ marginBottom: 16 }}>
-            Contáctanos
+            {copy.contactEyebrow}
           </p>
-          <h1>Hablemos de tu sonrisa.</h1>
-          <p className="contact-lead">Escríbenos, agenda tu valoración o consulta si tu seguro dental aplica en Diente8.</p>
+          <h1>
+            <Rich text={copy.contactTitle} vars={vars} />
+          </h1>
+          <p className="contact-lead">{fill(copy.contactLead, vars)}</p>
         </div>
 
         <div id="contacto" className="wrap contact-grid">
@@ -47,7 +51,7 @@ export default async function ContactPage() {
             </div>
           ))}
           <div>
-            <p className="eyebrow">Síguenos</p>
+            <p className="eyebrow">{copy.contactSocialLabel}</p>
             <div className="contact-social">
               <a href={settings.instagram} target="_blank" rel="noopener">
                 Instagram @diente8_
@@ -58,25 +62,24 @@ export default async function ContactPage() {
             </div>
           </div>
           <div>
-            <p className="eyebrow">Agenda</p>
-            <p className="contact-note">Escríbenos y te confirmamos horario el mismo día.</p>
+            <p className="eyebrow">{copy.contactAgendaLabel}</p>
+            <p className="contact-note">{fill(copy.contactAgendaText, vars)}</p>
             <a href={wa} className="btn btn-gold" {...ext}>
-              Agenda tu cita
+              {copy.contactAgendaButton}
             </a>
           </div>
         </div>
 
         <div id="empresas" className="wrap companies">
           <div>
-            <p className="eyebrow">Empresas y seguros dentales</p>
-            <h2>Una molestia dental también le cuesta tiempo a tu empresa.</h2>
-            <p className="companies-lead">
-              Trabajamos con seguros dentales que facilitan la atención de tus colaboradores — acceso directo a las {specialties.length}{' '}
-              especialidades, diagnósticos oportunos y menos ausentismo por citas dispersas entre clínicas.
-            </p>
+            <p className="eyebrow">{copy.companiesEyebrow}</p>
+            <h2>
+              <Rich text={copy.companiesTitle} vars={vars} />
+            </h2>
+            <p className="companies-lead">{fill(copy.companiesText, vars)}</p>
           </div>
           <div data-reveal="ink">
-            <p className="ins-label">Aseguradoras con las que trabajamos</p>
+            <p className="ins-label">{copy.insurersLabel}</p>
             <div className="ins-grid">
               {insurers.map((i) => (
                 <div key={i.name} className="ins">
@@ -85,13 +88,13 @@ export default async function ContactPage() {
               ))}
             </div>
             <a href={wa} className="btn btn-gold" {...ext}>
-              ¿Tu aseguradora aplica? Pregúntanos
+              {copy.insurersButton}
             </a>
           </div>
         </div>
       </section>
-      <CtaBand whatsapp={wa} />
-      <Footer whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer whatsapp={wa} copy={copy} />
     </>
   );
 }

@@ -75,4 +75,82 @@ export type SiteContent = {
   insurers: Insurer[];
   faqs: Faq[];
   homeSpecialties: string[]; // slugs previewed on the home page, in order
+  copy: SiteCopy;
+};
+
+// Editable site copy ("Textos del sitio"). `*text*` renders as gold italic; {especialidades}, {especialistas}
+// and {años} are replaced with live numbers.
+export type ToothLayer = { layer: string; name: string; description: string; short: string; specialty: string };
+export type TitledText = { title: string; text: string };
+
+export type SiteCopy = {
+  navCta: string;
+  ctaTitle: string;
+  ctaText: string;
+  ctaButton: string;
+  footerTitle: string;
+  footerButton: string;
+
+  heroEyebrow: string;
+  heroTitle1: string;
+  heroTitle2: string;
+  heroText: string;
+  heroCtaPrimary: string;
+  heroCtaSecondary: string;
+  toothLayers: ToothLayer[];
+  finaleLine: string;
+  statYearsLabel: string;
+  statSpecialtiesLabel: string;
+  painText: string;
+  pillars: string[];
+  homeSpecialtiesTitle: string;
+  homeSpecialtiesMeta: string;
+  homeSpecialtiesLink: string;
+  homeBranchesTitle: string;
+  homeBranchesMeta: string;
+  homeBranchesLink: string;
+  homeTeamTitle: string;
+  homeTeamMeta: string;
+  homeTeamLink: string;
+  aboutTitle: string;
+  aboutItems: TitledText[];
+  faqTitle: string;
+  videoLabel: string;
+
+  specialtiesTitle: string;
+  specialtiesMeta: string;
+  cardMore: string;
+  spCtaPrimary: string;
+  spTeamButtonOne: string;
+  spTeamButtonMany: string;
+  spWhenTitle: string;
+  spTreatTitle: string;
+  spWhereOne: string;
+  spWhereAll: string;
+  spTeamTitleOne: string;
+  spTeamTitleMany: string;
+  spFeaturedLabel: string;
+  spMoreTitle: string;
+  spMoreMeta: string;
+
+  branchesTitle: string;
+  branchesMeta: string;
+  branchesMapLink: string;
+
+  teamTitle: string;
+  teamMeta: string;
+  teamIntro: string;
+
+  contactEyebrow: string;
+  contactTitle: string;
+  contactLead: string;
+  contactSocialLabel: string;
+  contactAgendaLabel: string;
+  contactAgendaText: string;
+  contactAgendaButton: string;
+  companiesEyebrow: string;
+  companiesTitle: string;
+  companiesText: string;
+  insurersLabel: string;
+  insurersButton: string;
 };

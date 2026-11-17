@@ -1,6 +1,7 @@
 // One-time import of the site's current content (src/content/local.ts) into Sanity, images included.
 // Run: npm run sanity:seed   (needs SANITY_API_WRITE_TOKEN in .env.local)
-// Safe to re-run: documents use fixed IDs and are replaced, images are deduplicated by Sanity.
+// Safe to re-run: documents use fixed IDs and are only created if missing, so edits made in the Studio are never
+// overwritten. Images are deduplicated by Sanity.
 import { createClient, type SanityClient } from '@sanity/client';
 import { createReadStream } from 'node:fs';
 import { basename, join } from 'node:path';
@@ -45,7 +46,7 @@ async function main() {
 
   console.log('Specialties');
   for (const s of specialties) {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: specialtyId(s.slug),
       _type: 'specialty',
       name: s.name,
@@ -65,7 +66,7 @@ async function main() {
 
   console.log('Branches');
   for (const [i, b] of branches.entries()) {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: branchId(b.slug),
       _type: 'branch',
       name: b.name,
@@ -83,7 +84,7 @@ async function main() {
 
   console.log('Doctors');
   for (const [i, d] of doctors.entries()) {
-    tx.createOrReplace({
+    tx.createIfNotExists({
       _id: `doctor-${d.slug}`,
       _type: 'doctor',
       title: d.title,
@@ -103,14 +104,14 @@ async function main() {
 
   console.log('Insurers');
   for (const [i, ins] of insurers.entries()) {
-    tx.createOrReplace({ _id: `insurer-${i + 1}`, _type: 'insurer', name: ins.name, logo: await image(ins.logo), order: i + 1 });
+    tx.createIfNotExists({ _id: `insurer-${i + 1}`, _type: 'insurer', name: ins.name, logo: await image(ins.logo), order: i + 1 });
   }
 
   for (const [i, f] of faqs.entries()) {
-    tx.createOrReplace({ _id: `faq-${i + 1}`, _type: 'faq', question: f.question, answer: f.answer, order: i + 1 });
+    tx.createIfNotExists({ _id: `faq-${i + 1}`, _type: 'faq', question: f.question, answer: f.answer, order: i + 1 });
   }
 
-  tx.createOrReplace({
+  tx.createIfNotExists({
     _id: 'siteSettings',
     _type: 'siteSettings',
     name: settings.name,
@@ -127,9 +128,19 @@ async function main() {
     homeSpecialties: homeSpecialties.map((s) => ref(specialtyId(s), s)),
   });
 
+  const { copy } = localContent;
+  tx.createIfNotExists({
+    _id: 'siteCopy',
+    _type: 'siteCopy',
+    ...Object.fromEntries(Object.entries(copy).filter(([, v]) => typeof v === 'string')),
+    pillars: copy.pillars,
+    aboutItems: copy.aboutItems.map((a, i) => ({ _key: `about-${i}`, _type: 'aboutItem', ...a })),
+    toothLayers: copy.toothLayers.map(({ specialty: s, ...l }, i) => ({ _key: `layer-${i}`, _type: 'toothLayer', ...l, specialty: ref(specialtyId(s)) })),
+  });
+
   console.log('Writing documents…');
   const res = await tx.commit();
-  console.log(`Done: ${res.results.length} documents, ${uploaded.size} images.`);
+  console.log(`Done: ${res.results.length} documents checked (existing ones left untouched), ${uploaded.size} images.`);
 }
 
 main().catch((err) => {

@@ -1,4 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { localCopy } from '../content/copy';
+import type { SiteCopy } from '../content/types';
 
 // Content model for the clinic's editors. Labels are in Spanish; field names match src/content/types.ts.
 
@@ -170,4 +172,169 @@ export const faq = defineType({
   preview: { select: { title: 'question' } },
 });
 
-export const schemaTypes = [siteSettings, specialty, branch, doctor, insurer, faq];
+// ---------- "Textos del sitio": every piece of copy that isn't a specialty, doctor, branch or FAQ ----------
+
+const HINT_ACCENT = 'Lo que pongas entre *asteriscos* se ve en cursiva dorada.';
+const HINT_VARS = 'Escribe {especialidades}, {especialistas} o {años} para mostrar el número actualizado automáticamente.';
+
+type CopyField = [name: keyof SiteCopy, title: string, group: string, opts?: { long?: boolean; hint?: string }];
+
+const COPY_FIELDS: CopyField[] = [
+  ['navCta', 'Botón del menú', 'generales'],
+  ['ctaTitle', 'Franja dorada · título', 'generales'],
+  ['ctaText', 'Franja dorada · texto', 'generales', { long: true }],
+  ['ctaButton', 'Franja dorada · botón', 'generales'],
+  ['footerTitle', 'Cierre del Inicio · frase', 'generales'],
+  ['footerButton', 'Cierre del Inicio · botón', 'generales'],
+
+  ['heroEyebrow', 'Portada · texto superior', 'inicio'],
+  ['heroTitle1', 'Portada · título, línea 1', 'inicio', { hint: HINT_VARS }],
+  ['heroTitle2', 'Portada · título, línea 2', 'inicio', { hint: HINT_ACCENT }],
+  ['heroText', 'Portada · texto', 'inicio', { long: true, hint: HINT_VARS }],
+  ['heroCtaPrimary', 'Portada · botón principal', 'inicio'],
+  ['heroCtaSecondary', 'Portada · botón secundario', 'inicio'],
+  ['finaleLine', 'Cierre de la animación · frase', 'inicio', { hint: HINT_ACCENT }],
+  ['statYearsLabel', 'Cifra de años · texto', 'inicio'],
+  ['statSpecialtiesLabel', 'Cifra de especialidades · texto', 'inicio'],
+  ['painText', 'Frase grande bajo la portada', 'inicio', { long: true, hint: HINT_ACCENT }],
+  ['homeSpecialtiesTitle', 'Especialidades · título', 'inicio'],
+  ['homeSpecialtiesMeta', 'Especialidades · subtítulo', 'inicio', { hint: HINT_VARS }],
+  ['homeSpecialtiesLink', 'Especialidades · enlace', 'inicio', { hint: HINT_VARS }],
+  ['homeBranchesTitle', 'Sucursales · título', 'inicio'],
+  ['homeBranchesMeta', 'Sucursales · subtítulo', 'inicio'],
+  ['homeBranchesLink', 'Sucursales · enlace', 'inicio'],
+  ['homeTeamTitle', 'Equipo · título', 'inicio'],
+  ['homeTeamMeta', 'Equipo · subtítulo', 'inicio', { hint: HINT_VARS }],
+  ['homeTeamLink', 'Equipo · enlace', 'inicio'],
+  ['aboutTitle', 'Nosotros · título', 'inicio', { hint: HINT_ACCENT }],
+  ['faqTitle', 'Preguntas frecuentes · título', 'inicio'],
+  ['videoLabel', 'Video · texto superior', 'inicio'],
+
+  ['specialtiesTitle', 'Página Especialidades · título', 'especialidades'],
+  ['specialtiesMeta', 'Página Especialidades · subtítulo', 'especialidades', { hint: HINT_VARS }],
+  ['cardMore', 'Tarjetas · enlace "ver más"', 'especialidades'],
+  ['spCtaPrimary', 'Página de especialidad · botón principal', 'especialidades'],
+  ['spTeamButtonOne', 'Botón a especialistas (si es uno)', 'especialidades'],
+  ['spTeamButtonMany', 'Botón a especialistas (si son varios)', 'especialidades'],
+  ['spWhenTitle', 'Título "¿Cuándo acudir?"', 'especialidades'],
+  ['spTreatTitle', 'Título "Qué tratamos"', 'especialidades'],
+  ['spWhereOne', 'Disponibilidad (una sucursal)', 'especialidades', { hint: 'Usa {sucursal} para el nombre de la sucursal.' }],
+  ['spWhereAll', 'Disponibilidad (ambas sucursales)', 'especialidades', { long: true }],
+  ['spTeamTitleOne', 'Título de especialistas (si es uno)', 'especialidades'],
+  ['spTeamTitleMany', 'Título de especialistas (si son varios)', 'especialidades'],
+  ['spFeaturedLabel', 'Etiqueta de especialista destacado', 'especialidades'],
+  ['spMoreTitle', 'Otras especialidades · título', 'especialidades'],
+  ['spMoreMeta', 'Otras especialidades · subtítulo', 'especialidades'],
+
+  ['branchesTitle', 'Título', 'sucursales'],
+  ['branchesMeta', 'Subtítulo', 'sucursales'],
+  ['branchesMapLink', 'Enlace a Google Maps', 'sucursales'],
+
+  ['teamTitle', 'Título', 'equipo'],
+  ['teamMeta', 'Subtítulo', 'equipo', { hint: HINT_VARS }],
+  ['teamIntro', 'Introducción', 'equipo', { long: true }],
+
+  ['contactEyebrow', 'Texto superior', 'contacto'],
+  ['contactTitle', 'Título', 'contacto'],
+  ['contactLead', 'Texto', 'contacto', { long: true }],
+  ['contactSocialLabel', 'Redes · etiqueta', 'contacto'],
+  ['contactAgendaLabel', 'Agenda · etiqueta', 'contacto'],
+  ['contactAgendaText', 'Agenda · texto', 'contacto'],
+  ['contactAgendaButton', 'Agenda · botón', 'contacto'],
+  ['companiesEyebrow', 'Empresas · texto superior', 'contacto'],
+  ['companiesTitle', 'Empresas · título', 'contacto'],
+  ['companiesText', 'Empresas · texto', 'contacto', { long: true, hint: HINT_VARS }],
+  ['insurersLabel', 'Aseguradoras · etiqueta', 'contacto'],
+  ['insurersButton', 'Aseguradoras · botón', 'contacto'],
+];
+
+// Pre-fill the document with the current site copy the first time it is opened in the Studio.
+const copyInitialValue = () => ({
+  ...Object.fromEntries(COPY_FIELDS.map(([name]) => [name, localCopy[name]])),
+  pillars: localCopy.pillars,
+  aboutItems: localCopy.aboutItems.map((a, i) => ({ _key: `about-${i}`, _type: 'aboutItem', ...a })),
+  toothLayers: localCopy.toothLayers.map(({ specialty: slug, ...l }, i) => ({
+    _key: `layer-${i}`,
+    _type: 'toothLayer',
+    ...l,
+    specialty: { _type: 'reference', _ref: `specialty-${slug}` },
+  })),
+});
+
+export const siteCopy = defineType({
+  name: 'siteCopy',
+  title: 'Textos del sitio',
+  type: 'document',
+  groups: [
+    { name: 'inicio', title: 'Inicio', default: true },
+    { name: 'especialidades', title: 'Especialidades' },
+    { name: 'sucursales', title: 'Sucursales' },
+    { name: 'equipo', title: 'Equipo' },
+    { name: 'contacto', title: 'Contacto' },
+    { name: 'generales', title: 'Generales' },
+  ],
+  initialValue: copyInitialValue,
+  fields: [
+    ...COPY_FIELDS.map(([name, title, group, opts]) =>
+      defineField({
+        name,
+        title,
+        group,
+        type: opts?.long ? 'text' : 'string',
+        ...(opts?.long ? { rows: 3 } : {}),
+        description: opts?.hint,
+        validation: (r) => r.required(),
+      }),
+    ),
+    defineField({
+      name: 'toothLayers',
+      title: 'Animación del diente · capas',
+      description: 'Las 4 capas del diente, de arriba hacia abajo. Cada una enlaza a su especialidad.',
+      group: 'inicio',
+      type: 'array',
+      validation: (r) => r.length(4),
+      of: [
+        defineArrayMember({
+          name: 'toothLayer',
+          type: 'object',
+          fields: [
+            defineField({ name: 'layer', title: 'Capa', type: 'string', description: 'Ej. "01 · Esmalte".', validation: (r) => r.required() }),
+            defineField({ name: 'name', title: 'Nombre', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'description', title: 'Descripción (computadora)', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'short', title: 'Descripción corta (celular)', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'specialty', title: 'Enlaza a', type: 'reference', to: [{ type: 'specialty' }], validation: (r) => r.required() }),
+          ],
+          preview: { select: { title: 'name', subtitle: 'layer' } },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'pillars',
+      title: 'Tres frases bajo la portada',
+      group: 'inicio',
+      type: 'array',
+      of: [defineArrayMember({ type: 'string' })],
+      validation: (r) => r.length(3),
+    }),
+    defineField({
+      name: 'aboutItems',
+      title: 'Nosotros · tres columnas',
+      group: 'inicio',
+      type: 'array',
+      validation: (r) => r.length(3),
+      of: [
+        defineArrayMember({
+          name: 'aboutItem',
+          type: 'object',
+          fields: [
+            defineField({ name: 'title', title: 'Título', type: 'string', validation: (r) => r.required() }),
+            defineField({ name: 'text', title: 'Texto', type: 'text', rows: 3, validation: (r) => r.required() }),
+          ],
+        }),
+      ],
+    }),
+  ],
+  preview: { prepare: () => ({ title: 'Textos del sitio' }) },
+});
+
+export const schemaTypes = [siteSettings, siteCopy, specialty, branch, doctor, insurer, faq];

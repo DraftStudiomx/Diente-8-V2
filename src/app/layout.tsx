@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import { VisualEditing } from 'next-sanity/visual-editing';
 import { Fraunces, Inter } from 'next/font/google';
+import { draftMode } from 'next/headers';
+import { DraftModeBar } from '@/components/DraftModeBar';
 import { Nav } from '@/components/Nav';
 import { Reveal } from '@/components/Reveal';
 import { getContent, whatsappHref } from '@/lib/content';
@@ -38,16 +41,23 @@ export const viewport: Viewport = { themeColor: '#07215A', width: 'device-width'
 const revealBoot = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('d8-reveal')}catch(e){}`;
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { settings } = await getContent();
+  const { settings, copy } = await getContent();
+  const { isEnabled: isDraft } = await draftMode();
   return (
     <html lang="es" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealBoot }} />
       </head>
       <body>
-        <Nav ctaHref={whatsappHref(settings)} />
+        <Nav ctaHref={whatsappHref(settings)} ctaLabel={copy.navCta} />
         <main>{children}</main>
         <Reveal />
+        {isDraft && (
+          <>
+            <VisualEditing />
+            <DraftModeBar />
+          </>
+        )}
       </body>
     </html>
   );

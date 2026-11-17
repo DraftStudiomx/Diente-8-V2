@@ -1,5 +1,6 @@
 // Local copy of all site content, ported from the static HTML site.
 // Used until Sanity is connected, and as a fallback if Sanity is unreachable.
+import { localCopy } from './copy';
 import type { Branch, Doctor, Faq, ImageRef, Insurer, SiteContent, SiteSettings, Specialty } from './types';
 
 const photo = (file: string, alt: string): ImageRef => ({ src: `/assets/content/${file}`, alt, width: 1600, height: 1200 });
@@ -317,4 +318,4 @@ export const faqs: Faq[] = [
   },
 ];
 
-export const localContent: SiteContent = { settings, specialties, doctors, branches, insurers, faqs, homeSpecialties: homeSpecialtySlugs };
+export const localContent: SiteContent = { settings, specialties, doctors, branches, insurers, faqs, homeSpecialties: homeSpecialtySlugs, copy: localCopy };

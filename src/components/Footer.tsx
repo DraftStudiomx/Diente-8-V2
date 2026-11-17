@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import type { SiteCopy } from '@/content/types';
 import { NAV_LINKS } from '@/lib/links';
+import { Rich } from './text';
 
 function ExtLink({ href, className, children }: { href: string; className: string; children: React.ReactNode }) {
   const external = href.startsWith('http');
@@ -10,15 +12,17 @@ function ExtLink({ href, className, children }: { href: string; className: strin
   );
 }
 
-export function CtaBand({ whatsapp }: { whatsapp: string }) {
+export function CtaBand({ whatsapp, copy }: { whatsapp: string; copy: SiteCopy }) {
   return (
     <section id="valoracion" className="cta-band">
       <div className="wrap">
-        <h2>¿Primera vez en Diente 8?</h2>
+        <h2>
+          <Rich text={copy.ctaTitle} />
+        </h2>
         <div>
-          <p>Cuéntanos qué necesitas y te ayudamos a encontrar la especialidad correcta antes de tu primera visita — sin compromiso.</p>
+          <p>{copy.ctaText}</p>
           <ExtLink href={whatsapp} className="btn btn-navy">
-            Escríbenos por WhatsApp
+            {copy.ctaButton}
           </ExtLink>
         </div>
       </div>
@@ -26,14 +30,16 @@ export function CtaBand({ whatsapp }: { whatsapp: string }) {
   );
 }
 
-export function Footer({ big = false, whatsapp }: { big?: boolean; whatsapp: string }) {
+export function Footer({ big = false, whatsapp, copy }: { big?: boolean; whatsapp: string; copy: SiteCopy }) {
   return (
     <footer className="footer">
       {big && (
         <div className="footer-big">
-          <h2 data-reveal="wipe">Tu sonrisa no debería esperar otro año.</h2>
+          <h2 data-reveal="wipe">
+            <Rich text={copy.footerTitle} />
+          </h2>
           <ExtLink href={whatsapp} className="btn btn-gold">
-            Agenda tu cita
+            {copy.footerButton}
           </ExtLink>
         </div>
       )}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { CtaBand, Footer } from '@/components/Footer';
 import { Hero } from '@/components/hero/Hero';
 import { BranchCards, ClinicJsonLd, FaqList, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
+import { fill, Rich } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -15,31 +16,11 @@ export const metadata: Metadata = {
   },
 };
 
-const PILLARS = [
-  'Un equipo, un historial — no repites tu caso en cada consultorio',
-  'Técnica moderna, mínimamente invasiva',
-  'Trato pensado para toda la familia, de niños a adultos mayores',
-];
-
-const ABOUT = [
-  {
-    title: 'Todas las especialidades, un equipo',
-    text: 'No coordinas entre distintas clínicas: tu historial y tu tratamiento viajan contigo dentro de Diente8.',
-  },
-  {
-    title: 'Técnica moderna, trato humano',
-    text: 'Usamos procedimientos mínimamente invasivos, pero la conversación antes de cada tratamiento sigue siendo con una persona, no un formulario.',
-  },
-  {
-    title: 'Pensado para toda la familia',
-    text: 'Desde el primer diente de leche hasta la rehabilitación de un adulto mayor, en Panorama y La Martinica, León.',
-  },
-];
-
 export default async function HomePage() {
   const content = await getContent();
-  const { settings, specialties, branches, doctors, faqs, homeSpecialties } = content;
+  const { settings, specialties, branches, doctors, faqs, homeSpecialties, copy } = content;
   const wa = whatsappHref(settings);
+  const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
   const preview = homeSpecialties.map((slug) => specialties.find((s) => s.slug === slug)).filter((s) => s !== undefined);
 
   return (
@@ -48,28 +29,29 @@ export default async function HomePage() {
       <Hero
         years={settings.years}
         specialtyCount={specialties.length}
-        branchNames={branches.map((b) => b.name)}
         patients={settings.patients}
         patientsLabel={settings.patientsLabel}
         ctaHref={wa}
+        copy={copy}
       />
 
       <section id="pacientes" className="sec sec-cream" style={{ paddingBlock: 'clamp(80px, 11vw, 150px)' }}>
         <div className="pain">
           <div data-reveal="rule" className="pain-rule" />
           <p data-reveal="ink">
-            Cambiar de dentista según el problema <em>—uno para los niños, otro para las encías, otro para las prótesis—</em> hace que la
-            mayoría termine posponiendo el tratamiento completo. Y lo que se pospone, se complica.
+            <Rich text={copy.painText} vars={vars} />
           </p>
         </div>
       </section>
 
       <section className="pillars">
         <div className="wrap">
-          {PILLARS.map((p, i) => (
-            <div key={p} data-reveal="ink" className="pillar">
+          {copy.pillars.map((p, i) => (
+            <div key={i} data-reveal="ink" className="pillar">
               <div className="pillar-num">{String(i + 1).padStart(2, '0')}</div>
-              <h3>{p}</h3>
+              <h3>
+                <Rich text={p} vars={vars} />
+              </h3>
             </div>
           ))}
         </div>
@@ -77,34 +59,34 @@ export default async function HomePage() {
 
       <section id="especialidades" className="sec sec-cream">
         <div className="wrap">
-          <SectionHead title="Especialidades" meta={`${specialties.length} áreas, un mismo expediente`} />
+          <SectionHead title={fill(copy.homeSpecialtiesTitle, vars)} meta={fill(copy.homeSpecialtiesMeta, vars)} />
           <div className="grid-cards" style={{ marginBottom: 'clamp(36px, 4vw, 48px)' }}>
             {preview.map((s) => (
-              <SpecialtyCard key={s.slug} s={s} short />
+              <SpecialtyCard key={s.slug} s={s} more={copy.cardMore} short />
             ))}
           </div>
           <Link href="/especialidades" className="link-arrow">
-            Ver las {specialties.length} especialidades →
+            {fill(copy.homeSpecialtiesLink, vars)}
           </Link>
         </div>
       </section>
 
       <section id="sucursales" className="sec sec-white">
         <div className="wrap">
-          <SectionHead title="Sucursales" meta="Dos ubicaciones en León" />
-          <BranchCards branches={branches} />
+          <SectionHead title={fill(copy.homeBranchesTitle, vars)} meta={fill(copy.homeBranchesMeta, vars)} />
+          <BranchCards branches={branches} mapLabel={copy.branchesMapLink} />
           <Link href="/sucursales" className="link-arrow" style={{ marginTop: 'clamp(28px, 3vw, 40px)' }}>
-            Ver ambas sucursales →
+            {fill(copy.homeBranchesLink, vars)}
           </Link>
         </div>
       </section>
 
       <section id="equipo" className="sec sec-cream">
         <div className="wrap">
-          <SectionHead title="Equipo" meta={`${doctors.length} especialistas`} />
+          <SectionHead title={fill(copy.homeTeamTitle, vars)} meta={fill(copy.homeTeamMeta, vars)} />
           <TeamFigure doctors={doctors} />
           <Link href="/equipo" className="link-arrow">
-            Conoce a todo el equipo →
+            {fill(copy.homeTeamLink, vars)}
           </Link>
         </div>
       </section>
@@ -112,13 +94,13 @@ export default async function HomePage() {
       <section id="nosotros" className="sec sec-navy about">
         <div className="wrap">
           <h2 data-reveal="wipe">
-            Casi dos décadas construyendo <em>confianza</em>, no solo tratando dientes.
+            <Rich text={copy.aboutTitle} vars={vars} />
           </h2>
           <div className="about-grid">
-            {ABOUT.map((a) => (
-              <div key={a.title} data-reveal="ink">
+            {copy.aboutItems.map((a, i) => (
+              <div key={i} data-reveal="ink">
                 <h3>{a.title}</h3>
-                <p>{a.text}</p>
+                <p>{fill(a.text, vars)}</p>
               </div>
             ))}
           </div>
@@ -127,7 +109,7 @@ export default async function HomePage() {
 
       <section id="faq" className="sec sec-cream" style={{ borderTop: '1px solid var(--line)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
-          <SectionHead title="Preguntas frecuentes" />
+          <SectionHead title={fill(copy.faqTitle, vars)} />
           <FaqList faqs={faqs} />
         </div>
       </section>
@@ -135,7 +117,7 @@ export default async function HomePage() {
       <section className="sec sec-white">
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <p className="eyebrow" style={{ marginBottom: 'clamp(36px, 5vw, 60px)' }}>
-            Lo que dicen nuestros pacientes
+            {copy.videoLabel}
           </p>
           <div className="video-frame">
             <video controls preload="metadata" playsInline poster="/assets/content/martinica-consultorio.jpg">
@@ -145,8 +127,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <CtaBand whatsapp={wa} />
-      <Footer big whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer big whatsapp={wa} copy={copy} />
     </>
   );
 }

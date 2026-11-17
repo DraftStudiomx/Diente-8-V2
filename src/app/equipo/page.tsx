@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CtaBand, Footer } from '@/components/Footer';
 import { SectionHead } from '@/components/sections';
+import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 const description =
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default async function TeamPage() {
-  const { settings, doctors, branches } = await getContent();
+  const { settings, doctors, branches, specialties, copy } = await getContent();
+  const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
   const wa = whatsappHref(settings);
   const branchName = (slug: string | null) => branches.find((b) => b.slug === slug)?.name;
 
@@ -23,10 +25,9 @@ export default async function TeamPage() {
     <>
       <section id="equipo" className="sec sec-cream">
         <div className="wrap">
-          <SectionHead as="h1" tight title="Equipo" meta={`${doctors.length} especialistas`} />
+          <SectionHead as="h1" tight title={fill(copy.teamTitle, vars)} meta={fill(copy.teamMeta, vars)} />
           <p style={{ margin: '0 0 clamp(48px, 6vw, 72px)', maxWidth: 620, fontSize: 15, lineHeight: 1.6, color: 'rgba(22,35,42,0.6)', fontWeight: 300 }}>
-            Panorama y La Martinica en dos de las especialidades comparten equipo — el resto de los especialistas rota entre sucursales según
-            agenda.
+            {fill(copy.teamIntro, vars)}
           </p>
           <div className="grid-docs">
             {doctors.map((d) => (
@@ -44,8 +45,8 @@ export default async function TeamPage() {
           </div>
         </div>
       </section>
-      <CtaBand whatsapp={wa} />
-      <Footer whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer whatsapp={wa} copy={copy} />
     </>
   );
 }

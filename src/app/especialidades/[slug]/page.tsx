@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { stegaClean } from 'next-sanity';
 import { notFound } from 'next/navigation';
 import { CtaBand, Footer } from '@/components/Footer';
 import { SpecialtyCard } from '@/components/sections';
+import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 import { specialtyHref } from '@/lib/links';
 import './specialty.css';
@@ -33,9 +35,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function SpecialtyPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const { settings, specialties, doctors, branches } = await getContent();
+  const { settings, specialties, doctors, branches, copy } = await getContent();
   const s = specialties.find((x) => x.slug === slug);
   if (!s) notFound();
+  const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
 
   const wa = whatsappHref(settings);
   const ext = wa.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
@@ -46,12 +49,13 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
   const teamBranches = [...new Set(team.map((d) => d.branch))];
   const where =
     teamBranches.length === 1 && teamBranches[0]
-      ? `Disponible en Diente8 ${branchName(teamBranches[0])}.`
-      : 'Disponible en Panorama y La Martinica, según la agenda de cada especialista.';
-  const related = specialties.filter((x) => x.category === s.category && x.slug !== s.slug);
-  const more = related.length >= 2 ? related.slice(0, 3) : [...related, ...specialties.filter((x) => x.category !== s.category)].slice(0, 3);
+      ? fill(copy.spWhereOne, { ...vars, sucursal: branchName(teamBranches[0]) ?? '' })
+      : fill(copy.spWhereAll, vars);
+  const category = stegaClean(s.category);
+  const related = specialties.filter((x) => stegaClean(x.category) === category && x.slug !== s.slug);
+  const more = related.length >= 2 ? related.slice(0, 3) : [...related, ...specialties.filter((x) => stegaClean(x.category) !== category)].slice(0, 3);
 
-  const jsonLd = {
+  const jsonLd = stegaClean({
     '@context': 'https://schema.org',
     '@graph': [
       {
@@ -72,7 +76,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
         ],
       },
     ],
-  };
+  });
 
   return (
     <>
@@ -93,11 +97,11 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
             <p className="sp-lead">{s.summary}</p>
             <div className="sp-ctas">
               <a href={wa} className="btn btn-gold" {...ext}>
-                Agenda tu valoración
+                {copy.spCtaPrimary}
               </a>
               {team.length > 0 && (
                 <a href="#especialistas" className="sp-ghost">
-                  Conoce a {team.length === 1 ? 'tu especialista' : 'los especialistas'}
+                  {team.length === 1 ? copy.spTeamButtonOne : copy.spTeamButtonMany}
                 </a>
               )}
             </div>
@@ -111,7 +115,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
       <section className="sec sec-cream">
         <div className="wrap sp-cols">
           <div data-reveal="ink">
-            <h2 className="sp-h2">¿Cuándo acudir?</h2>
+            <h2 className="sp-h2">{copy.spWhenTitle}</h2>
             <ul className="sp-list">
               {s.whenToVisit.map((w) => (
                 <li key={w}>{w}</li>
@@ -119,7 +123,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
             </ul>
           </div>
           <div data-reveal="ink">
-            <h2 className="sp-h2">Qué tratamos</h2>
+            <h2 className="sp-h2">{copy.spTreatTitle}</h2>
             <ul className="sp-list sp-list-tags">
               {s.treatments.map((t) => (
                 <li key={t}>{t}</li>
@@ -135,7 +139,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
           <div className="wrap">
             <div className="sec-head">
               <h2 data-reveal="wipe" className="sec-title">
-                {team.length === 1 ? 'Tu especialista' : 'Especialistas'}
+                {team.length === 1 ? copy.spTeamTitleOne : copy.spTeamTitleMany}
               </h2>
               <span className="sec-meta">{s.name}</span>
             </div>
@@ -143,7 +147,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
               <div data-reveal="ink" className="sp-featured">
                 <Image src={featured.photo.src} alt={featured.photo.alt} width={168} height={168} />
                 <div>
-                  <p className="eyebrow">Especialista destacado</p>
+                  <p className="eyebrow">{copy.spFeaturedLabel}</p>
                   <h3>
                     {featured.title} {featured.name}
                   </h3>
@@ -175,23 +179,23 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
         <div className="wrap">
           <div className="sec-head">
             <h2 data-reveal="wipe" className="sec-title">
-              Otras especialidades
+              {fill(copy.spMoreTitle, vars)}
             </h2>
-            <span className="sec-meta">Un mismo expediente para todas</span>
+            <span className="sec-meta">{fill(copy.spMoreMeta, vars)}</span>
           </div>
           <div className="grid-cards" style={{ marginBottom: 'clamp(36px, 4vw, 48px)' }}>
             {more.map((x) => (
-              <SpecialtyCard key={x.slug} s={x} short />
+              <SpecialtyCard key={x.slug} s={x} more={copy.cardMore} short />
             ))}
           </div>
           <Link href="/especialidades" className="link-arrow">
-            Ver las {specialties.length} especialidades →
+            {fill(copy.homeSpecialtiesLink, vars)}
           </Link>
         </div>
       </section>
 
-      <CtaBand whatsapp={wa} />
-      <Footer whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer whatsapp={wa} copy={copy} />
     </>
   );
 }

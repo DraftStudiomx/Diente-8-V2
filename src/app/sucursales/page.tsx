@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { CtaBand, Footer } from '@/components/Footer';
 import { BranchCards, ClinicJsonLd, SectionHead } from '@/components/sections';
+import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 const description =
@@ -15,18 +16,19 @@ export const metadata: Metadata = {
 
 export default async function BranchesPage() {
   const content = await getContent();
+  const { copy } = content;
   const wa = whatsappHref(content.settings);
   return (
     <>
       <ClinicJsonLd content={content} />
       <section id="sucursales" className="sec sec-white" style={{ borderTop: 0 }}>
         <div className="wrap">
-          <SectionHead as="h1" title="Sucursales" meta="Dos ubicaciones en León" />
-          <BranchCards branches={content.branches} />
+          <SectionHead as="h1" title={fill(copy.branchesTitle)} meta={fill(copy.branchesMeta)} />
+          <BranchCards branches={content.branches} mapLabel={copy.branchesMapLink} />
         </div>
       </section>
-      <CtaBand whatsapp={wa} />
-      <Footer whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer whatsapp={wa} copy={copy} />
     </>
   );
 }

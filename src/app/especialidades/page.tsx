@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Fragment } from 'react';
+import { stegaClean } from 'next-sanity';
 import { CtaBand, Footer } from '@/components/Footer';
 import { SectionHead, SpecialtyCard } from '@/components/sections';
+import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 const description =
@@ -15,33 +16,36 @@ export const metadata: Metadata = {
 };
 
 export default async function SpecialtiesPage() {
-  const { settings, specialties } = await getContent();
+  const { settings, specialties, doctors, copy } = await getContent();
   const wa = whatsappHref(settings);
-  const groups = [...new Set(specialties.map((s) => s.category))];
+  const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
+  // Group by the clean category text (in preview, each document's text carries its own invisible edit marker).
+  const groups = [...new Set(specialties.map((s) => stegaClean(s.category)))];
 
   return (
     <>
       <section id="especialidades" className="sec sec-cream">
         <div className="wrap">
-          <SectionHead as="h1" title="Especialidades" meta={`${specialties.length} áreas, un mismo expediente`} />
-          {groups.map((g) => (
-            <Fragment key={g}>
-              <p data-reveal="ink" className="group-label">
-                {g}
-              </p>
-              <div className="grid-cards group">
-                {specialties
-                  .filter((s) => s.category === g)
-                  .map((s) => (
-                    <SpecialtyCard key={s.slug} s={s} showNumber />
+          <SectionHead as="h1" title={fill(copy.specialtiesTitle, vars)} meta={fill(copy.specialtiesMeta, vars)} />
+          {groups.map((g) => {
+            const items = specialties.filter((s) => stegaClean(s.category) === g);
+            return (
+              <div key={g} className="group-block">
+                <p data-reveal="ink" className="group-label">
+                  {items[0].category}
+                </p>
+                <div className="grid-cards group">
+                  {items.map((s) => (
+                    <SpecialtyCard key={s.slug} s={s} more={copy.cardMore} showNumber />
                   ))}
+                </div>
               </div>
-            </Fragment>
-          ))}
+            );
+          })}
         </div>
       </section>
-      <CtaBand whatsapp={wa} />
-      <Footer whatsapp={wa} />
+      <CtaBand whatsapp={wa} copy={copy} />
+      <Footer whatsapp={wa} copy={copy} />
     </>
   );
 }

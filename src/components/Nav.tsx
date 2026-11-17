@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { NAV_LINKS } from '@/lib/links';
 
 
-export function Nav({ ctaHref }: { ctaHref: string }) {
+export function Nav({ ctaHref, ctaLabel }: { ctaHref: string; ctaLabel: string }) {
   const pathname = usePathname();
   const menu = useRef<HTMLDetailsElement>(null);
 
@@ -34,7 +34,7 @@ export function Nav({ ctaHref }: { ctaHref: string }) {
             </Link>
           ))}
           <a href={ctaHref} className="nav-cta" {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
-            Agenda tu cita
+            {ctaLabel}
           </a>
         </div>
         <details className="nav-menu" ref={menu}>
@@ -50,7 +50,7 @@ export function Nav({ ctaHref }: { ctaHref: string }) {
               </Link>
             ))}
             <a href={ctaHref} className="nav-panel-cta" {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
-              Agenda tu cita
+              {ctaLabel}
             </a>
           </div>
         </details>

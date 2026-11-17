@@ -2,24 +2,29 @@
 
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import type { SiteCopy } from '@/content/types';
 import { specialtyHref } from '@/lib/links';
+import { fill, Rich } from '../text';
 import './hero.css';
 
 type Props = {
   years: number;
   specialtyCount: number;
-  branchNames: string[];
   patients: number;
   patientsLabel: string;
   ctaHref: string;
+  copy: Pick<
+    SiteCopy,
+    'heroEyebrow' | 'heroTitle1' | 'heroTitle2' | 'heroText' | 'heroCtaPrimary' | 'heroCtaSecondary' | 'toothLayers' | 'finaleLine' | 'statYearsLabel' | 'statSpecialtiesLabel'
+  >;
 };
 
-// One specialty per layer of the tooth, in scroll order. `top` places the desktop callout on the artwork.
-const LAYERS = [
-  { layer: '01 · Esmalte', name: 'Odontología estética', desc: 'Carillas, coronas, blanqueamiento y diseño de sonrisa.', short: 'Carillas, coronas y blanqueamiento.', side: 'is-left', top: '22.8%', slug: 'odontologia-estetica' },
-  { layer: '02 · Pulpa', name: 'Endodoncia', desc: 'Tratamos el nervio para conservar tu diente.', short: 'Tratamos el nervio para conservar tu diente.', side: 'is-right', top: '57%', slug: 'endodoncia' },
-  { layer: '03 · Dentina', name: 'Odontología general', desc: 'Resinas y restauraciones que devuelven forma y función.', short: 'Resinas y restauraciones a tu medida.', side: 'is-left', top: '61.3%', slug: 'odontologia-general' },
-  { layer: '04 · Raíz y encía', name: 'Periodoncia e implantes', desc: 'La base de todo: encías sanas y raíces firmes.', short: 'Encías sanas y raíces firmes.', side: 'is-right', top: '79.8%', slug: 'periodoncia' },
+// Where each layer's callout sits on the tooth artwork (top → bottom). The text comes from the editor.
+const LAYER_POSITIONS = [
+  { side: 'is-left', top: '22.8%' },
+  { side: 'is-right', top: '57%' },
+  { side: 'is-left', top: '61.3%' },
+  { side: 'is-right', top: '79.8%' },
 ];
 
 const fetchSvg = (path: string) =>
@@ -29,7 +34,7 @@ const fetchSvg = (path: string) =>
     .then((t) => t.replaceAll('href="assets/', 'href="/assets/'))
     .catch(() => '');
 
-export function Hero({ years, specialtyCount, branchNames, patients, patientsLabel, ctaHref }: Props) {
+export function Hero({ years, specialtyCount, patients, patientsLabel, ctaHref, copy }: Props) {
   const heroRef = useRef<HTMLElement>(null);
   const toothRef = useRef<HTMLDivElement>(null);
   const monoRef = useRef<HTMLDivElement>(null);
@@ -224,30 +229,30 @@ export function Hero({ years, specialtyCount, branchNames, patients, patientsLab
     };
   }, []);
 
-  const branches = branchNames.join(' y ');
+  const vars = { años: years, especialidades: specialtyCount };
+  const layers = copy.toothLayers.slice(0, LAYER_POSITIONS.length).map((l, i) => ({ ...l, ...LAYER_POSITIONS[i] }));
 
   return (
     <header id="top" className="d8h" ref={heroRef}>
       <div className="d8h-grain" aria-hidden="true" />
 
       <div className="d8h-copy">
-        <p className="d8h-eyebrow">Clínica dental en León, Guanajuato</p>
+        <p className="d8h-eyebrow">{copy.heroEyebrow}</p>
         <h1 className="d8h-title">
-          <span>{years} años cuidando</span>
           <span>
-            la sonrisa de <em>tu familia</em>
+            <Rich text={copy.heroTitle1} vars={vars} />
+          </span>
+          <span>
+            <Rich text={copy.heroTitle2} vars={vars} />
           </span>
         </h1>
-        <p className="d8h-sub">
-          {specialtyCount} especialidades de la odontología bajo un mismo techo, en {branchNames.length} sucursales — {branches} — con un trato
-          cercano para que cuidar tus dientes deje de ser algo que se posterga.
-        </p>
+        <p className="d8h-sub">{fill(copy.heroText, vars)}</p>
         <div className="d8h-ctas">
           <a href={ctaHref} className="d8h-btn" {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
-            Agenda tu cita
+            {copy.heroCtaPrimary}
           </a>
           <Link href="/especialidades" className="d8h-btn-ghost">
-            Ver especialidades
+            {copy.heroCtaSecondary}
           </Link>
         </div>
       </div>
@@ -255,18 +260,18 @@ export function Hero({ years, specialtyCount, branchNames, patients, patientsLab
       <div className="d8h-tooth">
         <div className="d8h-glow" aria-hidden="true" />
         <div className="d8h-svg" ref={toothRef} />
-        {LAYERS.map((l) => (
-          <Link key={l.slug} className={`d8h-callout ${l.side}`} style={{ top: l.top }} href={specialtyHref(l.slug)}>
+        {layers.map((l, i) => (
+          <Link key={i} className={`d8h-callout ${l.side}`} style={{ top: l.top }} href={l.specialty ? specialtyHref(l.specialty) : '/especialidades'}>
             <i>{l.layer}</i>
             <b>{l.name}</b>
-            <span className="d8h-desc">{l.desc}</span>
+            <span className="d8h-desc">{l.description}</span>
           </Link>
         ))}
       </div>
 
       <div className="d8h-mcaps" aria-hidden="true">
-        {LAYERS.map((l) => (
-          <div key={l.slug} className="d8h-mcap">
+        {layers.map((l, i) => (
+          <div key={i} className="d8h-mcap">
             <i>{l.layer}</i>
             <b>{l.name}</b>
             <p>{l.short}</p>
@@ -278,16 +283,16 @@ export function Hero({ years, specialtyCount, branchNames, patients, patientsLab
         <div className="d8h-mono" ref={monoRef} role="img" aria-label="Diente8" />
         <div className="d8h-word" ref={wordRef} />
         <p className="d8h-line">
-          Cada parte de tu diente, <em>un solo lugar</em> para cuidarla.
+          <Rich text={copy.finaleLine} vars={vars} />
         </p>
         <div className="d8h-stats">
           <div>
             <div className="d8h-num" data-count={years}>{years}</div>
-            <div className="d8h-label">años de experiencia</div>
+            <div className="d8h-label">{copy.statYearsLabel}</div>
           </div>
           <div>
             <div className="d8h-num" data-count={specialtyCount}>{specialtyCount}</div>
-            <div className="d8h-label">especialidades bajo un techo</div>
+            <div className="d8h-label">{copy.statSpecialtiesLabel}</div>
           </div>
           <div>
             <div className="d8h-num" data-count={patients} data-suffix="+">

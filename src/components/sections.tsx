@@ -1,3 +1,4 @@
+import { stegaClean } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { specialtyHref } from '@/lib/links';
@@ -14,7 +15,7 @@ export function SectionHead({ title, meta, as: Tag = 'h2', tight = false }: { ti
   );
 }
 
-export function SpecialtyCard({ s, showNumber = false, short = false }: { s: Specialty; showNumber?: boolean; short?: boolean }) {
+export function SpecialtyCard({ s, more, showNumber = false, short = false }: { s: Specialty; more: string; showNumber?: boolean; short?: boolean }) {
   return (
     <article data-reveal="ink" className="card card-linked" id={showNumber ? `esp-${s.number}` : undefined}>
       <div className="media">
@@ -29,14 +30,14 @@ export function SpecialtyCard({ s, showNumber = false, short = false }: { s: Spe
         </h3>
         <p className="card-text">{short ? s.teaser : s.summary}</p>
         <span className="card-more" aria-hidden="true">
-          Ver especialidad →
+          {more}
         </span>
       </div>
     </article>
   );
 }
 
-export function BranchCards({ branches }: { branches: Branch[] }) {
+export function BranchCards({ branches, mapLabel }: { branches: Branch[]; mapLabel: string }) {
   return (
     <div className="grid-branches">
       {branches.map((b) => (
@@ -46,11 +47,11 @@ export function BranchCards({ branches }: { branches: Branch[] }) {
           </div>
           <div className="branch-body">
             <h3 className="branch-name">{b.fullName}</h3>
-            <p className="branch-addr">{b.slug === 'panorama' ? 'León, Gto. — consultorio #158' : b.addressLines.join(' ')}</p>
+            <p className="branch-addr">{b.addressLines.join(' ')}</p>
             <p className="branch-note">{b.note}</p>
             {b.mapUrl && (
               <a className="link-arrow" href={b.mapUrl} target="_blank" rel="noopener" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
-                Cómo llegar →
+                {mapLabel}
               </a>
             )}
           </div>
@@ -62,8 +63,9 @@ export function BranchCards({ branches }: { branches: Branch[] }) {
 
 export function TeamFigure({ doctors }: { doctors: Doctor[] }) {
   const strip = [...doctors].sort((a, b) => a.stripOrder - b.stripOrder);
-  const alt =
-    'Equipo de especialistas de Diente8: ' + strip.map((d) => `${d.title} ${d.shortName} (${d.specialtyLabel.toLowerCase()})`).join(', ') + '.';
+  const alt = stegaClean(
+    'Equipo de especialistas de Diente8: ' + strip.map((d) => `${d.title} ${d.shortName} (${d.specialtyLabel.toLowerCase()})`).join(', ') + '.',
+  );
   return (
     <figure data-reveal="ink" style={{ margin: '0 0 clamp(36px, 4vw, 48px)' }}>
       <Image className="team-full" src="/assets/equipo/plantilla-especialistas-diente8.webp" alt={alt} width={1600} height={908} sizes="(max-width: 1240px) 100vw, 1240px" />
@@ -101,7 +103,7 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
 // schema.org data for local SEO: one Dentist entry per branch.
 export function ClinicJsonLd({ content }: { content: SiteContent }) {
   const { settings, branches } = content;
-  const data = {
+  const data = stegaClean({
     '@context': 'https://schema.org',
     '@graph': branches.map((b) => ({
       '@type': 'Dentist',
@@ -119,6 +121,6 @@ export function ClinicJsonLd({ content }: { content: SiteContent }) {
       sameAs: [settings.instagram, settings.facebook],
       medicalSpecialty: ['Dentistry'],
     })),
-  };
+  });
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }} />;
 }
