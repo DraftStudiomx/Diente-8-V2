@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { CtaBand, Footer } from '@/components/Footer';
 import { Hero } from '@/components/hero/Hero';
 import { BranchCards, ClinicJsonLd, FaqList, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
-import { homeSpecialtySlugs } from '@/content/local';
 import { getContent, whatsappHref } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -39,9 +38,9 @@ const ABOUT = [
 
 export default async function HomePage() {
   const content = await getContent();
-  const { settings, specialties, branches, doctors, faqs } = content;
+  const { settings, specialties, branches, doctors, faqs, homeSpecialties } = content;
   const wa = whatsappHref(settings);
-  const preview = homeSpecialtySlugs.map((slug) => specialties.find((s) => s.slug === slug)).filter((s) => s !== undefined);
+  const preview = homeSpecialties.map((slug) => specialties.find((s) => s.slug === slug)).filter((s) => s !== undefined);
 
   return (
     <>

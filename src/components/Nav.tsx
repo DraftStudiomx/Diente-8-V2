@@ -15,6 +15,8 @@ export function Nav({ ctaHref }: { ctaHref: string }) {
     if (menu.current) menu.current.open = false;
   }, [pathname]);
 
+  if (pathname.startsWith('/studio')) return null; // the content editor has its own chrome
+
   const current = (href: string) => (pathname === href || pathname.startsWith(href + '/') ? 'page' : undefined);
   const external = ctaHref.startsWith('http');
 

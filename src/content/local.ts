@@ -317,4 +317,4 @@ export const faqs: Faq[] = [
   },
 ];
 
-export const localContent: SiteContent = { settings, specialties, doctors, branches, insurers, faqs };
+export const localContent: SiteContent = { settings, specialties, doctors, branches, insurers, faqs, homeSpecialties: homeSpecialtySlugs };

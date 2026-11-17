@@ -74,4 +74,5 @@ export type SiteContent = {
   branches: Branch[];
   insurers: Insurer[];
   faqs: Faq[];
+  homeSpecialties: string[]; // slugs previewed on the home page, in order
 };

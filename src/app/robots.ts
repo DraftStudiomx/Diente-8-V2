@@ -7,7 +7,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   const isProduction = process.env.VERCEL_ENV === 'production';
   if (!isProduction) return { rules: { userAgent: '*', disallow: '/' } };
   return {
-    rules: { userAgent: '*', allow: '/' },
+    rules: { userAgent: '*', allow: '/', disallow: '/studio' },
     sitemap: `${settings.siteUrl}/sitemap.xml`,
     host: settings.siteUrl,
   };
