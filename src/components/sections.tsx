@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { specialtyHref } from '@/lib/links';
 import type { Branch, Doctor, Faq, SiteContent, Specialty } from '@/content/types';
 
 export function SectionHead({ title, meta, as: Tag = 'h2', tight = false }: { title: string; meta?: string; as?: 'h1' | 'h2'; tight?: boolean }) {
@@ -14,14 +16,21 @@ export function SectionHead({ title, meta, as: Tag = 'h2', tight = false }: { ti
 
 export function SpecialtyCard({ s, showNumber = false, short = false }: { s: Specialty; showNumber?: boolean; short?: boolean }) {
   return (
-    <article data-reveal="ink" className="card" id={showNumber ? `esp-${s.number}` : undefined}>
+    <article data-reveal="ink" className="card card-linked" id={showNumber ? `esp-${s.number}` : undefined}>
       <div className="media">
         <Image src={s.image.src} alt={s.image.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 400px" />
       </div>
       <div className="card-body">
         {showNumber && <div className="card-num">{s.number}</div>}
-        <h3 className="card-title">{s.name}</h3>
+        <h3 className="card-title">
+          <Link href={specialtyHref(s.slug)} className="card-link">
+            {s.name}
+          </Link>
+        </h3>
         <p className="card-text">{short ? s.teaser : s.summary}</p>
+        <span className="card-more" aria-hidden="true">
+          Ver especialidad →
+        </span>
       </div>
     </article>
   );

@@ -1,7 +1,7 @@
 // Client-safe link helpers (no data access), shared by server and client components.
 
-export function specialtyAnchor(number: string): string {
-  return `/especialidades#esp-${number}`;
+export function specialtyHref(slug: string): string {
+  return `/especialidades/${slug}`;
 }
 
 export const NAV_LINKS = [

@@ -29,7 +29,9 @@ export type Specialty = {
   category: string;
   teaser: string; // short line for the home preview cards
   summary: string;
+  headline: string; // page H1, phrased for local search: "Endodoncia en León"
   whenToVisit: string[];
+  treatments: string[];
   image: ImageRef;
   seoTitle: string;
   seoDescription: string;

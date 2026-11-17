@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import { specialtyAnchor } from '@/lib/links';
+import { specialtyHref } from '@/lib/links';
 import './hero.css';
 
 type Props = {
@@ -16,10 +16,10 @@ type Props = {
 
 // One specialty per layer of the tooth, in scroll order. `top` places the desktop callout on the artwork.
 const LAYERS = [
-  { layer: '01 · Esmalte', name: 'Odontología estética', desc: 'Carillas, coronas, blanqueamiento y diseño de sonrisa.', short: 'Carillas, coronas y blanqueamiento.', side: 'is-left', top: '22.8%', number: '04' },
-  { layer: '02 · Pulpa', name: 'Endodoncia', desc: 'Tratamos el nervio para conservar tu diente.', short: 'Tratamos el nervio para conservar tu diente.', side: 'is-right', top: '57%', number: '02' },
-  { layer: '03 · Dentina', name: 'Odontología general', desc: 'Resinas y restauraciones que devuelven forma y función.', short: 'Resinas y restauraciones a tu medida.', side: 'is-left', top: '61.3%', number: '01' },
-  { layer: '04 · Raíz y encía', name: 'Periodoncia e implantes', desc: 'La base de todo: encías sanas y raíces firmes.', short: 'Encías sanas y raíces firmes.', side: 'is-right', top: '79.8%', number: '03' },
+  { layer: '01 · Esmalte', name: 'Odontología estética', desc: 'Carillas, coronas, blanqueamiento y diseño de sonrisa.', short: 'Carillas, coronas y blanqueamiento.', side: 'is-left', top: '22.8%', slug: 'odontologia-estetica' },
+  { layer: '02 · Pulpa', name: 'Endodoncia', desc: 'Tratamos el nervio para conservar tu diente.', short: 'Tratamos el nervio para conservar tu diente.', side: 'is-right', top: '57%', slug: 'endodoncia' },
+  { layer: '03 · Dentina', name: 'Odontología general', desc: 'Resinas y restauraciones que devuelven forma y función.', short: 'Resinas y restauraciones a tu medida.', side: 'is-left', top: '61.3%', slug: 'odontologia-general' },
+  { layer: '04 · Raíz y encía', name: 'Periodoncia e implantes', desc: 'La base de todo: encías sanas y raíces firmes.', short: 'Encías sanas y raíces firmes.', side: 'is-right', top: '79.8%', slug: 'periodoncia' },
 ];
 
 const fetchSvg = (path: string) =>
@@ -256,7 +256,7 @@ export function Hero({ years, specialtyCount, branchNames, patients, patientsLab
         <div className="d8h-glow" aria-hidden="true" />
         <div className="d8h-svg" ref={toothRef} />
         {LAYERS.map((l) => (
-          <Link key={l.number} className={`d8h-callout ${l.side}`} style={{ top: l.top }} href={specialtyAnchor(l.number)}>
+          <Link key={l.slug} className={`d8h-callout ${l.side}`} style={{ top: l.top }} href={specialtyHref(l.slug)}>
             <i>{l.layer}</i>
             <b>{l.name}</b>
             <span className="d8h-desc">{l.desc}</span>
@@ -266,7 +266,7 @@ export function Hero({ years, specialtyCount, branchNames, patients, patientsLab
 
       <div className="d8h-mcaps" aria-hidden="true">
         {LAYERS.map((l) => (
-          <div key={l.number} className="d8h-mcap">
+          <div key={l.slug} className="d8h-mcap">
             <i>{l.layer}</i>
             <b>{l.name}</b>
             <p>{l.short}</p>

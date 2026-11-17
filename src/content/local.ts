@@ -20,6 +20,131 @@ export const settings: SiteSettings = {
   patientsLabel: 'pacientes registrados desde 2025',
 };
 
+// Detail-page copy per specialty: H1 for local search, signs that it's time to visit, and what's treated.
+// Written from general dental practice; pending review by the clinic before launch.
+const DETAILS: Record<string, { headline: string; whenToVisit: string[]; treatments: string[] }> = {
+  'odontologia-general': {
+    headline: 'Dentista general en León',
+    whenToVisit: [
+      'Han pasado más de seis meses desde tu última revisión.',
+      'Sientes molestia con lo frío, lo caliente o lo dulce.',
+      'Notas manchas o puntos oscuros en algún diente.',
+      'Tus encías sangran al cepillarte.',
+      'Tienes una molestia y no sabes qué especialista necesitas.',
+    ],
+    treatments: ['Limpieza dental (profilaxis)', 'Revisión y diagnóstico', 'Resinas para caries', 'Selladores', 'Canalización con el especialista indicado'],
+  },
+  endodoncia: {
+    headline: 'Endodoncia en León',
+    whenToVisit: [
+      'Tienes un dolor de muela intenso o que te despierta por la noche.',
+      'La sensibilidad al frío o al calor dura varios minutos.',
+      'Un diente se ha oscurecido.',
+      'Hay inflamación o una pequeña bolita en la encía cerca de un diente.',
+      'Te diagnosticaron una caries profunda o un diente fracturado.',
+    ],
+    treatments: ['Tratamiento de conductos', 'Retratamiento de conductos', 'Atención de urgencia por dolor', 'Diagnóstico con radiografía'],
+  },
+  periodoncia: {
+    headline: 'Periodoncia en León',
+    whenToVisit: [
+      'Tus encías sangran al cepillarte o al usar hilo dental.',
+      'Tus encías están inflamadas, rojas o se ven retraídas.',
+      'Tienes mal aliento persistente.',
+      'Sientes que algún diente se mueve o se ha separado.',
+    ],
+    treatments: [
+      'Tratamiento de gingivitis y periodontitis',
+      'Limpieza profunda (raspado y alisado radicular)',
+      'Mantenimiento periodontal',
+      'Cirugía periodontal',
+      'Preparación de encías para implantes',
+    ],
+  },
+  'odontologia-estetica': {
+    headline: 'Odontología estética en León',
+    whenToVisit: [
+      'Tus dientes se ven manchados u oscuros.',
+      'Tienes dientes desgastados, astillados o de forma irregular.',
+      'Hay espacios pequeños entre tus dientes.',
+      'Quieres renovar tu sonrisa para un evento o para ti.',
+    ],
+    treatments: ['Blanqueamiento dental', 'Carillas', 'Coronas estéticas', 'Resinas estéticas', 'Diseño de sonrisa'],
+  },
+  'protesis-e-implantologia': {
+    headline: 'Implantes dentales y prótesis en León',
+    whenToVisit: [
+      'Perdiste uno o varios dientes.',
+      'Tu prótesis actual está floja o es incómoda.',
+      'Tienes dientes muy dañados que ya no se pueden restaurar.',
+      'Te cuesta masticar ciertos alimentos.',
+    ],
+    treatments: ['Implantes dentales', 'Coronas y puentes', 'Prótesis fijas', 'Prótesis removibles', 'Rehabilitación sobre implantes'],
+  },
+  'protesis-maxilofacial': {
+    headline: 'Prótesis maxilofacial en León',
+    whenToVisit: [
+      'Perdiste estructuras de la boca o la cara por una cirugía oncológica.',
+      'Tienes un defecto congénito, como paladar hendido.',
+      'Sufriste un traumatismo facial.',
+      'Te cuesta hablar, comer o tragar después de una cirugía.',
+    ],
+    treatments: ['Obturadores palatinos', 'Prótesis faciales', 'Guías y férulas', 'Rehabilitación funcional y estética'],
+  },
+  'cirugia-maxilofacial': {
+    headline: 'Cirujano maxilofacial en León',
+    whenToVisit: [
+      'Tus muelas del juicio duelen o no terminan de salir.',
+      'Sufriste un golpe en la cara o la mandíbula.',
+      'Tu mordida no cierra bien.',
+      'Te falta hueso para colocar un implante.',
+    ],
+    treatments: ['Extracción de terceros molares', 'Extracciones complejas', 'Cirugía ortognática', 'Atención de fracturas faciales', 'Injertos óseos'],
+  },
+  'patologia-bucal': {
+    headline: 'Patología bucal en León',
+    whenToVisit: [
+      'Tienes una llaga o úlcera que no sana en dos semanas.',
+      'Notas manchas blancas o rojas en la boca.',
+      'Apareció un bulto o una inflamación sin causa clara.',
+      'Hay cambios en tus encías, lengua o labios.',
+      'Otro especialista te pidió una biopsia.',
+    ],
+    treatments: ['Diagnóstico de lesiones bucales', 'Biopsia', 'Seguimiento de lesiones', 'Detección oportuna'],
+  },
+  anestesiologia: {
+    headline: 'Sedación y anestesia dental en León',
+    whenToVisit: [
+      'Tu tratamiento será largo o complejo.',
+      'Sientes miedo o ansiedad intensa al dentista.',
+      'El paciente tiene necesidades especiales.',
+      'Un niño necesita un tratamiento extenso.',
+    ],
+    treatments: ['Valoración preanestésica', 'Sedación consciente', 'Anestesia general', 'Monitoreo durante el procedimiento'],
+  },
+  ortodoncia: {
+    headline: 'Ortodoncia en León',
+    whenToVisit: [
+      'Tus dientes están chuecos o encimados.',
+      'Hay espacios entre tus dientes.',
+      'Tu mordida no coincide: dientes muy adelante, muy atrás o cruzados.',
+      'Tu hijo tiene alrededor de 7 años y no ha tenido una valoración.',
+    ],
+    treatments: ['Brackets metálicos', 'Brackets estéticos', 'Alineadores invisibles', 'Ortopedia en niños', 'Retenedores'],
+  },
+  odontopediatria: {
+    headline: 'Dentista para niños en León',
+    whenToVisit: [
+      'Le salió el primer diente a tu bebé, o está por cumplir un año.',
+      'Ves manchas o caries en sus dientes de leche.',
+      'Se golpeó un diente.',
+      'Usa chupón o se chupa el dedo después de los tres años.',
+      'Le tiene miedo al dentista.',
+    ],
+    treatments: ['Revisión y limpieza infantil', 'Flúor y selladores', 'Tratamientos en dientes de leche', 'Mantenedores de espacio', 'Hábitos de higiene para toda la familia'],
+  },
+};
+
 const sp = (
   number: string,
   slug: string,
@@ -28,18 +153,23 @@ const sp = (
   file: string,
   teaser: string,
   summary: string,
-): Specialty => ({
-  slug,
-  number,
-  name,
-  category,
-  teaser,
-  summary,
-  whenToVisit: [],
-  image: photo(file, `${name} en Diente8, León`),
-  seoTitle: `${name} en León, Gto. · Diente8`,
-  seoDescription: `${summary} ${name} en León, Guanajuato, en Diente8 Panorama y La Martinica.`,
-});
+): Specialty => {
+  const d = DETAILS[slug];
+  return {
+    slug,
+    number,
+    name,
+    category,
+    teaser,
+    summary,
+    headline: d.headline,
+    whenToVisit: d.whenToVisit,
+    treatments: d.treatments,
+    image: photo(file, `${name} en Diente8, León`),
+    seoTitle: d.headline,
+    seoDescription: `${summary.replace(/\.$/, '')}. ${d.headline}, Guanajuato: Diente8 Panorama y La Martinica.`,
+  };
+};
 
 export const specialties: Specialty[] = [
   sp('01', 'odontologia-general', 'Odontología general', 'Restauradora', 'panorama-atencion.jpg',
