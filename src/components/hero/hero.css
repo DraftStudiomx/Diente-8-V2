@@ -1,0 +1,104 @@
+/* Home hero: scroll story (tooth -> cutaway -> specialties -> monogram). Ported verbatim from the static site. */
+@keyframes d8-line { from { clip-path: inset(0 0 108% 0); transform: translateY(0.22em); } to { clip-path: inset(-25% -10% -25% -10%); transform: translateY(0); } }
+@keyframes d8-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes d8-veil { from { opacity: 1; } to { opacity: 0; } }
+@keyframes d8-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* ---------- Hero: scroll story (tooth → cutaway → specialties → monogram) ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.d8h { position: relative; height: calc(100vh - var(--d8-nav-h, 71px)); height: calc(100svh - var(--d8-nav-h, 71px)); min-height: 440px; overflow: hidden; color: #FAF7F1; container-type: size;
+  background: radial-gradient(120% 90% at 70% 45%, #123A86 0%, #07215A 42%, #041541 100%); }
+.d8h-grain { position: absolute; inset: 0; opacity: .5; pointer-events: none;
+  background-image: radial-gradient(rgba(250,247,241,0.06) 1px, transparent 1px); background-size: 22px 22px;
+  mask-image: radial-gradient(70% 70% at 70% 50%, #000 0%, transparent 80%); -webkit-mask-image: radial-gradient(70% 70% at 70% 50%, #000 0%, transparent 80%); }
+
+.d8h-copy { position: absolute; z-index: 3; left: max(24px, calc((100vw - 1240px) / 2 + 24px)); top: 50%; transform: translateY(-50%); max-width: min(560px, 44vw); }
+.d8h-eyebrow { margin: 0 0 24px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A24C; animation: d8-up 700ms 300ms cubic-bezier(0.22,1,0.36,1) both; }
+.d8h-title { margin: 0 0 26px; font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 5.4vw, 74px); line-height: 1.02; letter-spacing: -0.025em; color: #FAF7F1; }
+.d8h-title span { display: block; animation: d8-line 1000ms 450ms cubic-bezier(0.22,1,0.36,1) both; }
+.d8h-title span + span { animation-delay: 590ms; }
+.d8h-title em { font-style: italic; font-weight: 300; color: #C9A24C; }
+.d8h-sub { margin: 0 0 36px; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.62; color: rgba(250,247,241,0.82); font-weight: 300; text-wrap: pretty; animation: d8-up 800ms 900ms cubic-bezier(0.22,1,0.36,1) both; }
+.d8h-ctas { display: flex; flex-wrap: wrap; gap: 14px; animation: d8-up 800ms 1050ms cubic-bezier(0.22,1,0.36,1) both; }
+.d8h-btn { font-size: 15px; font-weight: 500; color: #07215A; background: #C9A24C; padding: 16px 30px; border-radius: 2px; }
+.d8h-btn-ghost { font-size: 15px; font-weight: 400; color: #FAF7F1; border: 1px solid rgba(250,247,241,0.35); padding: 16px 30px; border-radius: 2px; }
+
+/* Tooth stage. The SVG viewBox is wider than the tooth so the leader lines fit beside it. */
+.d8h-tooth { position: absolute; z-index: 2; left: 70%; top: 50%; height: min(92cqh, 860px); aspect-ratio: 1240 / 860; transform: translate(-50%, -50%); pointer-events: none; }
+.d8h-svg, .d8h-svg > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.d8h-svg .t-outline { opacity: 0; }
+.d8h-glow { position: absolute; left: 50%; top: 50%; width: 46%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,162,76,0.22) 0%, rgba(201,162,76,0) 65%); filter: blur(10px); }
+.d8h-callout { position: absolute; width: 18%; transform: translateY(-50%); font-size: clamp(12px, 0.95vw, 14px); line-height: 1.4; color: rgba(250,247,241,0.72); opacity: 0; visibility: hidden; pointer-events: auto; }
+.d8h-callout.is-right { left: 80.6%; }
+.d8h-callout.is-left { right: 80.6%; text-align: right; }
+.d8h-callout b { display: block; margin-bottom: 4px; font-family: var(--serif); font-weight: 400; font-size: 1.45em; letter-spacing: -0.01em; color: #FAF7F1; }
+.d8h-callout i { display: block; margin-bottom: 6px; font-style: normal; font-size: 0.8em; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A24C; }
+.d8h-callout:hover b { color: #C9A24C; }
+.d8h-mcaps { display: none; }
+
+.d8h-finale { position: absolute; z-index: 4; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: 24px; pointer-events: none; opacity: 0; }
+.d8h-mono { width: clamp(170px, 20vw, 280px); aspect-ratio: 1410 / 840; }
+.d8h-word { width: clamp(140px, 16vw, 220px); aspect-ratio: 1410 / 360; margin-top: 18px; }
+.d8h-mono svg, .d8h-word svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.d8h-line { margin: 30px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(22px, 2.6vw, 36px); line-height: 1.2; letter-spacing: -0.02em; max-width: 720px; }
+.d8h-line em { font-style: italic; color: #C9A24C; }
+.d8h-stats { margin-top: 36px; display: flex; gap: clamp(28px, 6vw, 80px); justify-content: center; border-top: 1px solid rgba(201,162,76,0.28); padding-top: 26px; }
+.d8h-num { font-family: var(--serif); font-size: clamp(30px, 3.2vw, 44px); line-height: 1; }
+.d8h-label { margin-top: 8px; font-size: 12px; color: rgba(250,247,241,0.6); max-width: 160px; }
+
+.d8h-hint { position: absolute; z-index: 3; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,247,241,0.55); opacity: 0; }
+.d8h-hint span { width: 1px; height: 36px; background: linear-gradient(#C9A24C, transparent); animation: d8-hint 2.2s cubic-bezier(0.65,0,0.35,1) infinite; transform-origin: top; }
+@keyframes d8-hint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* Tablet portrait: stacked, tooth under the copy, callouts show titles only */
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: portrait) {
+  .d8h-copy { left: 48px; right: 48px; top: 48px; transform: none; max-width: 620px; }
+  .d8h-title { font-size: clamp(46px, 7.2vw, 66px); }
+  .d8h-sub { max-width: 520px; margin-bottom: 30px; }
+  .d8h-tooth { left: 50%; top: 70%; height: auto; width: min(100vw, 118cqh); }
+  .d8h-callout { font-size: 13px; }
+  .d8h-desc { display: none; }
+  .d8h-hint { display: none; }
+}
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
+  .d8h-copy { max-width: min(480px, 42vw); }
+  .d8h-tooth { left: 71%; height: min(86cqh, 760px); }
+}
+
+/* Mobile: copy on top, tooth below; specialties swap in a caption instead of leader lines */
+@media (max-width: 767px) {
+  .d8h-copy { left: 20px; right: 20px; top: 24px; transform: none; max-width: none; }
+  .d8h-eyebrow { margin-bottom: 14px; font-size: 11px; letter-spacing: 0.14em; }
+  .d8h-title { font-size: clamp(32px, 9.4vw, 46px); margin-bottom: 20px; }
+  .d8h-sub { display: none; }
+  .d8h-ctas { gap: 10px; }
+  .d8h-btn, .d8h-btn-ghost { font-size: 14px; padding: 13px 18px; }
+  .d8h-tooth { left: 50%; top: 67%; height: auto; width: min(150vw, 92cqh); }
+  .d8h-callout, .d8h-svg .dots, .d8h-hint { display: none; }
+  .d8h-mcaps { display: block; position: absolute; z-index: 3; left: 20px; right: 20px; bottom: max(24px, 4cqh); height: 92px; }
+  .d8h-mcap { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+  .d8h-mcap i { display: block; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A24C; margin-bottom: 6px; }
+  .d8h-mcap b { display: block; font-family: var(--serif); font-weight: 400; font-size: 23px; margin-bottom: 4px; }
+  .d8h-mcap p { margin: 0; font-size: 14px; line-height: 1.45; color: rgba(250,247,241,0.72); }
+  .d8h-mono { width: clamp(140px, 42vw, 190px); }
+  .d8h-word { width: clamp(120px, 36vw, 160px); margin-top: 14px; }
+  .d8h-line { margin-top: 22px; font-size: clamp(21px, 6vw, 26px); }
+  .d8h-stats { margin-top: 26px; gap: 18px; padding-top: 20px; }
+  .d8h-num { font-size: 28px; }
+  .d8h-label { font-size: 11px; }
+}
+@media (max-width: 767px) and (max-height: 700px) {
+  .d8h-title { font-size: clamp(30px, 8.6vw, 38px); }
+  .d8h-tooth { top: 74%; width: min(130vw, 86cqh); }
+}
+
+/* Without the scroll story (reduced motion / scripts blocked): a calm static hero */
+.d8h.is-static .d8h-svg .t-cutaway, .d8h.is-static .d8h-svg .t-anatomy, .d8h.is-static .d8h-svg .scan, .d8h.is-static .d8h-svg .leaders, .d8h.is-static .d8h-svg .dots { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .d8h-eyebrow, .d8h-title span, .d8h-sub, .d8h-ctas, .d8h-hint span { animation: none !important; }
+}
+.d8h-btn { transition: background 180ms ease, color 180ms ease; }
+.d8h-btn:hover { background: #FAF7F1; color: #07215A; }
+.d8h-btn-ghost { transition: border-color 180ms ease, color 180ms ease; }
+.d8h-btn-ghost:hover { border-color: #C9A24C; color: #C9A24C; }
