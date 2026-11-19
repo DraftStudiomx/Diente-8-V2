@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
+import { stegaClean } from 'next-sanity';
 import Image from 'next/image';
+import { ContactForm } from '@/components/ContactForm';
 import { CtaBand, Footer } from '@/components/Footer';
-import { ClinicJsonLd } from '@/components/sections';
+import { ClinicJsonLd, Hours } from '@/components/sections';
 import { fill, Rich } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
+import { formatMxPhone } from '@/lib/links';
 
 const description =
-  'Contacta a Diente8, clínica dental en León, Guanajuato. Direcciones de Panorama y La Martinica, redes sociales y cómo agendar tu cita.';
+  'Contacta a Diente8, clínica dental en León, Guanajuato. Direcciones y horarios de Panorama y La Martinica, WhatsApp y formulario para agendar tu cita.';
 
 export const metadata: Metadata = {
   title: 'Contacto',
@@ -36,7 +39,7 @@ export default async function ContactPage() {
           <p className="contact-lead">{fill(copy.contactLead, vars)}</p>
         </div>
 
-        <div id="contacto" className="wrap contact-grid">
+        <div id="contacto" className="wrap contact-grid" style={{ marginBottom: 0 }}>
           {branches.map((b) => (
             <div key={b.slug}>
               <p className="eyebrow">{b.name}</p>
@@ -48,8 +51,30 @@ export default async function ContactPage() {
                   </span>
                 ))}
               </p>
+              {b.hours.length > 0 && (
+                <div style={{ marginTop: 18 }}>
+                  <Hours label={copy.hoursLabel} hours={b.hours} light />
+                </div>
+              )}
+              {b.mapUrl && (
+                <a className="contact-map" href={stegaClean(b.mapUrl)} target="_blank" rel="noopener">
+                  {copy.branchesMapLink}
+                </a>
+              )}
             </div>
           ))}
+          <div>
+            <p className="eyebrow">{copy.contactWhatsappLabel}</p>
+            {settings.whatsapp && (
+              <a className="contact-phone" href={wa} {...ext}>
+                {formatMxPhone(stegaClean(settings.whatsapp))}
+              </a>
+            )}
+            <p className="contact-note">{fill(copy.contactAgendaText, vars)}</p>
+            <a href={wa} className="btn btn-gold" {...ext}>
+              {copy.contactAgendaButton}
+            </a>
+          </div>
           <div>
             <p className="eyebrow">{copy.contactSocialLabel}</p>
             <div className="contact-social">
@@ -61,16 +86,34 @@ export default async function ContactPage() {
               </a>
             </div>
           </div>
-          <div>
-            <p className="eyebrow">{copy.contactAgendaLabel}</p>
-            <p className="contact-note">{fill(copy.contactAgendaText, vars)}</p>
-            <a href={wa} className="btn btn-gold" {...ext}>
-              {copy.contactAgendaButton}
-            </a>
-          </div>
         </div>
+      </section>
 
-        <div id="empresas" className="wrap companies">
+      <section id="formulario" className="form-sec">
+        <div className="wrap form-grid">
+          <div>
+            <p className="eyebrow">{copy.formEyebrow}</p>
+            <h2>
+              <Rich text={copy.formTitle} vars={vars} />
+            </h2>
+            <p className="form-intro">{fill(copy.formText, vars)}</p>
+            {wa.startsWith('http') && (
+              <a className="form-wa" href={wa} {...ext}>
+                {copy.floatingWhatsapp} →
+              </a>
+            )}
+          </div>
+          <ContactForm
+            copy={copy}
+            branches={branches.map((b) => stegaClean(b.fullName))}
+            specialties={specialties.map((s) => stegaClean(s.name))}
+            whatsappHref={wa}
+          />
+        </div>
+      </section>
+
+      <section id="empresas" className="contact" style={{ paddingTop: 'clamp(72px, 10vw, 120px)' }}>
+        <div className="wrap companies">
           <div>
             <p className="eyebrow">{copy.companiesEyebrow}</p>
             <h2>

@@ -1,7 +1,7 @@
 import { stegaClean } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import { specialtyHref } from '@/lib/links';
+import { formatMxPhone, mapEmbedSrc, specialtyHref } from '@/lib/links';
 import type { Branch, Doctor, Faq, SiteContent, Specialty } from '@/content/types';
 
 export function SectionHead({ title, meta, as: Tag = 'h2', tight = false }: { title: string; meta?: string; as?: 'h1' | 'h2'; tight?: boolean }) {
@@ -37,7 +37,17 @@ export function SpecialtyCard({ s, more, showNumber = false, short = false }: { 
   );
 }
 
-export function BranchCards({ branches, mapLabel }: { branches: Branch[]; mapLabel: string }) {
+export function BranchCards({
+  branches,
+  mapLabel,
+  hoursLabel,
+  showMap = false,
+}: {
+  branches: Branch[];
+  mapLabel: string;
+  hoursLabel: string;
+  showMap?: boolean;
+}) {
   return (
     <div className="grid-branches">
       {branches.map((b) => (
@@ -48,15 +58,42 @@ export function BranchCards({ branches, mapLabel }: { branches: Branch[]; mapLab
           <div className="branch-body">
             <h3 className="branch-name">{b.fullName}</h3>
             <p className="branch-addr">{b.addressLines.join(' ')}</p>
+            {b.hours.length > 0 && <Hours label={hoursLabel} hours={b.hours} />}
             <p className="branch-note">{b.note}</p>
             {b.mapUrl && (
-              <a className="link-arrow" href={b.mapUrl} target="_blank" rel="noopener" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
+              <a className="link-arrow" href={stegaClean(b.mapUrl)} target="_blank" rel="noopener" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
                 {mapLabel}
               </a>
             )}
           </div>
+          {showMap && (
+            <div className="branch-map">
+              <iframe
+                title={stegaClean(`Mapa de ${b.fullName}`)}
+                src={mapEmbedSrc(stegaClean(`Diente8 ${b.addressLines.join(' ')}`))}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          )}
         </article>
       ))}
+    </div>
+  );
+}
+
+export function Hours({ label, hours, light = false }: { label: string; hours: Branch['hours']; light?: boolean }) {
+  return (
+    <div className={light ? 'hours hours-light' : 'hours'}>
+      <p className="hours-label">{label}</p>
+      <dl>
+        {hours.map((h, i) => (
+          <div key={i}>
+            <dt>{h.days}</dt>
+            <dd>{h.time}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }
@@ -103,21 +140,27 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
 // schema.org data for local SEO: one Dentist entry per branch.
 export function ClinicJsonLd({ content }: { content: SiteContent }) {
   const { settings, branches } = content;
+  const abs = (src: string) => (src.startsWith('http') ? src : settings.siteUrl + src);
+  const phone = settings.phone ?? settings.whatsapp;
   const data = stegaClean({
     '@context': 'https://schema.org',
     '@graph': branches.map((b) => ({
       '@type': 'Dentist',
       name: `Diente8 – ${b.name}`,
       url: settings.siteUrl,
-      image: settings.siteUrl + b.photo.src,
-      ...(b.phone || settings.phone ? { telephone: b.phone ?? settings.phone } : {}),
+      image: abs(b.photo.src),
+      ...(b.phone || phone ? { telephone: formatMxPhone(b.phone ?? phone ?? '', { international: true }) } : {}),
+      ...(settings.email ? { email: settings.email } : {}),
       address: {
         '@type': 'PostalAddress',
         ...(b.streetAddress ? { streetAddress: b.streetAddress } : {}),
+        ...(b.postalCode ? { postalCode: b.postalCode } : {}),
         addressLocality: 'León',
         addressRegion: 'Guanajuato',
         addressCountry: 'MX',
       },
+      ...(b.mapUrl ? { hasMap: b.mapUrl } : {}),
+      ...(b.openingHours.length ? { openingHours: b.openingHours } : {}),
       sameAs: [settings.instagram, settings.facebook],
       medicalSpecialty: ['Dentistry'],
     })),

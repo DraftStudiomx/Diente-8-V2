@@ -43,11 +43,16 @@ export type Branch = {
   fullName: string; // "Diente8 Panorama"
   addressLines: string[];
   streetAddress: string;
+  postalCode: string;
   mapUrl: string | null;
   phone: string | null;
+  hours: OpeningHours[]; // shown on the site
+  openingHours: string[]; // schema.org format for Google, e.g. "Mo-Fr 10:00-14:00"
   photo: ImageRef;
   note: string;
 };
+
+export type OpeningHours = { days: string; time: string };
 
 export type Doctor = {
   slug: string;
@@ -153,4 +158,28 @@ export type SiteCopy = {
   companiesText: string;
   insurersLabel: string;
   insurersButton: string;
+
+  hoursLabel: string;
+  contactWhatsappLabel: string;
+  floatingWhatsapp: string;
+  formEyebrow: string;
+  formTitle: string;
+  formText: string;
+  formName: string;
+  formPhone: string;
+  formEmail: string;
+  formBranch: string;
+  formBranchAny: string;
+  formReason: string;
+  formReasonUnknown: string;
+  formMessage: string;
+  formPrivacy: string;
+  formButton: string;
+  formSending: string;
+  formSuccess: string;
+  formError: string;
+
+  privacyTitle: string;
+  privacyUpdated: string;
+  privacyBody: string;
 };

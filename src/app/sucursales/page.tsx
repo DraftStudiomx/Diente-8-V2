@@ -24,7 +24,7 @@ export default async function BranchesPage() {
       <section id="sucursales" className="sec sec-white" style={{ borderTop: 0 }}>
         <div className="wrap">
           <SectionHead as="h1" title={fill(copy.branchesTitle)} meta={fill(copy.branchesMeta)} />
-          <BranchCards branches={content.branches} mapLabel={copy.branchesMapLink} />
+          <BranchCards branches={content.branches} mapLabel={copy.branchesMapLink} hoursLabel={copy.hoursLabel} showMap />
         </div>
       </section>
       <CtaBand whatsapp={wa} copy={copy} />

@@ -56,7 +56,12 @@ export function Footer({ big = false, whatsapp, copy }: { big?: boolean; whatsap
               </Link>
             ))}
           </div>
-          <p className="footer-copy">© {new Date().getFullYear()} Diente8 Clínica Dental — León, Guanajuato</p>
+          <p className="footer-copy">
+            © {new Date().getFullYear()} Diente8 Clínica Dental — León, Guanajuato ·{' '}
+            <Link href="/aviso-de-privacidad" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              Aviso de privacidad
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

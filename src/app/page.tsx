@@ -74,7 +74,7 @@ export default async function HomePage() {
       <section id="sucursales" className="sec sec-white">
         <div className="wrap">
           <SectionHead title={fill(copy.homeBranchesTitle, vars)} meta={fill(copy.homeBranchesMeta, vars)} />
-          <BranchCards branches={branches} mapLabel={copy.branchesMapLink} />
+          <BranchCards branches={branches} mapLabel={copy.branchesMapLink} hoursLabel={copy.hoursLabel} />
           <Link href="/sucursales" className="link-arrow" style={{ marginTop: 'clamp(28px, 3vw, 40px)' }}>
             {fill(copy.homeBranchesLink, vars)}
           </Link>

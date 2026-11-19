@@ -91,4 +91,44 @@ export const localCopy: SiteCopy = {
     'Trabajamos con seguros dentales que facilitan la atención de tus colaboradores — acceso directo a las {especialidades} especialidades, diagnósticos oportunos y menos ausentismo por citas dispersas entre clínicas.',
   insurersLabel: 'Aseguradoras con las que trabajamos',
   insurersButton: '¿Tu aseguradora aplica? Pregúntanos',
+
+  hoursLabel: 'Horario',
+  contactWhatsappLabel: 'WhatsApp',
+  floatingWhatsapp: 'Escríbenos por WhatsApp',
+  formEyebrow: 'Agenda tu valoración',
+  formTitle: 'Déjanos tus datos y te contactamos.',
+  formText: 'Te confirmamos día y hora en horario de atención. Si lo prefieres, escríbenos directo por WhatsApp.',
+  formName: 'Nombre',
+  formPhone: 'Teléfono o WhatsApp',
+  formEmail: 'Correo (opcional)',
+  formBranch: 'Sucursal de preferencia',
+  formBranchAny: 'Cualquiera',
+  formReason: 'Motivo de la consulta',
+  formReasonUnknown: 'No sé, necesito una valoración',
+  formMessage: 'Mensaje (opcional)',
+  formPrivacy: 'He leído y acepto el *aviso de privacidad*.',
+  formButton: 'Enviar',
+  formSending: 'Enviando…',
+  formSuccess: '¡Gracias! Recibimos tus datos y te contactaremos pronto para confirmar tu cita.',
+  formError: 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp.',
+
+  privacyTitle: 'Aviso de privacidad',
+  privacyUpdated: 'Última actualización: noviembre de 2026',
+  privacyBody: `## Responsable
+Diente8 Clínica Dental (en adelante, "Diente8"), con domicilios en C. Pedro Lyonnet 158, Panorama, 37160, y C. San Sebastián 324, La Martinica, 37500, ambos en León, Guanajuato, es responsable del tratamiento de los datos personales que nos proporcionas a través de este sitio web.
+
+## Datos que recabamos
+Por medio del formulario de contacto recabamos tu nombre, teléfono, correo electrónico (opcional), la sucursal de tu preferencia y, si decides compartirlo, el motivo de tu consulta. El motivo de consulta puede referirse a tu estado de salud, por lo que se considera un dato personal sensible; solo lo tratamos con tu consentimiento expreso, que otorgas al marcar la casilla de aceptación del formulario.
+
+## Para qué usamos tus datos
+Usamos tus datos únicamente para contactarte, agendar tu cita o valoración y responder a tu solicitud. No los usamos con fines publicitarios ni los vendemos.
+
+## Con quién los compartimos
+No compartimos tus datos con terceros, salvo con los proveedores tecnológicos que nos ayudan a operar este sitio y a recibir los mensajes del formulario (alojamiento web y envío de correo), quienes los tratan solo por cuenta de Diente8, y cuando lo exija una autoridad competente conforme a la ley.
+
+## Tus derechos
+Puedes acceder a tus datos, rectificarlos, cancelarlos u oponerte a su uso (derechos ARCO), así como revocar tu consentimiento, enviando tu solicitud a diente8899@gmail.com con tu nombre, un medio para responderte y la descripción de lo que solicitas. Te responderemos en los plazos que establece la ley.
+
+## Cambios a este aviso
+Cualquier cambio a este aviso de privacidad se publicará en esta misma página.`,
 };

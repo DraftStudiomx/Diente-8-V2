@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers';
 import { DraftModeBar } from '@/components/DraftModeBar';
 import { Nav } from '@/components/Nav';
 import { Reveal } from '@/components/Reveal';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { getContent, whatsappHref } from '@/lib/content';
 import './globals.css';
 
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Nav ctaHref={whatsappHref(settings)} ctaLabel={copy.navCta} />
         <main>{children}</main>
         <Reveal />
+        {settings.whatsapp && <WhatsAppButton href={whatsappHref(settings)} label={copy.floatingWhatsapp} />}
         {isDraft && (
           <>
             <VisualEditing />

@@ -1,6 +1,6 @@
 // Local copy of all site content, ported from the static HTML site.
 // Used until Sanity is connected, and as a fallback if Sanity is unreachable.
-import { localCopy } from './copy';
+import { localCopy } from './copy.ts';
 import type { Branch, Doctor, Faq, ImageRef, Insurer, SiteContent, SiteSettings, Specialty } from './types';
 
 const photo = (file: string, alt: string): ImageRef => ({ src: `/assets/content/${file}`, alt, width: 1600, height: 1200 });
@@ -11,10 +11,10 @@ export const settings: SiteSettings = {
   siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://diente8-landing.vercel.app').replace(/\/$/, ''),
   description:
     'Diente8: clínica dental en León, Guanajuato con 11 especialidades bajo un mismo techo y 2 sucursales (Panorama y La Martinica). Odontología general, ortodoncia, implantología, endodoncia, odontopediatría y más.',
-  whatsapp: null, // pending: confirm the clinic's WhatsApp number
+  whatsapp: '524778820078',
   whatsappMessage: 'Hola, me gustaría agendar una valoración en Diente8.',
   phone: null,
-  email: null,
+  email: 'diente8899@gmail.com',
   instagram: 'https://instagram.com/diente8_',
   facebook: 'https://facebook.com/diente8',
   years: 19,
@@ -217,10 +217,16 @@ export const branches: Branch[] = [
     slug: 'panorama',
     name: 'Panorama',
     fullName: 'Diente8 Panorama',
-    addressLines: ['Consultorio #158,', 'León, Gto.'],
-    streetAddress: '',
-    mapUrl: null,
+    addressLines: ['C. Pedro Lyonnet 158,', 'Panorama, 37160 León, Gto.'],
+    streetAddress: 'C. Pedro Lyonnet 158',
+    postalCode: '37160',
+    mapUrl: 'https://maps.app.goo.gl/2XoZqXdLDFqnBZZ48',
     phone: null,
+    hours: [
+      { days: 'Lunes a viernes', time: '10:00 a 14:00 y 16:00 a 20:00' },
+      { days: 'Sábado', time: '9:00 a 15:00' },
+    ],
+    openingHours: ['Mo-Fr 10:00-14:00', 'Mo-Fr 16:00-20:00', 'Sa 09:00-15:00'],
     photo: photo('panorama-fachada.jpg', 'Fachada de Diente8 Panorama en León'),
     note: 'Ortodoncia · Odontología estética · Cirugía maxilofacial, entre otras especialidades.',
   },
@@ -228,10 +234,16 @@ export const branches: Branch[] = [
     slug: 'martinica',
     name: 'La Martinica',
     fullName: 'Diente8 La Martinica',
-    addressLines: ['San Sebastián 322,', 'La Martinica, León, Gto.'],
-    streetAddress: 'San Sebastián 322',
-    mapUrl: null,
+    addressLines: ['C. San Sebastián 324,', 'La Martinica, 37500 León, Gto.'],
+    streetAddress: 'C. San Sebastián 324',
+    postalCode: '37500',
+    mapUrl: 'https://maps.app.goo.gl/gWZB3x1EVpvM2vaX9',
     phone: null,
+    hours: [
+      { days: 'Lunes a viernes', time: '10:00 a 14:00 y 16:00 a 20:00' },
+      { days: 'Sábado', time: '9:00 a 15:00' },
+    ],
+    openingHours: ['Mo-Fr 10:00-14:00', 'Mo-Fr 16:00-20:00', 'Sa 09:00-15:00'],
     photo: photo('martinica-fachada.jpg', 'Fachada de Diente8 La Martinica en León'),
     note: 'Ortodoncia · Odontología estética · Cirugía maxilofacial, entre otras especialidades.',
   },
