@@ -249,6 +249,12 @@ export const branches: Branch[] = [
   },
 ];
 
+// Bios shown on the featured specialist block (approved by the clinic).
+const BIOS: Record<string, string> = {
+  'fernando-tenorio':
+    'Cirujano Dentista especialista en Patología Bucal, con Maestría y Doctorado en Ciencias. Es profesor-investigador de la UNAM, Campus León, y miembro del Sistema Nacional de Investigadores (nivel I), con artículos y capítulos de libro publicados. En Diente8 diagnostica y da seguimiento a lesiones de la boca, en coordinación con el resto del equipo.',
+};
+
 const dr = (
   stripOrder: number,
   slug: string,
@@ -268,7 +274,7 @@ const dr = (
   branch,
   photo: { src: `/assets/equipo/${slug}.webp`, alt: `${title} ${name}, ${specialtyLabel}`, width: 320, height: 320 },
   featured: slug === 'fernando-tenorio',
-  bio: null,
+  bio: BIOS[slug] ?? null,
   stripOrder,
 });
 
