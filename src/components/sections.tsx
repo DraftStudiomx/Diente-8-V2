@@ -2,7 +2,8 @@ import { stegaClean } from 'next-sanity';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatMxPhone, mapEmbedSrc, specialtyHref } from '@/lib/links';
-import type { Branch, Doctor, Faq, SiteContent, Specialty } from '@/content/types';
+import type { Branch, Doctor, Faq, Insurer, SiteContent, SiteCopy, Specialty } from '@/content/types';
+import { fill, Rich, type CopyVars } from '@/components/text';
 
 export function SectionHead({ title, meta, as: Tag = 'h2', tight = false }: { title: string; meta?: string; as?: 'h1' | 'h2'; tight?: boolean }) {
   return (
@@ -70,7 +71,7 @@ export function BranchCards({
             <div className="branch-map">
               <iframe
                 title={stegaClean(`Mapa de ${b.fullName}`)}
-                src={mapEmbedSrc(stegaClean(`Diente8 ${b.addressLines.join(' ')}`))}
+                src={mapEmbedSrc(stegaClean(`${b.mapName || 'Diente8'}, ${b.addressLines.join(' ')}`))}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -156,7 +157,10 @@ export function TeamFigure({ doctors }: { doctors: Doctor[] }) {
   );
 }
 
-export function FaqList({ faqs }: { faqs: Faq[] }) {
+// Answers can say {aseguradoras}: it becomes the current insurer list ("AUNA, Centauro, dentalia y Odontoprev").
+export function FaqList({ faqs, insurers = [] }: { faqs: Faq[]; insurers?: Insurer[] }) {
+  const names = insurers.map((i) => stegaClean(i.name));
+  const aseguradoras = names.length > 1 ? `${names.slice(0, -1).join(', ')} y ${names.at(-1)}` : (names[0] ?? 'aseguradoras');
   return (
     <div>
       {faqs.map((f) => (
@@ -165,10 +169,51 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
             {f.question}
             <span aria-hidden="true">+</span>
           </summary>
-          <p>{f.answer}</p>
+          <p>{fill(f.answer, { aseguradoras })}</p>
         </details>
       ))}
     </div>
+  );
+}
+
+// "Empresas y seguros dentales": pitch for companies plus the insurer logos (home page).
+export function CompaniesSection({
+  copy,
+  insurers,
+  vars,
+  whatsapp,
+}: {
+  copy: Pick<SiteCopy, 'companiesEyebrow' | 'companiesTitle' | 'companiesText' | 'insurersLabel' | 'insurersButton'>;
+  insurers: Insurer[];
+  vars: CopyVars;
+  whatsapp: string;
+}) {
+  const ext = whatsapp.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+  return (
+    <section id="empresas" className="contact">
+      <div className="wrap companies">
+        <div>
+          <p className="eyebrow">{copy.companiesEyebrow}</p>
+          <h2>
+            <Rich text={copy.companiesTitle} vars={vars} />
+          </h2>
+          <p className="companies-lead">{fill(copy.companiesText, vars)}</p>
+        </div>
+        <div data-reveal="ink">
+          <p className="ins-label">{copy.insurersLabel}</p>
+          <div className="ins-grid">
+            {insurers.map((i) => (
+              <div key={i.name} className="ins">
+                <Image src={i.logo.src} alt={stegaClean(i.logo.alt)} width={i.logo.width} height={i.logo.height} />
+              </div>
+            ))}
+          </div>
+          <a href={whatsapp} className="btn btn-gold" {...ext}>
+            {copy.insurersButton}
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 

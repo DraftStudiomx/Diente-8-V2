@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { stegaClean } from 'next-sanity';
-import Image from 'next/image';
 import { ContactForm } from '@/components/ContactForm';
 import { CtaBand, Footer } from '@/components/Footer';
 import { ClinicJsonLd, Hours } from '@/components/sections';
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const content = await getContent();
-  const { settings, branches, insurers, specialties, doctors, copy } = content;
+  const { settings, branches, specialties, doctors, copy } = content;
   const wa = whatsappHref(settings);
   const ext = wa.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
   const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
@@ -112,30 +111,6 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section id="empresas" className="contact" style={{ paddingTop: 'clamp(72px, 10vw, 120px)' }}>
-        <div className="wrap companies">
-          <div>
-            <p className="eyebrow">{copy.companiesEyebrow}</p>
-            <h2>
-              <Rich text={copy.companiesTitle} vars={vars} />
-            </h2>
-            <p className="companies-lead">{fill(copy.companiesText, vars)}</p>
-          </div>
-          <div data-reveal="ink">
-            <p className="ins-label">{copy.insurersLabel}</p>
-            <div className="ins-grid">
-              {insurers.map((i) => (
-                <div key={i.name} className="ins">
-                  <Image src={i.logo.src} alt={i.logo.alt} width={i.logo.width} height={i.logo.height} />
-                </div>
-              ))}
-            </div>
-            <a href={wa} className="btn btn-gold" {...ext}>
-              {copy.insurersButton}
-            </a>
-          </div>
-        </div>
-      </section>
       <CtaBand whatsapp={wa} copy={copy} />
       <Footer whatsapp={wa} copy={copy} />
     </>

@@ -55,7 +55,7 @@ const CONTENT_QUERY = defineQuery(`{
     ${img('image')}, seoTitle, seoDescription
   },
   "branches": *[_type == "branch"] | order(order asc){
-    "slug": slug.current, name, fullName, "addressLines": coalesce(addressLines, []), streetAddress, postalCode, mapUrl, phone,
+    "slug": slug.current, name, fullName, "addressLines": coalesce(addressLines, []), streetAddress, postalCode, mapUrl, mapName, phone,
     "hours": coalesce(hours[]{ days, time }, []), "openingHours": coalesce(openingHours, []), ${img('photo')}, note
   },
   "doctors": *[_type == "doctor"] | order(order asc){
@@ -127,7 +127,7 @@ async function fetchFromSanity(): Promise<SiteContent | null> {
       })),
     branches: data.branches
       .filter((b) => b.slug && hasImage(b.photo))
-      .map((b) => ({ ...b, streetAddress: b.streetAddress ?? '', postalCode: b.postalCode ?? '', mapUrl: orNull(b.mapUrl), phone: orNull(b.phone), note: b.note ?? '' })),
+      .map((b) => ({ ...b, streetAddress: b.streetAddress ?? '', postalCode: b.postalCode ?? '', mapUrl: orNull(b.mapUrl), mapName: b.mapName ?? '', phone: orNull(b.phone), note: b.note ?? '' })),
     doctors: data.doctors.filter((d) => d.slug && hasImage(d.photo)).map((d) => ({ ...d, branch: orNull(d.branch), bio: orNull(d.bio) })),
     insurers: data.insurers.filter((i) => hasImage(i.logo)),
     faqs: data.faqs,

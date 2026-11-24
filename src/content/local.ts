@@ -220,7 +220,8 @@ export const branches: Branch[] = [
     addressLines: ['C. Pedro Lyonnet 158,', 'Panorama, 37160 León, Gto.'],
     streetAddress: 'C. Pedro Lyonnet 158',
     postalCode: '37160',
-    mapUrl: 'https://maps.app.goo.gl/2XoZqXdLDFqnBZZ48',
+    mapUrl: 'https://maps.app.goo.gl/CYgE28DR2rRgnN4YA',
+    mapName: 'Diente 8 Clinica Dental Panorama',
     phone: null,
     hours: [
       { days: 'Lunes a viernes', time: '10:00 a 14:00 y 16:00 a 20:00' },
@@ -238,6 +239,7 @@ export const branches: Branch[] = [
     streetAddress: 'C. San Sebastián 324',
     postalCode: '37500',
     mapUrl: 'https://maps.app.goo.gl/gWZB3x1EVpvM2vaX9',
+    mapName: 'Clínica Dental Diente 8',
     phone: null,
     hours: [
       { days: 'Lunes a viernes', time: '10:00 a 14:00 y 16:00 a 20:00' },
@@ -318,7 +320,7 @@ export const faqs: Faq[] = [
   {
     question: '¿Trabajan con seguros dentales?',
     answer:
-      'Sí. Trabajamos con seguros dentales tanto para pacientes particulares como para empresas que buscan dar cobertura dental a sus colaboradores. Escríbenos para confirmar si tu póliza aplica.',
+      'Sí. Trabajamos con {aseguradoras}, tanto para pacientes particulares como para empresas que buscan dar cobertura dental a sus colaboradores. Si tienes dudas sobre tu póliza, escríbenos y lo revisamos contigo.',
   },
   {
     question: '¿Atienden niños?',

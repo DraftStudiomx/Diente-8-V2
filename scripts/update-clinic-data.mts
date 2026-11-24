@@ -30,6 +30,7 @@ for (const b of branches) {
       streetAddress: b.streetAddress,
       postalCode: b.postalCode,
       mapUrl: b.mapUrl,
+      mapName: b.mapName,
       hours: b.hours.map((h, i) => ({ _key: `h${i}`, _type: 'hoursRow', ...h })),
       openingHours: b.openingHours,
     }),

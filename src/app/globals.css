@@ -256,7 +256,8 @@ html.d8-reveal [data-reveal='rule'].is-in { transform: scaleX(1); }
 .wa-fab:hover { color: #ffffff; background: #186640; transform: translateY(-2px); }
 .wa-fab svg { width: 24px; height: 24px; flex-shrink: 0; }
 @media (max-width: 559px) {
-  .wa-fab { padding: 13px; }
+  .wa-fab { right: 16px; bottom: 16px; padding: 16px; }
+  .wa-fab svg { width: 32px; height: 32px; }
   .wa-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 

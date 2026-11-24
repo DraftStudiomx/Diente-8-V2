@@ -45,6 +45,7 @@ export type Branch = {
   streetAddress: string;
   postalCode: string;
   mapUrl: string | null;
+  mapName: string; // business name as listed on Google Maps; makes the embedded map show the clinic's place card
   phone: string | null;
   hours: OpeningHours[]; // shown on the site
   openingHours: string[]; // schema.org format for Google, e.g. "Mo-Fr 10:00-14:00"

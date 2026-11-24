@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CtaBand, Footer } from '@/components/Footer';
 import { Hero } from '@/components/hero/Hero';
-import { BranchCards, ClinicJsonLd, FaqList, FeaturedDoctor, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
+import { BranchCards, ClinicJsonLd, CompaniesSection, FaqList, FeaturedDoctor, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
 import { fill, Rich } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const content = await getContent();
-  const { settings, specialties, branches, doctors, faqs, homeSpecialties, copy } = content;
+  const { settings, specialties, branches, doctors, faqs, insurers, homeSpecialties, copy } = content;
   const wa = whatsappHref(settings);
   const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
   const featured = doctors.find((d) => d.featured);
@@ -83,6 +83,8 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <CompaniesSection copy={copy} insurers={insurers} vars={vars} whatsapp={wa} />
+
       <section id="equipo" className="sec sec-cream">
         <div className="wrap">
           <SectionHead title={fill(copy.homeTeamTitle, vars)} meta={fill(copy.homeTeamMeta, vars)} />
@@ -113,7 +115,7 @@ export default async function HomePage() {
       <section id="faq" className="sec sec-cream" style={{ borderTop: '1px solid var(--line)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <SectionHead title={fill(copy.faqTitle, vars)} />
-          <FaqList faqs={faqs} />
+          <FaqList faqs={faqs} insurers={insurers} />
         </div>
       </section>
 
