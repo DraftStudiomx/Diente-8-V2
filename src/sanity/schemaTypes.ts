@@ -246,7 +246,8 @@ const COPY_FIELDS: CopyField[] = [
   ['spWhereAll', 'Disponibilidad (ambas sucursales)', 'especialidades', { long: true }],
   ['spTeamTitleOne', 'Título de especialistas (si es uno)', 'especialidades'],
   ['spTeamTitleMany', 'Título de especialistas (si son varios)', 'especialidades'],
-  ['spFeaturedLabel', 'Etiqueta de especialista destacado', 'especialidades'],
+  ['spFeaturedLabel', 'Etiqueta de especialista destacado', 'especialidades', { hint: 'También se usa en Inicio y Equipo. El especialista destacado se elige con el interruptor "Destacado" de cada doctor.' }],
+  ['featuredLink', 'Enlace del especialista destacado', 'especialidades', { hint: 'Escribe {especialidad} para mostrar el nombre de su especialidad.' }],
   ['spMoreTitle', 'Otras especialidades · título', 'especialidades'],
   ['spMoreMeta', 'Otras especialidades · subtítulo', 'especialidades'],
 

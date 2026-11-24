@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { CtaBand, Footer } from '@/components/Footer';
-import { SectionHead } from '@/components/sections';
+import { FeaturedDoctor, SectionHead } from '@/components/sections';
 import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
@@ -19,6 +19,8 @@ export default async function TeamPage() {
   const { settings, doctors, branches, specialties, copy } = await getContent();
   const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
   const wa = whatsappHref(settings);
+  const featured = doctors.find((d) => d.featured);
+  const featuredSpecialty = featured && specialties.find((s) => s.slug === featured.specialties[0]);
   const branchName = (slug: string | null) => branches.find((b) => b.slug === slug)?.name;
 
   return (
@@ -29,8 +31,9 @@ export default async function TeamPage() {
           <p style={{ margin: '0 0 clamp(48px, 6vw, 72px)', maxWidth: 620, fontSize: 15, lineHeight: 1.6, color: 'rgba(22,35,42,0.6)', fontWeight: 300 }}>
             {fill(copy.teamIntro, vars)}
           </p>
+          {featured && <FeaturedDoctor doctor={featured} specialty={featuredSpecialty} label={copy.spFeaturedLabel} linkLabel={copy.featuredLink} />}
           <div className="grid-docs">
-            {doctors.map((d) => (
+            {doctors.filter((d) => d !== featured).map((d) => (
               <div key={d.slug} data-reveal="ink" className="doc" id={d.slug}>
                 <Image src={d.photo.src} alt={d.photo.alt} width={112} height={112} />
                 <div>

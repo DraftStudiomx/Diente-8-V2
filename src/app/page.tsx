@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CtaBand, Footer } from '@/components/Footer';
 import { Hero } from '@/components/hero/Hero';
-import { BranchCards, ClinicJsonLd, FaqList, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
+import { BranchCards, ClinicJsonLd, FaqList, FeaturedDoctor, SectionHead, SpecialtyCard, TeamFigure } from '@/components/sections';
 import { fill, Rich } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
@@ -21,6 +21,8 @@ export default async function HomePage() {
   const { settings, specialties, branches, doctors, faqs, homeSpecialties, copy } = content;
   const wa = whatsappHref(settings);
   const vars = { especialidades: specialties.length, especialistas: doctors.length, años: settings.years };
+  const featured = doctors.find((d) => d.featured);
+  const featuredSpecialty = featured && specialties.find((s) => s.slug === featured.specialties[0]);
   const preview = homeSpecialties.map((slug) => specialties.find((s) => s.slug === slug)).filter((s) => s !== undefined);
 
   return (
@@ -85,6 +87,7 @@ export default async function HomePage() {
         <div className="wrap">
           <SectionHead title={fill(copy.homeTeamTitle, vars)} meta={fill(copy.homeTeamMeta, vars)} />
           <TeamFigure doctors={doctors} />
+          {featured && <FeaturedDoctor doctor={featured} specialty={featuredSpecialty} label={copy.spFeaturedLabel} linkLabel={copy.featuredLink} compact />}
           <Link href="/equipo" className="link-arrow">
             {fill(copy.homeTeamLink, vars)}
           </Link>

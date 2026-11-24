@@ -98,6 +98,41 @@ export function Hours({ label, hours, light = false }: { label: string; hours: B
   );
 }
 
+// Highlighted specialist (the "Destacado" switch in the Studio): photo, bio and a link to their specialty.
+// `compact` (home page) clamps the bio to a few lines.
+export function FeaturedDoctor({
+  doctor,
+  specialty,
+  label,
+  linkLabel,
+  compact = false,
+}: {
+  doctor: Doctor;
+  specialty?: Specialty;
+  label: string;
+  linkLabel?: string;
+  compact?: boolean;
+}) {
+  const bio = doctor.bio ?? `${doctor.specialtyLabel}. Valora y da seguimiento a tu caso dentro del mismo expediente de Diente8, en coordinación con el resto del equipo.`;
+  return (
+    <div data-reveal="ink" className={`featured-doc${compact ? ' compact' : ''}`}>
+      <Image src={doctor.photo.src} alt={stegaClean(doctor.photo.alt)} width={168} height={168} />
+      <div>
+        <p className="eyebrow">{label}</p>
+        <h3>
+          {doctor.title} {doctor.name}
+        </h3>
+        <p className="featured-bio">{bio}</p>
+        {specialty && linkLabel && (
+          <Link href={specialtyHref(specialty.slug)} className="link-arrow">
+            {linkLabel.replace('{especialidad}', specialty.name)}
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function TeamFigure({ doctors }: { doctors: Doctor[] }) {
   const strip = [...doctors].sort((a, b) => a.stripOrder - b.stripOrder);
   const alt = stegaClean(

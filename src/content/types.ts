@@ -135,6 +135,7 @@ export type SiteCopy = {
   spTeamTitleOne: string;
   spTeamTitleMany: string;
   spFeaturedLabel: string;
+  featuredLink: string;
   spMoreTitle: string;
   spMoreMeta: string;
 

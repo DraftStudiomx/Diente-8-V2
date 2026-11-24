@@ -270,3 +270,18 @@ html.d8-reveal [data-reveal='rule'].is-in { transform: scaleX(1); }
 .contact-map:hover { color: var(--gold); }
 .contact-phone { display: block; margin: 0 0 12px; font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.01em; color: var(--cream); }
 .contact-phone:hover { color: var(--gold); }
+
+/* Featured specialist (home, team, specialty pages) */
+.featured-doc { display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px); align-items: center; padding: clamp(28px, 4vw, 44px); margin-bottom: clamp(36px, 4vw, 56px); background: var(--cream); border: 1px solid rgba(201, 162, 76, 0.35); }
+.sec-cream .featured-doc { background: var(--white); }
+.featured-doc img { width: 168px; height: 168px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--gold); background: var(--navy); flex-shrink: 0; }
+.featured-doc > div { flex: 1 1 320px; }
+.featured-doc .eyebrow { margin-bottom: 10px; }
+.featured-doc h3 { margin: 0 0 12px; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.12; letter-spacing: -0.02em; color: var(--navy); }
+.featured-bio { margin: 0; max-width: 560px; font-size: 16px; line-height: 1.65; font-weight: 300; color: var(--muted); }
+.featured-doc .link-arrow { margin-top: 20px; }
+.featured-doc.compact { margin: clamp(40px, 5vw, 64px) 0; }
+.featured-doc.compact .featured-bio { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+@media (max-width: 559px) {
+  .featured-doc img { width: 120px; height: 120px; }
+}

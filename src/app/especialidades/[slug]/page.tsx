@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { stegaClean } from 'next-sanity';
 import { notFound } from 'next/navigation';
 import { CtaBand, Footer } from '@/components/Footer';
-import { SpecialtyCard } from '@/components/sections';
+import { FeaturedDoctor, SpecialtyCard } from '@/components/sections';
 import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 import { specialtyHref } from '@/lib/links';
@@ -143,18 +143,7 @@ export default async function SpecialtyPage({ params }: { params: Promise<Params
               </h2>
               <span className="sec-meta">{s.name}</span>
             </div>
-            {featured && (
-              <div data-reveal="ink" className="sp-featured">
-                <Image src={featured.photo.src} alt={featured.photo.alt} width={168} height={168} />
-                <div>
-                  <p className="eyebrow">{copy.spFeaturedLabel}</p>
-                  <h3>
-                    {featured.title} {featured.name}
-                  </h3>
-                  <p>{featured.bio ?? `${featured.specialtyLabel}. Valora y da seguimiento a tu caso dentro del mismo expediente de Diente8, en coordinación con el resto del equipo.`}</p>
-                </div>
-              </div>
-            )}
+            {featured && <FeaturedDoctor doctor={featured} label={copy.spFeaturedLabel} />}
             {rest.length > 0 && (
               <div className="grid-docs">
                 {rest.map((d) => (

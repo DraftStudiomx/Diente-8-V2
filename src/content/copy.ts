@@ -67,6 +67,7 @@ export const localCopy: SiteCopy = {
   spTeamTitleOne: 'Tu especialista',
   spTeamTitleMany: 'Especialistas',
   spFeaturedLabel: 'Especialista destacado',
+  featuredLink: 'Ver {especialidad} →',
   spMoreTitle: 'Otras especialidades',
   spMoreMeta: 'Un mismo expediente para todas',
 
