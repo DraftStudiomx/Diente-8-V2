@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { SiteCopy } from '@/content/types';
+import { getContent } from '@/lib/content';
 import { NAV_LINKS } from '@/lib/links';
 import { Rich } from './text';
 
@@ -30,7 +31,8 @@ export function CtaBand({ whatsapp, copy }: { whatsapp: string; copy: SiteCopy }
   );
 }
 
-export function Footer({ big = false, whatsapp, copy }: { big?: boolean; whatsapp: string; copy: SiteCopy }) {
+export async function Footer({ big = false, whatsapp, copy }: { big?: boolean; whatsapp: string; copy: SiteCopy }) {
+  const { settings } = await getContent();
   return (
     <footer className="footer">
       {big && (
@@ -62,6 +64,12 @@ export function Footer({ big = false, whatsapp, copy }: { big?: boolean; whatsap
               Aviso de privacidad
             </Link>
           </p>
+          {settings.sanitaryName && (
+            <p className="footer-copy footer-sanitary">
+              Responsable sanitario: {settings.sanitaryName}
+              {settings.sanitaryLicense && <> · Cédula profesional {settings.sanitaryLicense}</>}
+            </p>
+          )}
         </div>
       </div>
     </footer>

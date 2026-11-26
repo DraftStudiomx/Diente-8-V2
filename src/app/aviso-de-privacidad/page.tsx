@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { stegaClean } from 'next-sanity';
 import { Footer } from '@/components/Footer';
+import { fill } from '@/components/text';
 import { getContent, whatsappHref } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -27,14 +28,20 @@ function Body({ text }: { text: string }) {
 }
 
 export default async function PrivacyPage() {
-  const { settings, copy } = await getContent();
+  const { settings, branches, copy } = await getContent();
+  const addresses = branches.map((b) => b.addressLines.join(' ').replace(/,\s*$/, ''));
+  const vars = {
+    responsable: settings.legalName || settings.name,
+    domicilio: settings.legalAddress || addresses.join(', y en '),
+    correo: settings.email || 'el correo de contacto de la clínica',
+  };
   return (
     <>
       <section className="sec sec-cream">
         <article className="legal">
           <h1>{copy.privacyTitle}</h1>
           <p className="updated">{copy.privacyUpdated}</p>
-          <Body text={copy.privacyBody} />
+          <Body text={fill(copy.privacyText, vars)} />
         </article>
       </section>
       <Footer whatsapp={whatsappHref(settings)} copy={copy} />

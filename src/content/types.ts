@@ -20,6 +20,10 @@ export type SiteSettings = {
   years: number;
   patients: number; // shown as "2,000+"
   patientsLabel: string;
+  legalName: string | null; // person or company responsible for the data (privacy notice)
+  legalAddress: string | null; // address for notices (privacy notice); falls back to the branch addresses
+  sanitaryName: string | null; // "responsable sanitario", shown in the footer
+  sanitaryLicense: string | null; // their cédula profesional
 };
 
 export type Specialty = {
@@ -183,5 +187,5 @@ export type SiteCopy = {
 
   privacyTitle: string;
   privacyUpdated: string;
-  privacyBody: string;
+  privacyText: string; // {responsable}, {domicilio}, {correo} filled from SiteSettings
 };

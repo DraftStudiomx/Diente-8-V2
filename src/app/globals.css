@@ -109,6 +109,7 @@ a:hover { color: var(--gold); }
 .footer-links a { font-size: 13px; color: rgba(250, 247, 241, 0.7); }
 .footer-links a:hover { color: var(--gold); }
 .footer-copy { margin: 0; font-size: 12px; color: rgba(250, 247, 241, 0.45); }
+.footer-sanitary { flex-basis: 100%; margin-top: -8px; }
 
 /* ---------- Site nav: inline links on desktop, hamburger below 900px ---------- */
 .nav { position: sticky; top: 0; z-index: 50; background: var(--navy); border-bottom: 1px solid rgba(201, 162, 76, 0.22); }

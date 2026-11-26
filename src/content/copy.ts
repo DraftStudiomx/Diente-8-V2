@@ -115,21 +115,34 @@ export const localCopy: SiteCopy = {
 
   privacyTitle: 'Aviso de privacidad',
   privacyUpdated: 'Última actualización: noviembre de 2026',
-  privacyBody: `## Responsable
-Diente8 Clínica Dental (en adelante, "Diente8"), con domicilios en C. Pedro Lyonnet 158, Panorama, 37160, y C. San Sebastián 324, La Martinica, 37500, ambos en León, Guanajuato, es responsable del tratamiento de los datos personales que nos proporcionas a través de este sitio web.
+  privacyText: `## Responsable
+{responsable}, con domicilio en {domicilio} (en adelante, "Diente8"), es responsable del tratamiento de los datos personales que nos proporcionas a través de este sitio web, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
 
 ## Datos que recabamos
-Por medio del formulario de contacto recabamos tu nombre, teléfono, correo electrónico (opcional), la sucursal de tu preferencia y, si decides compartirlo, el motivo de tu consulta. El motivo de consulta puede referirse a tu estado de salud, por lo que se considera un dato personal sensible; solo lo tratamos con tu consentimiento expreso, que otorgas al marcar la casilla de aceptación del formulario.
+A través del formulario de contacto recabamos tu nombre, teléfono, correo electrónico (opcional), la sucursal de tu preferencia y, si decides compartirlos, el motivo de tu consulta y un mensaje.
+
+El motivo de consulta y el mensaje pueden incluir información sobre tu estado de salud, que la ley considera un dato personal sensible. Solo la tratamos con tu consentimiento expreso, que otorgas al marcar la casilla de aceptación antes de enviar el formulario. Te pedimos compartir únicamente lo necesario para agendar tu cita.
 
 ## Para qué usamos tus datos
-Usamos tus datos únicamente para contactarte, agendar tu cita o valoración y responder a tu solicitud. No los usamos con fines publicitarios ni los vendemos.
+Usamos tus datos únicamente para contactarte, agendar tu cita o valoración y dar seguimiento a tu solicitud. No los usamos con fines publicitarios ni de mercadotecnia, y no los vendemos. Si en el futuro quisiéramos usarlos para otra finalidad, actualizaremos este aviso y te pediremos tu consentimiento.
 
-## Con quién los compartimos
-No compartimos tus datos con terceros, salvo con los proveedores tecnológicos que nos ayudan a operar este sitio y a recibir los mensajes del formulario (alojamiento web y envío de correo), quienes los tratan solo por cuenta de Diente8, y cuando lo exija una autoridad competente conforme a la ley.
+## Menores de edad
+Si la cita es para una persona menor de edad, el formulario debe llenarlo su madre, padre o tutor.
+
+## Con quién compartimos tus datos
+No transferimos tus datos a terceros. Para operar este sitio y recibir las solicitudes nos apoyamos en proveedores de servicios tecnológicos (alojamiento web, gestión de contenido y envío de correo electrónico), algunos ubicados fuera de México, que tratan los datos únicamente por cuenta de Diente8 y conforme a sus instrucciones. También podremos comunicarlos cuando lo requiera una autoridad competente conforme a la ley.
+
+## Cuánto tiempo los conservamos
+Conservamos tus datos solo durante el tiempo necesario para atender tu solicitud y cumplir con las obligaciones legales aplicables; después los eliminamos. Si te conviertes en paciente, tu información clínica se rige por el aviso de privacidad que te daremos a conocer en la clínica.
+
+## Cookies y servicios de terceros
+Este sitio no usa cookies de publicidad ni de rastreo. Las páginas que muestran mapas incluyen el servicio de Google Maps, que puede usar sus propias cookies conforme a las políticas de privacidad de Google.
 
 ## Tus derechos
-Puedes acceder a tus datos, rectificarlos, cancelarlos u oponerte a su uso (derechos ARCO), así como revocar tu consentimiento, enviando tu solicitud a diente8899@gmail.com con tu nombre, un medio para responderte y la descripción de lo que solicitas. Te responderemos en los plazos que establece la ley.
+Puedes acceder a tus datos, rectificarlos, cancelarlos u oponerte a su tratamiento (derechos ARCO), así como revocar tu consentimiento o limitar el uso de tus datos, escribiendo a {correo}. Incluye tu nombre, un medio para responderte, la descripción clara de lo que solicitas y, en su caso, un documento que acredite tu identidad o la de tu representante. Te responderemos en los plazos que establece la ley.
+
+Si consideras que tu derecho a la protección de tus datos personales ha sido vulnerado, puedes acudir ante la autoridad competente en la materia.
 
 ## Cambios a este aviso
-Cualquier cambio a este aviso de privacidad se publicará en esta misma página.`,
+Cualquier cambio a este aviso de privacidad se publicará en esta misma página, con la fecha de su última actualización.`,
 };

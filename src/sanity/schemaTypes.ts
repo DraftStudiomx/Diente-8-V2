@@ -59,6 +59,20 @@ export const siteSettings = defineType({
       of: [defineArrayMember({ type: 'reference', to: [{ type: 'specialty' }] })],
       validation: (r) => r.length(3),
     }),
+    defineField({
+      name: 'legalName',
+      title: 'Nombre legal del responsable',
+      type: 'string',
+      description: 'Nombre completo de la persona física o razón social, como aparece ante el SAT. Se usa en el aviso de privacidad.',
+    }),
+    defineField({
+      name: 'legalAddress',
+      title: 'Domicilio para notificaciones',
+      type: 'string',
+      description: 'Se usa en el aviso de privacidad. Si se deja vacío, se muestran las direcciones de las sucursales.',
+    }),
+    defineField({ name: 'sanitaryName', title: 'Responsable sanitario', type: 'string', description: 'Nombre con título, ej. "Dra. Nombre Apellido". Se muestra en el pie de página.' }),
+    defineField({ name: 'sanitaryLicense', title: 'Cédula profesional del responsable sanitario', type: 'string' }),
   ],
   preview: { prepare: () => ({ title: 'Datos de la clínica' }) },
 });
@@ -307,7 +321,7 @@ const COPY_FIELDS: CopyField[] = [
 
   ['privacyTitle', 'Título', 'legal'],
   ['privacyUpdated', 'Fecha de actualización', 'legal'],
-  ['privacyBody', 'Texto del aviso', 'legal', { long: true, hint: 'Separa párrafos con una línea en blanco. Una línea que empiece con "## " se muestra como subtítulo.' }],
+  ['privacyText', 'Texto del aviso', 'legal', { long: true, hint: 'Separa párrafos con una línea en blanco. Una línea que empiece con "## " se muestra como subtítulo. {responsable}, {domicilio} y {correo} se llenan solos con "Datos de la clínica".' }],
 ];
 
 // Pre-fill the document with the current site copy the first time it is opened in the Studio.
@@ -344,7 +358,7 @@ export const siteCopy = defineType({
         title,
         group,
         type: opts?.long ? 'text' : 'string',
-        ...(opts?.long ? { rows: name === 'privacyBody' ? 24 : 3 } : {}),
+        ...(opts?.long ? { rows: name === 'privacyText' ? 24 : 3 } : {}),
         description: opts?.hint,
         validation: (r) => r.required(),
       }),

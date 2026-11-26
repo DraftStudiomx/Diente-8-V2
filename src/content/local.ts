@@ -20,6 +20,10 @@ export const settings: SiteSettings = {
   years: 19,
   patients: 2000,
   patientsLabel: 'pacientes registrados desde 2025',
+  legalName: null,
+  legalAddress: null,
+  sanitaryName: null,
+  sanitaryLicense: null,
 };
 
 // Detail-page copy per specialty: H1 for local search, signs that it's time to visit, and what's treated.
