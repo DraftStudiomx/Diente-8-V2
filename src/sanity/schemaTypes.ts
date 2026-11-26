@@ -73,6 +73,18 @@ export const siteSettings = defineType({
     }),
     defineField({ name: 'sanitaryName', title: 'Responsable sanitario', type: 'string', description: 'Nombre con título, ej. "Dra. Nombre Apellido". Se muestra en el pie de página.' }),
     defineField({ name: 'sanitaryLicense', title: 'Cédula profesional del responsable sanitario', type: 'string' }),
+    defineField({
+      name: 'sanitaryInstitution',
+      title: 'Institución que expidió su título',
+      type: 'string',
+      description: 'Ej. "Universidad Nacional Autónoma de México".',
+    }),
+    defineField({
+      name: 'cofeprisCode',
+      title: 'Clave de COFEPRIS (aviso de publicidad)',
+      type: 'string',
+      description: 'Se muestra en el pie de página cuando COFEPRIS la asigne.',
+    }),
   ],
   preview: { prepare: () => ({ title: 'Datos de la clínica' }) },
 });

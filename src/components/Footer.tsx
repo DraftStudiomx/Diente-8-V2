@@ -66,8 +66,16 @@ export async function Footer({ big = false, whatsapp, copy }: { big?: boolean; w
           </p>
           {settings.sanitaryName && (
             <p className="footer-copy footer-sanitary">
-              Responsable sanitario: {settings.sanitaryName}
-              {settings.sanitaryLicense && <> · Cédula profesional {settings.sanitaryLicense}</>}
+              Responsable sanitario:{' '}
+              {[settings.sanitaryName, settings.sanitaryInstitution, settings.sanitaryLicense && `Cédula N° ${settings.sanitaryLicense}`]
+                .filter(Boolean)
+                .join(' / ')}
+              {settings.cofeprisCode && (
+                <>
+                  <br />
+                  Clave de autorización COFEPRIS: {settings.cofeprisCode}
+                </>
+              )}
             </p>
           )}
         </div>

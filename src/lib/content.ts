@@ -46,7 +46,7 @@ const img = (field: string) =>
 
 const CONTENT_QUERY = defineQuery(`{
   "settings": *[_id == "siteSettings"][0]{
-    name, description, whatsapp, whatsappMessage, phone, email, instagram, facebook, years, patients, patientsLabel, legalName, legalAddress, sanitaryName, sanitaryLicense,
+    name, description, whatsapp, whatsappMessage, phone, email, instagram, facebook, years, patients, patientsLabel, legalName, legalAddress, sanitaryName, sanitaryLicense, sanitaryInstitution, cofeprisCode,
     "homeSpecialties": homeSpecialties[]->slug.current
   },
   "specialties": *[_type == "specialty" && defined(slug.current)] | order(number asc){
@@ -121,6 +121,8 @@ async function fetchFromSanity(): Promise<SiteContent | null> {
       legalAddress: orNull(s.legalAddress),
       sanitaryName: orNull(s.sanitaryName),
       sanitaryLicense: orNull(s.sanitaryLicense),
+      sanitaryInstitution: orNull(s.sanitaryInstitution),
+      cofeprisCode: orNull(s.cofeprisCode),
     },
     specialties: data.specialties
       .filter((x) => hasImage(x.image))

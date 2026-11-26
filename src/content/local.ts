@@ -24,6 +24,8 @@ export const settings: SiteSettings = {
   legalAddress: null,
   sanitaryName: null,
   sanitaryLicense: null,
+  sanitaryInstitution: null,
+  cofeprisCode: null,
 };
 
 // Detail-page copy per specialty: H1 for local search, signs that it's time to visit, and what's treated.

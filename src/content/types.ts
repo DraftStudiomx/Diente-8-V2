@@ -24,6 +24,8 @@ export type SiteSettings = {
   legalAddress: string | null; // address for notices (privacy notice); falls back to the branch addresses
   sanitaryName: string | null; // "responsable sanitario", shown in the footer
   sanitaryLicense: string | null; // their cédula profesional
+  sanitaryInstitution: string | null; // institution that issued their degree, e.g. UNAM
+  cofeprisCode: string | null; // COFEPRIS advertising notice key, shown in the footer
 };
 
 export type Specialty = {
